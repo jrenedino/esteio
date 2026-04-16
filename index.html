@@ -617,12 +617,115 @@
             nav { display: none; }
             main { margin-left: 0; }
         }
+
+        /* HAMBURGUER */
+        .nav-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 300;
+            background: var(--antracite);
+            border: none;
+            padding: 10px 12px;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--branco);
+            transition: all 0.3s;
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 150;
+        }
+
+        .nav-overlay.open { display: block; }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .nav-toggle { display: flex; }
+
+            nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 200;
+            }
+
+            nav.open { transform: translateX(0); }
+
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .cover {
+                padding: 64px 28px 48px;
+            }
+
+            .cover-title { font-size: 52px; }
+
+            .cover-tagline { font-size: 15px; }
+
+            .cover-version {
+                right: 28px;
+                bottom: 20px;
+            }
+
+            section { padding: 48px 24px; }
+
+            .section-title { font-size: 28px; }
+
+            .manifesto { padding: 48px 24px; }
+
+            .manifesto p { font-size: 15px; }
+
+            .valores-grid { grid-template-columns: 1fr; }
+
+            .persona-card { padding: 28px 20px; }
+
+            .persona-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .persona-meta { text-align: left; }
+
+            .verbal-nail { font-size: 44px; }
+
+            .positioning-block { padding: 28px 20px; }
+
+            .antonym-block { flex-wrap: wrap; }
+
+            .circle-item { padding: 24px 20px; }
+
+            .pending-section { padding: 32px 20px; }
+
+            .paleta-grid { gap: 8px; }
+
+            .cor-item { width: 100px; }
+        }
     </style>
 </head>
 <body>
 
+<button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+</button>
+<div class="nav-overlay" id="navOverlay"></div>
+
 <!-- NAVEGAÇÃO -->
-<nav>
+<nav id="nav">
     <div class="nav-brand">
         <h1>ESTEIO</h1>
         <p>Brandbook — v2.0</p>
@@ -1141,6 +1244,32 @@
     </section>
 
 </main>
+
+<script>
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('navOverlay');
+
+    function openNav() {
+        nav.classList.add('open');
+        overlay.classList.add('open');
+    }
+
+    function closeNav() {
+        nav.classList.remove('open');
+        overlay.classList.remove('open');
+    }
+
+    toggle.addEventListener('click', () => {
+        nav.classList.contains('open') ? closeNav() : openNav();
+    });
+
+    overlay.addEventListener('click', closeNav);
+
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeNav);
+    });
+</script>
 
 </body>
 </html>
