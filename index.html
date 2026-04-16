@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTEIO — Brandbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --marrom: #8A3E05;
+            --marrom-claro: #A54D08;
+            --preto: #000000;
+            --antracite: #1A1A1A;
+            --branco: #FFFFFF;
+            --creme: #FAF8F5;
+            --bege: #F0EBE3;
+            --bege-escuro: #E0D6CA;
+            --oliva: #6B7040;
+            --texto: #2A2A2A;
+            --texto-suave: #6B6460;
+            --nav-width: 260px;
+        }
+
+        body {
+            font-family: 'Barlow', system-ui, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            width: var(--nav-width);
+            min-height: 100vh;
+            background: var(--antracite);
+            position: fixed;
+            top: 0; left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .nav-brand {
+            padding: 40px 28px 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-brand h1 {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.15em;
+            color: var(--branco);
+            text-transform: uppercase;
+        }
+
+        .nav-brand p {
+            font-family: 'Barlow', sans-serif;
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .nav-section {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-section-title {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+            padding: 16px 28px 8px;
+        }
+
+        nav a {
+            display: block;
+            padding: 9px 28px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--branco);
+            background: rgba(255,255,255,0.04);
+            border-left-color: var(--marrom);
+        }
+
+        .nav-pending {
+            color: rgba(255,255,255,0.25) !important;
+            font-style: italic;
+        }
+
+        .nav-footer {
+            margin-top: auto;
+            padding: 20px 28px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.1em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        main {
+            margin-left: var(--nav-width);
+            flex: 1;
+            max-width: 860px;
+        }
+
+        /* CAPA */
+        .cover {
+            min-height: 100vh;
+            background: var(--antracite);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(138,62,5,0.12), transparent);
+        }
+
+        .cover-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 32px;
+        }
+
+        .cover-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 96px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--branco);
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cover-divider {
+            width: 48px;
+            height: 2px;
+            background: var(--marrom);
+            margin-bottom: 32px;
+        }
+
+        .cover-sub {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 8px;
+        }
+
+        .cover-tagline {
+            font-size: 18px;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .cover-version {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.2);
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 80px;
+            border-bottom: 1px solid var(--bege-escuro);
+            scroll-margin-top: 20px;
+        }
+
+        section:last-child { border-bottom: none; }
+
+        .section-number {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            line-height: 1;
+            margin-bottom: 48px;
+        }
+
+        .section-divider {
+            width: 36px;
+            height: 2px;
+            background: var(--marrom);
+            margin-bottom: 48px;
+            margin-top: -32px;
+        }
+
+        /* SUBSECÇÕES */
+        .subsection {
+            margin-bottom: 56px;
+        }
+
+        .subsection:last-child { margin-bottom: 0; }
+
+        .subsection-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 20px;
+        }
+
+        /* TEXTO */
+        p {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--texto);
+            margin-bottom: 18px;
+            max-width: 620px;
+        }
+
+        p:last-child { margin-bottom: 0; }
+
+        /* MANIFESTO */
+        .manifesto {
+            background: var(--antracite);
+            padding: 80px;
+            margin: 0;
+        }
+
+        .manifesto p {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 2;
+            color: rgba(255,255,255,0.75);
+            max-width: 560px;
+        }
+
+        .manifesto p strong {
+            color: var(--branco);
+            font-weight: 500;
+        }
+
+        .manifesto .manifesto-closing {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--branco);
+            text-transform: uppercase;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* GOLDEN CIRCLE */
+        .circle-item {
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            padding: 40px;
+            margin-bottom: 24px;
+            border-left: 3px solid var(--marrom);
+        }
+
+        .circle-item:last-child { margin-bottom: 0; }
+
+        .circle-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+
+        .circle-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--antracite);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        /* POSICIONAMENTO */
+        .positioning-block {
+            background: var(--antracite);
+            padding: 48px;
+            margin-bottom: 24px;
+        }
+
+        .positioning-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 12px;
+        }
+
+        .verbal-nail {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--branco);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .onlyness {
+            font-size: 17px;
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            max-width: 560px;
+            border-left: 2px solid var(--marrom);
+            padding-left: 20px;
+        }
+
+        .antonym-block {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .antonym-word {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .antonym-word.active { color: var(--branco); }
+        .antonym-word.passive { color: rgba(255,255,255,0.25); text-decoration: line-through; }
+
+        .antonym-vs {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.2em;
+        }
+
+        /* PERSONAS */
+        .persona-card {
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            padding: 48px;
+            margin-bottom: 32px;
+        }
+
+        .persona-card:last-child { margin-bottom: 0; }
+
+        .persona-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+
+        .persona-name {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--antracite);
+        }
+
+        .persona-symbol {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-top: 4px;
+        }
+
+        .persona-meta {
+            text-align: right;
+        }
+
+        .persona-age {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--marrom);
+            line-height: 1;
+        }
+
+        .persona-age-label {
+            font-size: 10px;
+            color: var(--texto-suave);
+            letter-spacing: 0.15em;
+        }
+
+        .persona-field {
+            margin-bottom: 24px;
+        }
+
+        .persona-field-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            margin-bottom: 6px;
+        }
+
+        .persona-field p {
+            font-size: 14px;
+            line-height: 1.75;
+            max-width: 100%;
+        }
+
+        .persona-frase {
+            background: var(--bege);
+            padding: 20px 24px;
+            border-left: 3px solid var(--marrom);
+            margin-top: 32px;
+            font-size: 15px;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--antracite);
+            line-height: 1.6;
+        }
+
+        /* VALORES */
+        .valores-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .valor-item {
+            padding: 24px;
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+        }
+
+        .valor-nome {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+
+        .valor-desc {
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--texto);
+            margin: 0;
+            max-width: 100%;
+        }
+
+        /* PALETA */
+        .paleta-grid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cor-item {
+            width: 120px;
+        }
+
+        .cor-amostra {
+            height: 80px;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .cor-info {
+            padding: 10px 0;
+        }
+
+        .cor-nome {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--antracite);
+        }
+
+        .cor-hex {
+            font-size: 11px;
+            color: var(--texto-suave);
+            letter-spacing: 0.1em;
+        }
+
+        /* PENDING */
+        .pending-section {
+            background: var(--bege);
+            border: 1px dashed var(--bege-escuro);
+            padding: 48px;
+            text-align: center;
+        }
+
+        .pending-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            margin-bottom: 12px;
+        }
+
+        .pending-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--bege-escuro);
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .badge-aprovado { background: #E8F5E9; color: #2E7D32; }
+        .badge-revisado { background: #FFF3E0; color: #E65100; }
+        .badge-pendente { background: var(--bege); color: var(--texto-suave); }
+
+        /* TIPOGRAFIA INFO */
+        .tipo-item {
+            padding: 24px;
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            margin-bottom: 16px;
+        }
+
+        .tipo-amostra-encode {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--antracite);
+            margin-bottom: 8px;
+        }
+
+        .tipo-amostra-barlow {
+            font-family: 'Barlow', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--texto);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .tipo-meta {
+            font-size: 11px;
+            color: var(--texto-suave);
+            letter-spacing: 0.15em;
+        }
+
+        /* SCROLL */
+        html { scroll-behavior: smooth; }
+
+        @media print {
+            nav { display: none; }
+            main { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVEGAÇÃO -->
+<nav>
+    <div class="nav-brand">
+        <h1>ESTEIO</h1>
+        <p>Brandbook — v2.0</p>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Identidade</div>
+        <a href="#essencia">01 — Essência da Marca</a>
+        <a href="#manifesto">02 — Manifesto</a>
+        <a href="#golden-circle">03 — Golden Circle</a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Estratégia</div>
+        <a href="#posicionamento">04 — Posicionamento</a>
+        <a href="#tagline" style="padding-left: 40px; font-size: 12px; opacity: 0.75;">↳ Tagline & One-liner</a>
+        <a href="#personas">05 — Personas</a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Expressão</div>
+        <a href="#identidade-visual">06 — Identidade Visual</a>
+        <a href="#tom-de-voz">07 — Tom de Voz</a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Em Construção</div>
+        <a href="#fotografia" class="nav-pending">08 — Diretrizes Fotográficas</a>
+        <a href="#produto" class="nav-pending">09 — Guia de Produto</a>
+        <a href="#jornada" class="nav-pending">10 — Jornada de Compra</a>
+        <a href="#estetica" class="nav-pending">11 — Estética & Arquétipo</a>
+    </div>
+
+    <div class="nav-footer">
+        ESTEIO © 2025<br>Confidencial
+    </div>
+</nav>
+
+<!-- CONTEÚDO -->
+<main>
+
+    <!-- CAPA -->
+    <div class="cover">
+        <div class="cover-label">Brandbook Oficial</div>
+        <img src="assets/esteio-logo-escuro_1.svg" alt="ESTEIO" style="width: 320px; height: auto; margin-bottom: 48px; display: block;">
+        <div class="cover-divider"></div>
+        <div class="cover-sub">Moda Masculina</div>
+        <div class="cover-tagline">Nascemos do sertão. Não como cenário, mas como princípio.</div>
+        <div class="cover-version">v2.0 — 2025</div>
+    </div>
+
+    <!-- ESSÊNCIA DA MARCA -->
+    <section id="essencia">
+        <div class="section-number">01</div>
+        <div class="section-title">Essência<br>da Marca</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">Origem e Propósito</div>
+            <p>A ESTEIO não nasceu para todos.</p>
+            <p>Nasceu para o homem forte, que sustenta o trabalho, a família e os compromissos que escolheu. O homem que não precisa de tendência porque já sabe quem é, e para onde está indo.</p>
+            <p>A ESTEIO existe para o homem que sustenta tudo — sem esperar nada.</p>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Significado do Nome</div>
+            <p>"Esteio" é o que sustenta, o que mantém de pé, o que dá base. Na linguagem do campo, é a peça firme que sustenta a estrutura — geralmente feita de madeira resistente, enraizada no chão e feita para durar.</p>
+            <p>O nome traduz o propósito da marca: ser apoio, equilíbrio e fundamento. Representa o homem que não se abala com o instante, que permanece fiel ao que acredita, mesmo diante do tempo e das mudanças. Ser ESTEIO é ser o que fica quando tudo o que é fraco já foi embora.</p>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Valores Fundamentais</div>
+            <div class="valores-grid">
+                <div class="valor-item">
+                    <div class="valor-nome">Verdade</div>
+                    <p class="valor-desc">Sem filtro. Sem performance. O que você vê é o que é.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Sobriedade</div>
+                    <p class="valor-desc">Menos barulho. Mais peso.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Constância</div>
+                    <p class="valor-desc">Não muda porque o vento mudou.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Propósito</div>
+                    <p class="valor-desc">Cada peça tem razão de existir. Igual ao homem que a veste.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Presença</div>
+                    <p class="valor-desc">Está no lugar onde está. Inteiro.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Equilíbrio</div>
+                    <p class="valor-desc">Firme sem ser rígido. Forte sem precisar provar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section id="manifesto" style="padding: 0; background: var(--antracite);">
+        <div class="manifesto">
+            <div class="section-number" style="color: var(--marrom); margin-bottom: 40px;">02 — Manifesto <span class="badge badge-aprovado">Aprovado</span></div>
+
+            <p>O mundo foi feito para quem grita. Para quem se exibe. Para quem precisa de plateia para sentir que vale alguma coisa.</p>
+
+            <p>O homem esteio não pede reconhecimento.</p>
+
+            <p>Acorda cedo. Faz o que precisa ser feito. Sustenta a família. Honra o que prometeu — nos dias bons e nos dias em que falta o chão.</p>
+
+            <p>Existe um lugar que conhece esse homem.</p>
+
+            <p>O sertão não é como o mundo gostaria que fosse. Mas é forte como precisa ser. Resiste à aridez, enfrenta o vento, permanece quando tudo o que é fraco já foi embora. É o lugar onde só fica o que tem raiz.</p>
+
+            <p>A ESTEIO nasceu desse lugar.</p>
+
+            <p>Não para fazer esse homem parecer forte. Mas para que ele vista o que já é.</p>
+
+            <p>Vestir ESTEIO não é uma escolha de estilo. É um gesto de verdade.</p>
+
+            <div class="manifesto-closing">Vista sua raiz.</div>
+        </div>
+    </section>
+
+    <!-- GOLDEN CIRCLE -->
+    <section id="golden-circle">
+        <div class="section-number">03 <span class="badge badge-aprovado">Aprovado</span></div>
+        <div class="section-title">Golden<br>Circle</div>
+        <div class="section-divider"></div>
+
+        <div class="circle-item">
+            <div class="circle-label">Por quê</div>
+            <div class="circle-title">Propósito</div>
+            <p>O mundo precisa de homens fortes que sustente, que resista, que permaneça sem se importar com reconhecimento.</p>
+            <p>A ESTEIO existe para vestir esse homem. Não para transformá-lo, mas para representá-lo — para que ele sinta, a cada dia, o valor do que já carrega.</p>
+            <p>Nascemos do sertão — não como cenário, mas como princípio. Do lugar que enfrenta a aridez e permanece. Do que é forte sem precisar anunciar.</p>
+            <p>Nosso propósito é ser a roupa do homem firme. A que não faz barulho, mas que comunica tudo.</p>
+        </div>
+
+        <div class="circle-item">
+            <div class="circle-label">Como</div>
+            <div class="circle-title">Crenças e Modo de Agir</div>
+            <p>Produzimos roupas com equilíbrio, com propósito, sem pressa. Cada peça é pensada para traduzir e representar a essência do masculino. Usamos materiais com substância, cortes que têm estrutura e design sem excessos.</p>
+            <p>A qualidade fala por si. Ela se mostra no toque, no caimento e na durabilidade de quem foi feito para durar.</p>
+            <p>Buscamos o novo apenas quando ele carrega sentido. Porque, para nós, a moda não é sobre mudar o tempo todo, é sobre criar peças que acompanham o homem.</p>
+            <p>O sertão é nossa bússola criativa: o essencial que resiste, a profundidade que não faz barulho, a firmeza que não se dobra ao instante.</p>
+            <p>Assim, cada peça da ESTEIO é um gesto de presença e propósito, não de vaidade.</p>
+        </div>
+
+        <div class="circle-item">
+            <div class="circle-label">O quê</div>
+            <div class="circle-title">Expressão Concreta</div>
+            <p>Moda masculina com significado. Roupas que unem forma, função e propósito.</p>
+            <p>Peças criadas para o homem que busca constância em um mundo instável, com cortes precisos, tecidos de qualidade e estética limpa.</p>
+            <p>Cada detalhe carrega a intenção de traduzir presença. Nossas criações seguem o ritmo de quem valoriza o essencial.</p>
+            <p>Vestir ESTEIO é um gesto de verdade. De raiz.</p>
+        </div>
+    </section>
+
+    <!-- POSICIONAMENTO -->
+    <section id="posicionamento">
+        <div class="section-number">04 <span class="badge badge-aprovado">Aprovado</span></div>
+        <div class="section-title">Posicio-<br>namento</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">Verbal Nail</div>
+            <div class="positioning-block">
+                <div class="positioning-label">A palavra que a ESTEIO possui</div>
+                <div class="verbal-nail">Raiz.</div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Onlyness Statement</div>
+            <div class="positioning-block">
+                <div class="positioning-label">Uso interno — filtro de todas as decisões</div>
+                <p class="onlyness">"A ESTEIO é a única marca de moda masculina brasileira que nasce do sertão — feita por quem sabe o que está fazendo, para o homem que sabe quem é."</p>
+                <div style="margin-top: 32px;">
+                    <div class="positioning-label">Uso externo — comunicação</div>
+                    <p class="onlyness">"A única moda masculina com raiz. Feita por quem sabe. Para quem sabe."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Antônimo Central</div>
+            <div class="positioning-block">
+                <div class="positioning-label">O contraste que define o território</div>
+                <div class="antonym-block">
+                    <div class="antonym-word active">Essência</div>
+                    <div class="antonym-vs">vs</div>
+                    <div class="antonym-word passive">Tendência</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Visual Hammer</div>
+            <div class="positioning-block">
+                <div class="positioning-label">A imagem que ancora a marca na mente</div>
+                <p style="color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.8; max-width: 520px;">A paisagem do sertão — não como cenário decorativo, mas como assinatura de identidade. O que o cowboy é para a Marlboro, o sertão é para a ESTEIO.</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 16px; max-width: 520px;">Contraste produtivo: Homem de Terra e Homem de Caminho em contextos inesperados. Um elemento fora do lugar por imagem — não dois, não três.</p>
+            </div>
+        </div>
+        <div class="subsection" id="tagline">
+            <div class="subsection-title">Tagline</div>
+            <div class="positioning-block">
+                <div class="positioning-label">Primária — produto, embalagem, comunicação recorrente</div>
+                <div class="verbal-nail" style="font-size: 36px;">Vista sua raiz.</div>
+                <div style="margin-top: 32px;">
+                    <div class="positioning-label">Secundária (coexistente) — qualificação de público, redes, bio</div>
+                    <p class="onlyness">"Para quem já sabe quem é."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">One-liner</div>
+            <div class="positioning-block">
+                <div class="positioning-label">C — O reflexo (problema real, solução simples)</div>
+                <p class="onlyness">"Não é difícil achar roupa. É difícil achar uma que reflita quem você é. A ESTEIO é isso."</p>
+                <div style="margin-top: 32px;">
+                    <div class="positioning-label">D — A inversão (ritmo forte, identidade imediata)</div>
+                    <p class="onlyness">"Roupa que não segue tendência — segue você. Moda masculina com raiz, para quem já chegou."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERSONAS -->
+    <section id="personas">
+        <div class="section-number">05 <span class="badge badge-aprovado">Aprovado</span></div>
+        <div class="section-title">Personas</div>
+        <div class="section-divider"></div>
+
+        <!-- Persona 01 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div>
+                    <div class="persona-name">O Homem de Terra</div>
+                    <div class="persona-symbol">A Base</div>
+                </div>
+                <div class="persona-meta">
+                    <div class="persona-age">35–45</div>
+                    <div class="persona-age-label">anos</div>
+                </div>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Ocupação</div>
+                <p>Engenheiro agrônomo, produtor rural ou gestor no setor agro.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Estilo de Vida</div>
+                <p>Vive no ritmo do tempo real — não o do feed, o da natureza. Acorda cedo porque é o que precisa ser feito. Encontra valor na rotina, no silêncio e nas coisas que permanecem. O funcional não é falta de estilo — é a compreensão de que presença não depende de exibição.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">O que o define</div>
+                <p>Sustenta o que construiu sem precisar anunciar. Honra compromissos sem esperar reconhecimento. É firme por convicção — não aprendeu isso em curso, aprendeu na terra.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Relação com a ESTEIO</div>
+                <p>Enxerga na marca o reflexo do que já é. Veste ESTEIO porque a peça traduz o que ele carrega — constância, discrição, verdade. Não precisa de logo grande. Sabe o que está usando e por quê.</p>
+            </div>
+
+            <div class="persona-frase">"O silêncio também diz quem a gente é."</div>
+        </div>
+
+        <!-- Persona 02 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div>
+                    <div class="persona-name">O Homem de Caminho</div>
+                    <div class="persona-symbol">O Equilíbrio</div>
+                </div>
+                <div class="persona-meta">
+                    <div class="persona-age">25–38</div>
+                    <div class="persona-age-label">anos</div>
+                </div>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Ocupação</div>
+                <p>Profissional liberal ou gestor em ascensão — advogado, arquiteto, engenheiro, empresário.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Estilo de Vida</div>
+                <p>Vive entre compromissos e escolhas. Constrói com propósito — carreira, família, identidade. Reconhece nas marcas o que já carrega — autenticidade, não aparência.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">O que o define</div>
+                <p>Sabe o que quer e age com consistência. Não precisa de validação externa para tomar decisões. Carrega responsabilidades com naturalidade — é o que escolheu ser.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Relação com a ESTEIO</div>
+                <p>Veste ESTEIO como um gesto de presença — não para se destacar, mas para se alinhar com o que já é. Enxerga na marca uma forma de se expressar com coerência.</p>
+            </div>
+
+            <div class="persona-frase">"Estar inteiro vale mais do que estar em evidência."</div>
+        </div>
+
+        <!-- Persona 03 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div>
+                    <div class="persona-name">O Homem de Legado</div>
+                    <div class="persona-symbol">A Permanência</div>
+                </div>
+                <div class="persona-meta">
+                    <div class="persona-age">45–60</div>
+                    <div class="persona-age-label">anos</div>
+                </div>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Ocupação</div>
+                <p>Empresário, consultor ou produtor de longa trajetória.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Estilo de Vida</div>
+                <p>Já construiu. Agora valoriza o que dura — o tempo bem vivido, as relações verdadeiras, o trabalho com sentido. Consome com critério. Qualidade não é preferência — é o único parâmetro.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">O que o define</div>
+                <p>Tem história e não precisa contá-la. A firmeza que construiu ao longo da vida está no modo de se portar, de escolher, de permanecer. É referência sem esforço.</p>
+            </div>
+
+            <div class="persona-field">
+                <div class="persona-field-label">Relação com a ESTEIO</div>
+                <p>Reconhece na marca a mesma solidez que construiu sua trajetória. Veste ESTEIO porque elegância é coerência — e a roupa deve ser extensão do que o homem é por dentro.</p>
+            </div>
+
+            <div class="persona-frase">"O tempo prova o que tem valor."</div>
+        </div>
+    </section>
+
+    <!-- IDENTIDADE VISUAL -->
+    <section id="identidade-visual">
+        <div class="section-number">06</div>
+        <div class="section-title">Identidade<br>Visual</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">Logo — Aplicações</div>
+
+            <!-- Fundo claro -->
+            <div style="background: #FAF8F5; border: 1px solid var(--bege-escuro); padding: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px;">
+                <img src="assets/esteio-logo-claro_1.png" alt="ESTEIO logo fundo claro" style="height: 56px;">
+            </div>
+            <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 16px; padding: 8px 0;">Aplicação fundo claro</div>
+
+            <!-- Fundo escuro -->
+            <div style="background: var(--antracite); padding: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px;">
+                <img src="assets/esteio-logo-escuro.png" alt="ESTEIO logo fundo escuro" style="height: 56px;">
+            </div>
+            <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 40px; padding: 8px 0;">Aplicação fundo escuro</div>
+
+            <!-- Isotipo e Wordmark -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px;">
+                <div style="background: #FAF8F5; border: 1px solid var(--bege-escuro); padding: 40px; display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/esteio-isotipo-claro-e-escuro.png" alt="ESTEIO isotipo" style="height: 80px;">
+                </div>
+                <div style="background: #FAF8F5; border: 1px solid var(--bege-escuro); padding: 40px; display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/esteio-wordmark-claro_1.png" alt="ESTEIO wordmark" style="height: 40px;">
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 32px;">
+                <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; padding: 8px 0;">Isotipo</div>
+                <div style="font-size: 10px; letter-spacing: 0.2em; color: var(--texto-suave); text-transform: uppercase; padding: 8px 0;">Wordmark</div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Paleta Cromática</div>
+            <div class="paleta-grid">
+                <div class="cor-item">
+                    <div class="cor-amostra" style="background: #8A3E05;"></div>
+                    <div class="cor-info">
+                        <div class="cor-nome">Marrom Principal</div>
+                        <div class="cor-hex">#8A3E05</div>
+                    </div>
+                </div>
+                <div class="cor-item">
+                    <div class="cor-amostra" style="background: #000000;"></div>
+                    <div class="cor-info">
+                        <div class="cor-nome">Preto</div>
+                        <div class="cor-hex">#000000</div>
+                    </div>
+                </div>
+                <div class="cor-item">
+                    <div class="cor-amostra" style="background: #FFFFFF; border: 1px solid #E0D6CA;"></div>
+                    <div class="cor-info">
+                        <div class="cor-nome">Branco</div>
+                        <div class="cor-hex">#FFFFFF</div>
+                    </div>
+                </div>
+                <div class="cor-item">
+                    <div class="cor-amostra" style="background: #1A1A1A;"></div>
+                    <div class="cor-info">
+                        <div class="cor-nome">Cinza Antracite</div>
+                        <div class="cor-hex">#1A1A1A</div>
+                    </div>
+                </div>
+                <div class="cor-item">
+                    <div class="cor-amostra" style="background: #6B7040;"></div>
+                    <div class="cor-info">
+                        <div class="cor-nome">Verde Oliva</div>
+                        <div class="cor-hex">Uso pontual</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Tipografia</div>
+            <div class="tipo-item">
+                <div class="tipo-amostra-encode">Encode Sans Condensed</div>
+                <p class="tipo-meta">Títulos, headings, logotipo — institucional e impresso</p>
+            </div>
+            <div class="tipo-item">
+                <div class="tipo-amostra-barlow">Barlow — O essencial não muda. A força vem de dentro.</div>
+                <p class="tipo-meta">Textos descritivos, digital, corpo de texto</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOM DE VOZ -->
+    <section id="tom-de-voz">
+        <div class="section-number">07</div>
+        <div class="section-title">Tom de<br>Voz</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">Princípios de Linguagem</div>
+            <div class="valores-grid">
+                <div class="valor-item">
+                    <div class="valor-nome">Sobriedade</div>
+                    <p class="valor-desc">Dizer o necessário com clareza e intenção.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Verdade</div>
+                    <p class="valor-desc">Falar com autenticidade, sem exageros ou artifícios.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Essência</div>
+                    <p class="valor-desc">Comunicar o que é permanente, não o que é passageiro.</p>
+                </div>
+                <div class="valor-item">
+                    <div class="valor-nome">Direção</div>
+                    <p class="valor-desc">Mais afirmar do que negar. Contraste com proporção.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Frases Exemplares</div>
+            <div class="circle-item">
+                <p style="font-style: italic; font-size: 16px; line-height: 2;">"O essencial não muda."<br>"Força e serenidade andam lado a lado."<br>"Não seguimos modas. Seguimos princípios."<br>"Vestir ESTEIO é um gesto de verdade."<br>"De raiz."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRETRIZES FOTOGRÁFICAS — PENDENTE -->
+    <section id="fotografia" style="background: var(--bege);">
+        <div class="section-number">08 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Diretrizes<br>Fotográficas</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">Próximo capítulo</div>
+            <div class="pending-title">Conceito Visual — Direção de Cena — Paleta — Referências — Briefing de Produção</div>
+        </div>
+    </section>
+
+    <!-- GUIA DE PRODUTO — PENDENTE -->
+    <section id="produto" style="background: var(--bege);">
+        <div class="section-number">09 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Guia de<br>Produto</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">Próximo capítulo</div>
+            <div class="pending-title">Hierarquia de Linha — Faixas de Preço — Posicionamento de Produto — Comunicação por SKU</div>
+        </div>
+    </section>
+
+    <!-- JORNADA DE COMPRA — PENDENTE -->
+    <section id="jornada" style="background: var(--bege);">
+        <div class="section-number">10 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Jornada<br>de Compra</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">Próximo capítulo</div>
+            <div class="pending-title">Descoberta → Consideração → Conversão → Experiência → Fidelização</div>
+        </div>
+    </section>
+
+    <!-- ESTÉTICA & ARQUÉTIPO — PENDENTE -->
+    <section id="estetica" style="background: var(--bege);">
+        <div class="section-number">11 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Estética &<br>Arquétipo</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">A construir</div>
+            <div class="pending-title">Premium Silencioso — Força Estrutural — Personalidade de Marca — O Sustentador</div>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
