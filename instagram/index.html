@@ -523,6 +523,45 @@
             .decisao-section { page-break-before: always; }
             .post-card { page-break-inside: avoid; }
         }
+
+        @media (max-width: 600px) {
+            body { padding: 24px 16px; }
+
+            .capa { padding: 40px 24px; margin-bottom: 40px; }
+            .capa-title { font-size: 36px; }
+            .capa-info { grid-template-columns: 1fr; gap: 20px; }
+
+            .intro { margin-bottom: 40px; padding-bottom: 32px; }
+            .intro-grid { grid-template-columns: 1fr; gap: 16px; }
+
+            .bio-section { padding: 28px 24px; margin-bottom: 40px; }
+
+            .northstar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 24px 20px;
+                margin-bottom: 32px;
+            }
+            .northstar-detalhe { margin-left: 0; text-align: left; }
+
+            .semana { margin-bottom: 48px; }
+            .semana-header { flex-wrap: wrap; gap: 8px; }
+            .semana-numero { font-size: 32px; }
+            .semana-titulo { font-size: 18px; }
+            .semana-objetivo { margin-left: 0; width: 100%; }
+
+            .post-header { flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+            .post-formato { margin-left: 0; }
+
+            .post-body { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+
+            .metrica-footer { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+
+            .decisao-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+            .checklist-item { padding: 12px 16px; }
+        }
     </style>
 </head>
 <body>
