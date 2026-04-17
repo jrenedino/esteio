@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTEIO — Plano de Instagram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --marrom: #8A3E05;
+            --marrom-claro: #A54D08;
+            --preto: #000000;
+            --antracite: #1A1A1A;
+            --branco: #FFFFFF;
+            --creme: #FAF8F5;
+            --bege: #F0EBE3;
+            --bege-escuro: #E0D6CA;
+            --texto: #2A2A2A;
+            --texto-suave: #6B6460;
+        }
+
+        body {
+            font-family: 'Barlow', system-ui, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* CAPA */
+        .capa {
+            background: var(--antracite);
+            color: var(--branco);
+            padding: 80px 60px;
+            margin-bottom: 60px;
+            page-break-after: always;
+        }
+
+        .capa-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 32px;
+        }
+
+        .capa-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .capa-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.08em;
+            margin-bottom: 60px;
+        }
+
+        .capa-divider {
+            width: 48px;
+            height: 2px;
+            background: var(--marrom);
+            margin-bottom: 40px;
+        }
+
+        .capa-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .capa-info-item label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .capa-info-item p {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* INTRO */
+        .intro {
+            margin-bottom: 60px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+
+        .intro h2 {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 24px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .intro-card {
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            padding: 24px;
+        }
+
+        .intro-card label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .intro-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--texto);
+        }
+
+        .intro-card strong {
+            color: var(--marrom);
+            font-weight: 600;
+        }
+
+        /* BIO */
+        .bio-section {
+            background: var(--antracite);
+            padding: 40px 48px;
+            margin-bottom: 60px;
+        }
+
+        .bio-section h2 {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 24px;
+        }
+
+        .bio-content {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+            line-height: 2;
+            border-left: 2px solid var(--marrom);
+            padding-left: 24px;
+        }
+
+        .bio-content span {
+            display: block;
+        }
+
+        .bio-content .bio-cta {
+            color: var(--marrom-claro);
+        }
+
+        /* SEMANA */
+        .semana {
+            margin-bottom: 64px;
+            page-break-before: always;
+        }
+
+        .semana:first-of-type {
+            page-break-before: avoid;
+        }
+
+        .semana-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--marrom);
+        }
+
+        .semana-numero {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--marrom);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .semana-titulo {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--antracite);
+        }
+
+        .semana-objetivo {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--texto-suave);
+            margin-left: auto;
+            font-style: italic;
+        }
+
+        /* POST CARD */
+        .post-card {
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            background: var(--bege);
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+
+        .post-numero {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--marrom);
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .post-meta {
+            flex: 1;
+        }
+
+        .post-dia {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            margin-bottom: 2px;
+        }
+
+        .post-nome {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--antracite);
+            letter-spacing: 0.05em;
+        }
+
+        .post-formato {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--branco);
+            background: var(--marrom);
+            padding: 4px 10px;
+        }
+
+        .post-body {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .post-section label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* SLIDES */
+        .slides-list {
+            list-style: none;
+        }
+
+        .slides-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--texto);
+            align-items: flex-start;
+        }
+
+        .slide-num {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--marrom);
+            min-width: 20px;
+            padding-top: 1px;
+        }
+
+        /* VISUAL */
+        .visual-desc {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--texto);
+            font-style: italic;
+        }
+
+        /* LEGENDA */
+        .legenda-box {
+            background: var(--antracite);
+            padding: 20px 24px;
+            margin-top: 4px;
+        }
+
+        .legenda-box p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            font-weight: 300;
+        }
+
+        .legenda-box p + p {
+            margin-top: 10px;
+        }
+
+        /* HASHTAGS */
+        .hashtags {
+            font-size: 12px;
+            color: var(--marrom-claro);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* METRICA */
+        .metrica-footer {
+            padding: 12px 24px;
+            background: var(--bege);
+            border-top: 1px solid var(--bege-escuro);
+            display: flex;
+            gap: 24px;
+        }
+
+        .metrica-item {
+            font-size: 11px;
+            color: var(--texto-suave);
+        }
+
+        .metrica-item strong {
+            color: var(--marrom);
+            font-weight: 600;
+        }
+
+        /* NORTH STAR */
+        .northstar {
+            background: var(--marrom);
+            padding: 32px 40px;
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .northstar-label {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            white-space: nowrap;
+        }
+
+        .northstar-text {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--branco);
+            letter-spacing: 0.05em;
+        }
+
+        .northstar-detalhe {
+            font-size: 13px;
+            color: rgba(255,255,255,0.65);
+            margin-left: auto;
+            font-style: italic;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        /* SEMANA 4 */
+        .decisao-section {
+            page-break-before: always;
+            margin-bottom: 60px;
+        }
+
+        .decisao-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--marrom);
+        }
+
+        .decisao-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .decisao-table th {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bege);
+            border: 1px solid var(--bege-escuro);
+        }
+
+        .decisao-table td {
+            font-size: 13px;
+            padding: 14px 16px;
+            border: 1px solid var(--bege-escuro);
+            color: var(--texto);
+            line-height: 1.5;
+            vertical-align: top;
+        }
+
+        .decisao-table td:first-child {
+            font-weight: 500;
+            color: var(--marrom);
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: var(--branco);
+            border: 1px solid var(--bege-escuro);
+            margin-top: 40px;
+        }
+
+        .checklist-header {
+            padding: 16px 24px;
+            background: var(--bege);
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+
+        .checklist-header h3 {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--antracite);
+        }
+
+        .checklist-item {
+            display: flex;
+            gap: 16px;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--bege);
+            align-items: flex-start;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid var(--bege-escuro);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist-item p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--texto);
+        }
+
+        .checklist-item span {
+            font-size: 12px;
+            color: var(--texto-suave);
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* FULL WIDTH SECTIONS */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media print {
+            body { padding: 0; background: white; }
+            .capa { page-break-after: always; }
+            .semana { page-break-before: always; }
+            .semana:first-of-type { page-break-before: avoid; }
+            .decisao-section { page-break-before: always; }
+            .post-card { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="capa">
+    <div class="capa-label">Estratégia de Conteúdo</div>
+    <div class="capa-title">ESTEIO</div>
+    <div class="capa-subtitle">Plano de Instagram — Semanas 1 a 4</div>
+    <div class="capa-divider"></div>
+    <div class="capa-info">
+        <div class="capa-info-item">
+            <label>Objetivo</label>
+            <p>Validar narrativa e encontrar o público antes do lançamento do e-commerce</p>
+        </div>
+        <div class="capa-info-item">
+            <label>Frequência</label>
+            <p>4 posts por semana<br>Terça / Quinta / Sábado / Domingo</p>
+        </div>
+        <div class="capa-info-item">
+            <label>Métrica que importa</label>
+            <p>Saves e compartilhamentos<br>Ignore likes</p>
+        </div>
+    </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+    <h2>Contexto estratégico</h2>
+    <div class="intro-grid">
+        <div class="intro-card">
+            <label>Estágio da marca</label>
+            <p>Conta nova, 0 seguidores. E-commerce pronto, aguardando fotos. Sem produto nas primeiras semanas — <strong>narrativa primeiro.</strong></p>
+        </div>
+        <div class="intro-card">
+            <label>Lógica do plano</label>
+            <p>Testar se o homem da marca existe no Instagram antes de investir em produto. Saves = identificação. Compartilhamentos = o homem quer que outro homem veja.</p>
+        </div>
+        <div class="intro-card">
+            <label>Bio do Instagram</label>
+            <p><strong>O homem não precisa de aplausos.</strong><br>Vista sua raiz.<br><br><em style="font-size:12px; color:#6B6460;">Adicionar link quando o e-commerce estiver pronto.</em></p>
+        </div>
+        <div class="intro-card">
+            <label>Threshold de validação</label>
+            <p>Se o carrossel do manifesto (Post 1) atingir <strong>>5% de saves</strong> sobre o alcance — narrativa validada. Avançar para as semanas seguintes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- BIO -->
+<div class="bio-section">
+    <h2>Bio do Instagram — versão atual</h2>
+    <div class="bio-content">
+        <span>O homem não precisa de aplausos.</span>
+        <span class="bio-cta">Vista sua raiz.</span>
+    </div>
+</div>
+
+<!-- NORTH STAR -->
+<div class="northstar">
+    <div class="northstar-label">North Star<br>Metric</div>
+    <div class="northstar-text">Saves no carrossel do manifesto — Semana 1</div>
+    <div class="northstar-detalhe">Save = o homem guardou para reler<br>ou mostrar para alguém</div>
+</div>
+
+<!-- SEMANA 1 -->
+<div class="semana">
+    <div class="semana-header">
+        <div class="semana-numero">01</div>
+        <div class="semana-titulo">O Homem</div>
+        <div class="semana-objetivo">Apresentar a identidade. Sem produto.</div>
+    </div>
+
+    <!-- Post 1 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">01</div>
+            <div class="post-meta">
+                <div class="post-dia">Terça-feira</div>
+                <div class="post-nome">Manifesto</div>
+            </div>
+            <div class="post-formato">Carrossel · 8 slides</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Slides</label>
+                <ul class="slides-list">
+                    <li><span class="slide-num">01</span> O homem ESTEIO não precisa de aplausos.</li>
+                    <li><span class="slide-num">02</span> Faz o que precisa ser feito.</li>
+                    <li><span class="slide-num">03</span> Sustenta a família, o trabalho, honra o que prometeu.</li>
+                    <li><span class="slide-num">04</span> Nos dias bons e nos dias em que o chão some debaixo dos pés.</li>
+                    <li><span class="slide-num">05</span> Existe um lugar que conhece esse homem.</li>
+                    <li><span class="slide-num">06</span> O sertão não é do jeito que o mundo gosta. Mas é forte do jeito que precisa ser.</li>
+                    <li><span class="slide-num">07</span> É o lugar onde só fica o que tem raiz.</li>
+                    <li><span class="slide-num">08</span> Vista sua raiz. — ESTEIO</li>
+                </ul>
+            </div>
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo escuro (#1A1A1A). Tipografia branca. Uma frase por slide, centralizada. Último slide com logo.</p>
+                <label style="margin-top: 20px;">Legenda</label>
+                <div class="legenda-box">
+                    <p>Esse é o homem que a gente veio vestir.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+                <div class="hashtags">#modamasculina #homembrasileiro #raiz #modamasculinabrasileira</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica principal:</strong> Saves</div>
+            <div class="metrica-item"><strong>Threshold:</strong> >5% do alcance</div>
+            <div class="metrica-item"><strong>Secundária:</strong> Compartilhamentos</div>
+        </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">02</div>
+            <div class="post-meta">
+                <div class="post-dia">Quinta-feira</div>
+                <div class="post-nome">Abertura — O homem não precisa de aplausos</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo preto (#000000). Texto branco centralizado. Frase em tipografia grande.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 15px; font-style: italic; font-weight: 500;">"O homem ESTEIO não precisa de aplausos."</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Você conhece esse homem.</p>
+                    <p>Talvez você seja esse homem.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+                <div class="hashtags">#homembrasileiro #identidade #esteio #modamasculina</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + compartilhamentos</div>
+        </div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">03</div>
+            <div class="post-meta">
+                <div class="post-dia">Sábado</div>
+                <div class="post-nome">Sertão — Visual Hammer</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Foto do sertão — paisagem aberta, luz quente, sem produto, sem pessoa em destaque. Sem texto sobreposto. Logo pequena no canto inferior.</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Esse lugar não é bonito do jeito que o mundo gosta.</p>
+                    <p>Mas é forte do jeito que importa.</p>
+                    <p>A ESTEIO nasceu aqui.</p>
+                </div>
+                <div class="hashtags">#sertão #raiz #brasil #esteio</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Visitas ao perfil</div>
+        </div>
+    </div>
+
+    <!-- Post 4 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">04</div>
+            <div class="post-meta">
+                <div class="post-dia">Domingo</div>
+                <div class="post-nome">Tagline — Vista sua raiz</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo marrom (#8A3E05). Texto branco centralizado em tipografia grande.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 15px; font-style: italic; font-weight: 500;">"Vista sua raiz."</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Tem homem que veste roupa.</p>
+                    <p>Tem homem que veste quem é.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+                <div class="hashtags">#modamasculina #esteio #raiz</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + compartilhamentos</div>
+        </div>
+    </div>
+</div>
+
+<!-- SEMANA 2 -->
+<div class="semana">
+    <div class="semana-header">
+        <div class="semana-numero">02</div>
+        <div class="semana-titulo">Posicionamento</div>
+        <div class="semana-objetivo">Testar ressonância do posicionamento.</div>
+    </div>
+
+    <!-- Post 5 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">05</div>
+            <div class="post-meta">
+                <div class="post-dia">Terça-feira</div>
+                <div class="post-nome">One-liner C — O reflexo</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo creme (#FAF8F5). Texto escuro em duas linhas. Tipografia limpa.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 13px; font-style: italic;">"Não é difícil achar roupa."<br>"É difícil achar uma que reflita quem você é."</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Você sente quando a roupa não é você.</p>
+                    <p>A ESTEIO é a que é.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+                <div class="hashtags">#modamasculina #estilo #identidade #esteio</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves</div>
+            <div class="metrica-item"><strong>Comparar com Post 6</strong></div>
+        </div>
+    </div>
+
+    <!-- Post 6 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">06</div>
+            <div class="post-meta">
+                <div class="post-dia">Quinta-feira</div>
+                <div class="post-nome">One-liner D — A inversão</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo escuro (#1A1A1A). Texto branco. Frase em destaque, quebrada em duas linhas.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 13px; font-style: italic;">"Roupa que não segue tendência —<br>segue você."</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>O mundo quer te dizer o que usar.</p>
+                    <p>Você já sabe.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+                <div class="hashtags">#modamasculina #raiz #esteio #homembrasileiro</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves</div>
+            <div class="metrica-item"><strong>Comparar com Post 5</strong></div>
+        </div>
+    </div>
+
+    <!-- Post 7 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">07</div>
+            <div class="post-meta">
+                <div class="post-dia">Sábado</div>
+                <div class="post-nome">O Lugar — Sertão como princípio</div>
+            </div>
+            <div class="post-formato">Carrossel · 3 slides</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Slides</label>
+                <ul class="slides-list">
+                    <li><span class="slide-num">01</span> O sertão não é do jeito que o mundo gosta.</li>
+                    <li><span class="slide-num">02</span> Mas é forte do jeito que precisa ser.</li>
+                    <li><span class="slide-num">03</span> A ESTEIO nasceu desse lugar.</li>
+                </ul>
+                <label style="margin-top: 16px;">Visual</label>
+                <p class="visual-desc">Fotos do sertão com texto sobreposto. Uma foto por slide. Luz quente, horizonte aberto.</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Não é sobre o lugar.</p>
+                    <p>É sobre o que o lugar forma.</p>
+                    <p>A ESTEIO nasceu desse princípio.</p>
+                </div>
+                <div class="hashtags">#sertão #brasil #raiz #esteio #modamasculina</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + visitas ao perfil</div>
+        </div>
+    </div>
+
+    <!-- Post 8 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">08</div>
+            <div class="post-meta">
+                <div class="post-dia">Domingo</div>
+                <div class="post-nome">Tagline secundária — Para quem já sabe</div>
+            </div>
+            <div class="post-formato">Single</div>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo escuro (#1A1A1A). Texto branco centralizado. Frase em destaque.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 15px; font-style: italic; font-weight: 500;">"Para quem já sabe quem é."</p>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Não precisamos convencer ninguém.</p>
+                    <p>Você já sabe se isso é pra você.</p>
+                </div>
+                <div class="hashtags">#esteio #raiz #modamasculina #homembrasileiro</div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + seguidas</div>
+        </div>
+    </div>
+</div>
+
+<!-- SEMANA 4 — DECISÃO -->
+<div class="decisao-section">
+    <div class="decisao-header">
+        <div class="semana-numero">04</div>
+        <div class="semana-titulo">Decisão por dados</div>
+    </div>
+    <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 24px; font-style: italic;">Antes de planejar a semana 4, checar os saves de cada post das semanas anteriores.</p>
+
+    <table class="decisao-table">
+        <thead>
+            <tr>
+                <th>Se o melhor resultado foi em...</th>
+                <th>Semana 4 aposta em...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Manifesto — Post 1</td>
+                <td>Novo carrossel narrativo longo. Explorar outro ângulo do homem firme.</td>
+            </tr>
+            <tr>
+                <td>Frases isoladas — Posts 2, 4 ou 8</td>
+                <td>Série de singles com frases do manifesto. Um por dia.</td>
+            </tr>
+            <tr>
+                <td>Sertão visual — Posts 3 e 7</td>
+                <td>Mais imagem de lugar. Menos texto. Identidade geográfica como âncora.</td>
+            </tr>
+            <tr>
+                <td>One-liners — Posts 5 e 6</td>
+                <td>Testar variações de posicionamento. Frases provocativas, uma por post.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- CHECKLIST -->
+    <div class="checklist">
+        <div class="checklist-header">
+            <h3>Checklist — antes de começar</h3>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>Visuais das semanas 1 e 2 criados</p>
+                <span>Paleta do brandbook: marrom #8A3E05, preto #1A1A1A, creme #FAF8F5, branco</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>3 a 5 fotos do sertão selecionadas</p>
+                <span>Paisagem aberta, luz quente, sem produto. Uma por slide ou post.</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>Bio do Instagram configurada</p>
+                <span>"O homem ESTEIO não precisa de aplausos. / Moda masculina com raiz. / ↓ Vista sua raiz."</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>Posts agendados no Meta Business Suite</p>
+                <span>Agendar semanas 1 e 2 de uma vez. Gratuito.</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>Planilha de métricas criada</p>
+                <span>Registrar saves e compartilhamentos de cada post. Decidir semana 4 com base nos dados.</span>
+            </div>
+        </div>
+        <div class="checklist-item">
+            <div class="checkbox"></div>
+            <div>
+                <p>Semana 3 — Personas prontas</p>
+                <span>Posts 9, 10 e 11: O Homem de Terra, O Homem de Caminho, O Homem de Legado.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
