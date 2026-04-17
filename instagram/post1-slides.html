@@ -80,63 +80,41 @@
             opacity: 1;
         }
 
-        /* SLIDE-TEXT base */
+        /* SLIDE-TEXT base — tamanho uniforme em todos os slides */
         .slide-text {
             font-family: 'Barlow', sans-serif;
+            font-size: clamp(18px, 5vw, 26px);
             font-weight: 300;
             color: rgba(255,255,255,0.92);
             text-align: center;
-            line-height: 1.7;
+            line-height: 1.85;
             letter-spacing: 0.02em;
         }
 
-        /* ─── SLIDE 01 — Hook: uma linha, impacto máximo de abertura ─── */
-        .slide-01 .slide-text {
-            font-size: clamp(22px, 6vw, 34px);
-            font-weight: 300;
-            line-height: 1.5;
-        }
-
-        /* ─── SLIDE 02 — Vilão: menor, mais distante, barulho diminuído ─── */
+        /* Vilão — opacidade reduzida, espaçamento generoso */
         .slide-02 .slide-text {
-            font-size: clamp(14px, 3.8vw, 20px);
-            font-weight: 300;
             color: rgba(255,255,255,0.50);
             letter-spacing: 0.05em;
-            line-height: 2.3;
+            line-height: 2.2;
         }
 
-        /* ─── SLIDE 03 — Herói: maior contraste após o vilão ─── */
+        /* Herói — branco puro */
         .slide-03 .slide-text {
-            font-size: clamp(26px, 7vw, 40px);
-            font-weight: 400;
             color: var(--branco);
-            line-height: 1.4;
         }
 
-        /* ─── SLIDE 04 — Ações: ritmo de lista, cadência firme ─── */
-        .slide-04 .slide-text {
-            font-size: clamp(17px, 4.5vw, 24px);
-            font-weight: 300;
-            color: rgba(255,255,255,0.88);
-            line-height: 2.1;
-        }
-
-        /* ─── SLIDE 05 — Crise: quase sumindo, invisibilidade do herói ─── */
+        /* Crise — quase sumindo */
         .slide-05 .slide-text {
-            font-size: clamp(12px, 3.2vw, 17px);
-            font-weight: 300;
             color: rgba(255,255,255,0.40);
-            letter-spacing: 0.06em;
-            line-height: 2;
+            letter-spacing: 0.04em;
         }
 
-        /* ─── SLIDE 06 — Climax: maior de todos, peso máximo ─── */
+        /* Climax — único com tamanho maior (~20%) e peso reforçado */
         .slide-06 .slide-text {
-            font-size: clamp(28px, 7.5vw, 44px);
+            font-size: clamp(22px, 6vw, 32px);
             font-weight: 500;
             color: var(--branco);
-            line-height: 1.45;
+            line-height: 1.6;
         }
 
         /* ─── SLIDE 07 — Resolução: fundo preto, marca como revelação ─── */
