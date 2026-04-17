@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTEIO — Post 1 · Carrossel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300;400;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --marrom: #8A3E05;
+            --antracite: #1A1A1A;
+            --preto: #000000;
+            --branco: #FFFFFF;
+            --creme: #FAF8F5;
+        }
+
+        body {
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+
+        .header-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* SLIDE CONTAINER */
+        .slide-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* SLIDE — formato 4:5 Instagram */
+        .slide {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background: var(--antracite);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* Linha decorativa esquerda */
+        .slide::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 40%;
+            background: var(--marrom);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* TEXTO DO SLIDE */
+        .slide-text {
+            font-family: 'Barlow', sans-serif;
+            font-size: clamp(18px, 5vw, 26px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.92);
+            text-align: center;
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+
+        /* Slide 02 — vilão: texto levemente suavizado para contrastar com o herói */
+        .slide-02 .slide-text {
+            font-size: clamp(16px, 4.5vw, 22px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.04em;
+            line-height: 2;
+        }
+
+        /* Slide 03 — herói: destaque em branco puro */
+        .slide-03 .slide-text {
+            font-size: clamp(20px, 5.5vw, 28px);
+            font-weight: 400;
+            color: var(--branco);
+        }
+
+        /* Slide 06 — Crise: fundo levemente mais escuro, texto suavizado */
+        .slide-06-crise .slide-text {
+            color: rgba(255,255,255,0.5);
+            font-size: clamp(18px, 5vw, 24px);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        /* Slide 07 — Climax: branco puro, maior */
+        .slide-07-climax .slide-text {
+            color: var(--branco);
+            font-size: clamp(20px, 5.5vw, 28px);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .slide-08 {
+            background: var(--preto);
+        }
+
+        .slide-08 .brand-name {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: clamp(42px, 12vw, 64px);
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--branco);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .slide-08 .brand-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--marrom);
+            margin: 0 auto 20px;
+        }
+
+        .slide-08 .brand-tagline {
+            font-family: 'Barlow', sans-serif;
+            font-size: clamp(12px, 3vw, 15px);
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Número do slide */
+        .slide-counter-dot {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: var(--marrom);
+        }
+
+        /* CONTROLES */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.7);
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            border-color: var(--marrom);
+            color: var(--branco);
+        }
+
+        .btn:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
+
+        .slide-counter-text {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.3);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* LEGENDA */
+        .legenda {
+            margin-top: 28px;
+            max-width: 400px;
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border-left: 2px solid var(--marrom);
+            padding: 16px 20px;
+        }
+
+        .legenda-label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 10px;
+        }
+
+        .legenda-text {
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .legenda-hashtags {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* KEYBOARD HINT */
+        .keyboard-hint {
+            margin-top: 16px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-label">Semana 1 · Terça-feira</div>
+    <div class="header-title">Post 01 — Manifesto</div>
+</div>
+
+<div class="slide-wrapper">
+
+    <!-- Slide 01 -->
+    <div class="slide slide-01 active">
+        <p class="slide-text">Existe um homem que o feed nunca vai mostrar.</p>
+        <div class="slide-counter-dot">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 02 -->
+    <div class="slide slide-02">
+        <p class="slide-text">O mundo virou palco para quem grita.<br>Para quem se exibe.<br>Para quem precisa de plateia.</p>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 03 -->
+    <div class="slide slide-03">
+        <p class="slide-text">Esse homem não precisa de plateia.</p>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 04 -->
+    <div class="slide slide-04">
+        <p class="slide-text">Acorda cedo.<br>Honra o que prometeu.<br>Nos dias bons e nos dias em que falta o chão.</p>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 05 — Crise -->
+    <div class="slide slide-06-crise">
+        <p class="slide-text">O mundo não vai<br>reconhecer isso.</p>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 06 — Climax -->
+    <div class="slide slide-07-climax">
+        <p class="slide-text">Mesmo assim.<br>Você faz o que<br>precisa ser feito.</p>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Slide 07 — Resolução -->
+    <div class="slide slide-08">
+        <img src="assets/esteio-logo-escuro.png" alt="ESTEIO" style="width: 60%; max-width: 220px; margin-bottom: 28px;">
+        <div class="brand-divider"></div>
+        <div class="brand-tagline">Vista sua raiz.</div>
+        <div class="slide-counter-dot">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CONTROLES -->
+<div class="controls">
+    <button class="btn" id="btnPrev" onclick="changeSlide(-1)" disabled>← Anterior</button>
+    <span class="slide-counter-text" id="counter">1 / 7</span>
+    <button class="btn" id="btnNext" onclick="changeSlide(1)">Próximo →</button>
+</div>
+
+<!-- LEGENDA -->
+<div class="legenda">
+    <div class="legenda-label">Legenda do post</div>
+    <div class="legenda-text">
+        Se você leu isso e pensou em alguém — manda pra essa pessoa.<br>
+        Vista sua raiz.
+    </div>
+    <div class="legenda-hashtags">#modamasculina #homembrasileiro #raiz #modamasculinabrasileira</div>
+</div>
+
+<div class="keyboard-hint">← → para navegar entre slides</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+
+    function changeSlide(dir) {
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(total - 1, current + dir));
+        slides[current].classList.add('active');
+        document.getElementById('counter').textContent = (current + 1) + ' / 7';
+        document.getElementById('btnPrev').disabled = current === 0;
+        document.getElementById('btnNext').disabled = current === total - 1;
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+</script>
+
+</body>
+</html>
