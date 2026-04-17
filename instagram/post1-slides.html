@@ -71,14 +71,18 @@
             padding: 48px 40px;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.25s ease;
         }
 
         .slide.active {
             display: flex;
+            opacity: 1;
         }
 
-        /* Linha decorativa esquerda */
-        .slide::before {
+        /* Linha decorativa esquerda — ativa nos slides herói (03 e 06) */
+        .slide-03::before,
+        .slide-06::before {
             content: '';
             position: absolute;
             left: 0;
@@ -87,14 +91,11 @@
             width: 3px;
             height: 40%;
             background: var(--marrom);
-            opacity: 0;
-            transition: opacity 0.3s;
         }
 
-        /* TEXTO DO SLIDE */
+        /* SLIDE-TEXT base */
         .slide-text {
             font-family: 'Barlow', sans-serif;
-            font-size: clamp(18px, 5vw, 26px);
             font-weight: 300;
             color: rgba(255,255,255,0.92);
             text-align: center;
@@ -102,70 +103,77 @@
             letter-spacing: 0.02em;
         }
 
-        /* Slide 02 — vilão: texto levemente suavizado para contrastar com o herói */
-        .slide-02 .slide-text {
-            font-size: clamp(16px, 4.5vw, 22px);
+        /* ─── SLIDE 01 — Hook: uma linha, impacto máximo de abertura ─── */
+        .slide-01 .slide-text {
+            font-size: clamp(22px, 6vw, 34px);
             font-weight: 300;
-            color: rgba(255,255,255,0.55);
-            letter-spacing: 0.04em;
+            line-height: 1.5;
+        }
+
+        /* ─── SLIDE 02 — Vilão: menor, mais distante, barulho diminuído ─── */
+        .slide-02 .slide-text {
+            font-size: clamp(14px, 3.8vw, 20px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.50);
+            letter-spacing: 0.05em;
+            line-height: 2.3;
+        }
+
+        /* ─── SLIDE 03 — Herói: maior contraste após o vilão ─── */
+        .slide-03 .slide-text {
+            font-size: clamp(26px, 7vw, 40px);
+            font-weight: 400;
+            color: var(--branco);
+            line-height: 1.4;
+        }
+
+        /* ─── SLIDE 04 — Ações: ritmo de lista, cadência firme ─── */
+        .slide-04 .slide-text {
+            font-size: clamp(17px, 4.5vw, 24px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.88);
+            line-height: 2.1;
+        }
+
+        /* ─── SLIDE 05 — Crise: quase sumindo, invisibilidade do herói ─── */
+        .slide-05 .slide-text {
+            font-size: clamp(12px, 3.2vw, 17px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.40);
+            letter-spacing: 0.06em;
             line-height: 2;
         }
 
-        /* Slide 03 — herói: destaque em branco puro */
-        .slide-03 .slide-text {
-            font-size: clamp(20px, 5.5vw, 28px);
-            font-weight: 400;
-            color: var(--branco);
-        }
-
-        /* Slide 06 — Crise: fundo levemente mais escuro, texto suavizado */
-        .slide-06-crise .slide-text {
-            color: rgba(255,255,255,0.5);
-            font-size: clamp(18px, 5vw, 24px);
-            font-weight: 300;
-            letter-spacing: 0.04em;
-        }
-
-        /* Slide 07 — Climax: branco puro, maior */
-        .slide-07-climax .slide-text {
-            color: var(--branco);
-            font-size: clamp(20px, 5.5vw, 28px);
+        /* ─── SLIDE 06 — Climax: maior de todos, peso máximo ─── */
+        .slide-06 .slide-text {
+            font-size: clamp(28px, 7.5vw, 44px);
             font-weight: 500;
-            letter-spacing: 0.02em;
+            color: var(--branco);
+            line-height: 1.45;
         }
 
-        .slide-08 {
+        /* ─── SLIDE 07 — Resolução: fundo preto, marca como revelação ─── */
+        .slide-07 {
             background: var(--preto);
         }
 
-        .slide-08 .brand-name {
-            font-family: 'Encode Sans Condensed', sans-serif;
-            font-size: clamp(42px, 12vw, 64px);
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--branco);
-            line-height: 1;
-            margin-bottom: 16px;
-        }
-
-        .slide-08 .brand-divider {
+        .slide-07 .brand-divider {
             width: 40px;
             height: 2px;
             background: var(--marrom);
             margin: 0 auto 20px;
         }
 
-        .slide-08 .brand-tagline {
+        .slide-07 .brand-tagline {
             font-family: 'Barlow', sans-serif;
             font-size: clamp(12px, 3vw, 15px);
             font-weight: 300;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.85);
         }
 
-        /* Número do slide */
+        /* Dots de navegação */
         .slide-counter-dot {
             position: absolute;
             bottom: 20px;
@@ -280,9 +288,9 @@
 
 <div class="slide-wrapper">
 
-    <!-- Slide 01 -->
+    <!-- Slide 01 — Hook -->
     <div class="slide slide-01 active">
-        <p class="slide-text">Existe um homem que o feed nunca vai mostrar.</p>
+        <p class="slide-text">Existe um homem que<br>o feed nunca vai mostrar.</p>
         <div class="slide-counter-dot">
             <div class="dot active"></div>
             <div class="dot"></div>
@@ -294,7 +302,7 @@
         </div>
     </div>
 
-    <!-- Slide 02 -->
+    <!-- Slide 02 — Vilão -->
     <div class="slide slide-02">
         <p class="slide-text">O mundo virou palco para quem grita.<br>Para quem se exibe.<br>Para quem precisa de plateia.</p>
         <div class="slide-counter-dot">
@@ -308,7 +316,7 @@
         </div>
     </div>
 
-    <!-- Slide 03 -->
+    <!-- Slide 03 — Herói -->
     <div class="slide slide-03">
         <p class="slide-text">Esse homem não precisa de plateia.</p>
         <div class="slide-counter-dot">
@@ -322,9 +330,9 @@
         </div>
     </div>
 
-    <!-- Slide 04 -->
+    <!-- Slide 04 — Ações -->
     <div class="slide slide-04">
-        <p class="slide-text">Acorda cedo.<br>Honra o que prometeu.<br>Nos dias bons e nos dias em que falta o chão.</p>
+        <p class="slide-text">Acorda cedo.<br>Honra o que prometeu.<br>Nos dias bons e nos dias<br>em que falta o chão.</p>
         <div class="slide-counter-dot">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -337,7 +345,7 @@
     </div>
 
     <!-- Slide 05 — Crise -->
-    <div class="slide slide-06-crise">
+    <div class="slide slide-05">
         <p class="slide-text">O mundo não vai<br>reconhecer isso.</p>
         <div class="slide-counter-dot">
             <div class="dot"></div>
@@ -351,7 +359,7 @@
     </div>
 
     <!-- Slide 06 — Climax -->
-    <div class="slide slide-07-climax">
+    <div class="slide slide-06">
         <p class="slide-text">Mesmo assim.<br>Você faz o que<br>precisa ser feito.</p>
         <div class="slide-counter-dot">
             <div class="dot"></div>
@@ -365,8 +373,8 @@
     </div>
 
     <!-- Slide 07 — Resolução -->
-    <div class="slide slide-08">
-        <img src="../assets/esteio-logo-escuro.png" alt="ESTEIO" style="width: 60%; max-width: 220px; margin-bottom: 28px;">
+    <div class="slide slide-07">
+        <img src="assets/esteio-logo-escuro.png" alt="ESTEIO" style="width: 60%; max-width: 220px; margin-bottom: 28px;">
         <div class="brand-divider"></div>
         <div class="brand-tagline">Vista sua raiz.</div>
         <div class="slide-counter-dot">
@@ -409,6 +417,8 @@
     function changeSlide(dir) {
         slides[current].classList.remove('active');
         current = Math.max(0, Math.min(total - 1, current + dir));
+        // força reflow para a transição de fade funcionar
+        void slides[current].offsetWidth;
         slides[current].classList.add('active');
         document.getElementById('counter').textContent = (current + 1) + ' / 7';
         document.getElementById('btnPrev').disabled = current === 0;
