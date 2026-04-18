@@ -577,6 +577,18 @@
         .badge-aprovado { background: #E8F5E9; color: #2E7D32; }
         .badge-revisado { background: #FFF3E0; color: #E65100; }
         .badge-pendente { background: var(--bege); color: var(--texto-suave); }
+        .badge-parcial { background: #FFF8E1; color: #F57F17; }
+
+        .section-block { margin-bottom: 32px; }
+        .block-label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 16px;
+        }
 
         /* TIPOGRAFIA INFO */
         .tipo-item {
@@ -1210,14 +1222,73 @@
         </div>
     </section>
 
-    <!-- GUIA DE PRODUTO — PENDENTE -->
+    <!-- GUIA DE PRODUTO -->
     <section id="produto" style="background: var(--bege);">
-        <div class="section-number">09 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-number">09 <span class="badge badge-parcial">Parcial</span></div>
         <div class="section-title">Guia de<br>Produto</div>
         <div class="section-divider"></div>
-        <div class="pending-section">
-            <div class="pending-label">Próximo capítulo</div>
-            <div class="pending-title">Hierarquia de Linha — Faixas de Preço — Posicionamento de Produto — Comunicação por SKU</div>
+
+        <div class="section-block">
+            <div class="block-label">Sistema de Nomenclatura — FECHADO</div>
+            <p style="font-size: 15px; color: var(--texto-suave); margin-bottom: 24px; line-height: 1.7;">Os nomes dos produtos são identidade, não descrição de material. O material aparece na descrição e na URL de coleção (SEO). Os nomes tornam-se nomes próprios na mente — como Havaianas, Denim, Couro.</p>
+
+            <table style="width:100%; border-collapse: collapse; font-size: 14px;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--marrom);">
+                        <th style="text-align:left; padding: 10px 12px; font-family: 'Encode Sans Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">Produto</th>
+                        <th style="text-align:left; padding: 10px 12px; font-family: 'Encode Sans Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">Nome</th>
+                        <th style="text-align:left; padding: 10px 12px; font-family: 'Encode Sans Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">Material</th>
+                        <th style="text-align:right; padding: 10px 12px; font-family: 'Encode Sans Condensed', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px;">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+                        <td style="padding: 12px;">Camiseta básica</td>
+                        <td style="padding: 12px; font-weight: 600; color: var(--marrom);">Essencial</td>
+                        <td style="padding: 12px; color: var(--texto-suave);">Algodão convencional</td>
+                        <td style="padding: 12px; text-align:right;">R$90</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+                        <td style="padding: 12px;">Camiseta egípcia</td>
+                        <td style="padding: 12px; font-weight: 600; color: var(--marrom);">Trato</td>
+                        <td style="padding: 12px; color: var(--texto-suave);">Algodão egípcio</td>
+                        <td style="padding: 12px; text-align:right;">R$140</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+                        <td style="padding: 12px;">Camiseta pima</td>
+                        <td style="padding: 12px; font-weight: 600; color: var(--marrom);">Arrimo</td>
+                        <td style="padding: 12px; color: var(--texto-suave);">Algodão pima peruano</td>
+                        <td style="padding: 12px; text-align:right;">R$220</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+                        <td style="padding: 12px;">Polo básica</td>
+                        <td style="padding: 12px; font-weight: 600; color: var(--marrom);">Essencial</td>
+                        <td style="padding: 12px; color: var(--texto-suave);">Algodão convencional</td>
+                        <td style="padding: 12px; text-align:right;">R$180</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px;">Polo pima</td>
+                        <td style="padding: 12px; font-weight: 600; color: var(--marrom);">Arrimo</td>
+                        <td style="padding: 12px; color: var(--texto-suave);">Algodão pima peruano</td>
+                        <td style="padding: 12px; text-align:right;">R$300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-block" style="margin-top: 40px;">
+            <div class="block-label">Regra de página de produto</div>
+            <p style="font-size: 16px; font-style: italic; color: var(--texto); line-height: 1.8;">"Arrimo — Algodão Pima Peruano."<br>O nome carrega o peso. O material entrega a prova.</p>
+        </div>
+
+        <div class="section-block" style="margin-top: 40px;">
+            <div class="block-label">Estratégia SEO</div>
+            <p style="font-size: 15px; color: var(--texto-suave); line-height: 1.7;">URL de coleção <code style="background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 3px;">/colecao/algodao-pima</code> captura busca por material. URL de produto <code style="background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 3px;">/arrimo</code> carrega a identidade da marca. O cliente chega pelo material — fica pelo nome.</p>
+        </div>
+
+        <div class="pending-section" style="margin-top: 48px;">
+            <div class="pending-label">Ainda pendente neste capítulo</div>
+            <div class="pending-title">Posicionamento por SKU — Comunicação específica por produto — Hierarquia de lançamento</div>
         </div>
     </section>
 
