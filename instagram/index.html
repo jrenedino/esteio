@@ -613,6 +613,20 @@
             font-style: italic;
         }
 
+        /* FORMATO VISUAL */
+        .formato-badge {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border: 1px solid;
+        }
+        .formato-foto { background: #e8f0e8; color: #2d6a2d; border-color: #b0d0b0; }
+        .formato-tipografia { background: #f0f0f0; color: #555; border-color: #ccc; }
+        .formato-carrossel-foto { background: #e8eef8; color: #2a4a8a; border-color: #b0c4e0; }
+        .formato-carrossel-texto { background: #faf0e8; color: #8A3E05; border-color: #d4a87a; }
+
         /* FUNIL */
         .funil {
             background: var(--branco);
@@ -795,12 +809,23 @@
     </div>
 </div>
 
+<!-- REGRA VISUAL -->
+<div style="background:var(--branco);border:1px solid var(--bege-escuro);padding:20px 28px;margin-bottom:48px;">
+    <div style="font-family:'Encode Sans Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--marrom);margin-bottom:16px;">Regra de formato</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="font-size:12px;line-height:1.6;"><span class="formato-badge formato-foto">Foto</span><br><span style="color:var(--texto-suave);font-size:11px;margin-top:6px;display:block;">Imagem lidera. Texto mínimo ou nenhum sobreposto.</span></div>
+        <div style="font-size:12px;line-height:1.6;"><span class="formato-badge formato-carrossel-foto">Carrossel foto</span><br><span style="color:var(--texto-suave);font-size:11px;margin-top:6px;display:block;">Múltiplas fotos. Visual conduz.</span></div>
+        <div style="font-size:12px;line-height:1.6;"><span class="formato-badge formato-tipografia">Tipografia</span><br><span style="color:var(--texto-suave);font-size:11px;margin-top:6px;display:block;">Uma frase. Design intencional. Usado 1x/semana.</span></div>
+        <div style="font-size:12px;line-height:1.6;"><span class="formato-badge formato-carrossel-texto">Carrossel texto</span><br><span style="color:var(--texto-suave);font-size:11px;margin-top:6px;display:block;">Exceção. Máximo 1x por mês. Post 1 é o modelo.</span></div>
+    </div>
+</div>
+
 <!-- SEMANA 1 -->
 <div class="semana">
     <div class="semana-header">
         <div class="semana-numero">01</div>
         <div class="semana-titulo">Identidade</div>
-        <div class="semana-objetivo">Estabelecer quem é a marca. Plantar os 4 pilares.</div>
+        <div class="semana-objetivo">Plantar os 4 pilares. Visual desde o segundo post.</div>
     </div>
 
     <!-- Post 1 -->
@@ -812,12 +837,12 @@
                 <div class="post-nome">Apresentação do Herói</div>
             </div>
             <span class="pillar-badge badge-conceito">Conceito</span>
-            <span class="badge-publicado">✓ Publicado</span>
-            <div class="post-formato" style="margin-left:8px;">Carrossel · 7 slides</div>
+            <span class="formato-badge formato-carrossel-texto" style="margin-left:8px;">Carrossel texto</span>
+            <span class="badge-publicado" style="margin-left:8px;">✓ Publicado</span>
         </div>
         <div class="post-body">
             <div class="post-section">
-                <label>Slides — Story Grid aprovado</label>
+                <label>Slides — Story Grid · 7 slides</label>
                 <ul class="slides-list">
                     <li><span class="slide-num">01</span> Existe um homem que o feed nunca vai mostrar. <em style="color:#8A3E05;font-size:11px;">hook</em></li>
                     <li><span class="slide-num">02</span> O mundo virou palco para quem grita. Para quem se exibe. Para quem precisa de plateia. <em style="color:#8A3E05;font-size:11px;">vilão</em></li>
@@ -829,9 +854,7 @@
                 </ul>
             </div>
             <div class="post-section">
-                <label>Visual</label>
-                <p class="visual-desc">Fundo #1A1A1A. Slide 05: rgba(255,255,255,0.40). Slide 06: branco puro, peso 500. Slide 07: fundo #000000.</p>
-                <label style="margin-top: 20px;">Legenda</label>
+                <label>Legenda</label>
                 <div class="legenda-box">
                     <p>Esse é o homem Esteio.</p>
                     <p>Menos barulho. Mais peso.<br>Firme sem precisar provar.<br>Forte sem precisar falar.</p>
@@ -844,7 +867,7 @@
         </div>
         <div class="metrica-footer">
             <div class="metrica-item"><strong>Métrica:</strong> Saves + compartilhamentos</div>
-            <div class="metrica-item"><strong>Referência:</strong> Post fundacional — base de identidade</div>
+            <div class="metrica-item"><strong>Nota:</strong> Único carrossel de texto do plano</div>
         </div>
     </div>
 
@@ -854,18 +877,49 @@
             <div class="post-numero">02</div>
             <div class="post-meta">
                 <div class="post-dia">Quinta-feira</div>
-                <div class="post-nome">O silêncio também diz quem a gente é</div>
+                <div class="post-nome">Sertão — primeira foto</div>
             </div>
-            <span class="pillar-badge badge-homem">Homem</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
+            <span class="pillar-badge badge-sertao">Sertão</span>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
         </div>
         <div class="post-body">
             <div class="post-section">
                 <label>Visual</label>
-                <p class="visual-desc">Fundo preto (#000000). Frase centralizada. Tipografia Barlow weight 300, tamanho grande.</p>
+                <p class="visual-desc">Foto do sertão. Paisagem aberta, luz quente, horizonte largo. Nenhum texto sobreposto. Logo pequena, branco, canto inferior direito, opacidade 50%.</p>
+                <div class="assets-note">⚠ Banco de fotos — Unsplash/Pexels: "caatinga", "sertão bahia", "cerrado brasil"</div>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Esse lugar não é como o mundo imagina.</p>
+                    <p>É forte do jeito que importa.</p>
+                    <p>A ESTEIO nasceu aqui.</p>
+                </div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + visitas ao perfil</div>
+        </div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">03</div>
+            <div class="post-meta">
+                <div class="post-dia">Sábado</div>
+                <div class="post-nome">O silêncio também diz quem a gente é</div>
+            </div>
+            <span class="pillar-badge badge-homem">Homem</span>
+            <span class="formato-badge formato-tipografia" style="margin-left:8px;">Tipografia</span>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Fundo preto (#000000). Uma frase. Barlow weight 300, fonte grande. Muito espaço negativo. Nada mais — sem logo, sem linha decorativa.</p>
                 <br>
                 <label>Texto no visual</label>
-                <p style="font-size: 15px; font-style: italic; font-weight: 500;">"O silêncio também diz quem a gente é."</p>
+                <p style="font-size: 16px; font-style: italic; font-weight: 400;">"O silêncio também<br>diz quem a gente é."</p>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
@@ -880,66 +934,34 @@
         </div>
     </div>
 
-    <!-- Post 3 -->
-    <div class="post-card">
-        <div class="post-header">
-            <div class="post-numero">03</div>
-            <div class="post-meta">
-                <div class="post-dia">Sábado</div>
-                <div class="post-nome">A ESTEIO nasceu aqui</div>
-            </div>
-            <span class="pillar-badge badge-sertao">Sertão</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
-        </div>
-        <div class="post-body">
-            <div class="post-section">
-                <label>Visual</label>
-                <p class="visual-desc">Foto do sertão — paisagem aberta, luz quente, horizonte largo. Sem pessoa. Logo pequena no canto inferior direito.</p>
-            </div>
-            <div class="post-section">
-                <label>Legenda</label>
-                <div class="legenda-box">
-                    <p>Esse lugar não é bonito do jeito que o mundo gosta.</p>
-                    <p>Mas é forte do jeito que importa.</p>
-                    <p>A ESTEIO nasceu aqui.</p>
-                </div>
-                <div class="assets-note">⚠ Necessita foto do sertão — banco Unsplash/Pexels: "caatinga", "sertão brasil", "cerrado bahia"</div>
-            </div>
-        </div>
-        <div class="metrica-footer">
-            <div class="metrica-item"><strong>Métrica:</strong> Visitas ao perfil</div>
-        </div>
-    </div>
-
     <!-- Post 4 -->
     <div class="post-card">
         <div class="post-header">
             <div class="post-numero">04</div>
             <div class="post-meta">
                 <div class="post-dia">Domingo</div>
-                <div class="post-nome">Estar inteiro vale mais</div>
+                <div class="post-nome">Sertão — segundo ângulo</div>
             </div>
-            <span class="pillar-badge badge-homem">Homem</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
+            <span class="pillar-badge badge-sertao">Sertão</span>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
         </div>
         <div class="post-body">
             <div class="post-section">
                 <label>Visual</label>
-                <p class="visual-desc">Fundo escuro (#1A1A1A). Frase centralizada. Linha decorativa marrom à esquerda.</p>
-                <br>
-                <label>Texto no visual</label>
-                <p style="font-size: 15px; font-style: italic; font-weight: 500;">"Estar inteiro vale mais<br>do que estar em evidência."</p>
+                <p class="visual-desc">Segunda foto do sertão — ângulo diferente do Post 2. Detalhe em vez de panorâmica: raiz, pedra, terra seca, árvore resistente. Fechado, não aberto. Logo discreta.</p>
+                <div class="assets-note">⚠ Foto diferente do Post 2 — variar entre panorâmica e detalhe.</div>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
                 <div class="legenda-box">
-                    <p>Para quem já sabe quem é.</p>
+                    <p>Raiz não é romantismo.</p>
+                    <p>É o que segura tudo quando o vento bate.</p>
                     <p>Vista sua raiz.</p>
                 </div>
             </div>
         </div>
         <div class="metrica-footer">
-            <div class="metrica-item"><strong>Métrica:</strong> Saves</div>
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + visitas ao perfil</div>
         </div>
     </div>
 </div>
@@ -948,8 +970,8 @@
 <div class="semana">
     <div class="semana-header">
         <div class="semana-numero">02</div>
-        <div class="semana-titulo">Profundidade</div>
-        <div class="semana-objetivo">Aprofundar identidade. Primeiro toque em produto.</div>
+        <div class="semana-titulo">Presença visual</div>
+        <div class="semana-objetivo">Consolidar o Visual Hammer. Primeiro toque em produto.</div>
     </div>
 
     <!-- Post 5 -->
@@ -958,96 +980,22 @@
             <div class="post-numero">05</div>
             <div class="post-meta">
                 <div class="post-dia">Terça-feira</div>
-                <div class="post-nome">Não é difícil achar roupa</div>
-            </div>
-            <span class="pillar-badge badge-homem">Homem</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
-        </div>
-        <div class="post-body">
-            <div class="post-section">
-                <label>Visual</label>
-                <p class="visual-desc">Fundo creme (#FAF8F5). Texto escuro, duas linhas. Tipografia limpa, peso leve.</p>
-                <br>
-                <label>Texto no visual</label>
-                <p style="font-size: 13px; font-style: italic;">"Não é difícil achar roupa.<br>É difícil achar uma que reflita quem você é."</p>
-            </div>
-            <div class="post-section">
-                <label>Legenda</label>
-                <div class="legenda-box">
-                    <p>Você sente quando a roupa não é você.</p>
-                    <p>A ESTEIO é a que é.</p>
-                    <p>Vista sua raiz.</p>
-                </div>
-            </div>
-        </div>
-        <div class="metrica-footer">
-            <div class="metrica-item"><strong>Métrica:</strong> Saves</div>
-        </div>
-    </div>
-
-    <!-- Post 6 -->
-    <div class="post-card">
-        <div class="post-header">
-            <div class="post-numero">06</div>
-            <div class="post-meta">
-                <div class="post-dia">Quinta-feira</div>
-                <div class="post-nome">Cada peça tem razão de existir</div>
-            </div>
-            <span class="pillar-badge badge-produto">Produto</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
-        </div>
-        <div class="post-body">
-            <div class="post-section">
-                <label>Visual</label>
-                <p class="visual-desc">Fundo escuro (#1A1A1A). Frase em destaque. Sem foto de produto ainda — foco na promessa do craft.</p>
-                <br>
-                <label>Texto no visual</label>
-                <p style="font-size: 13px; font-style: italic;">"Cada peça tem razão de existir.<br>Igual ao homem que a veste."</p>
-            </div>
-            <div class="post-section">
-                <label>Legenda</label>
-                <div class="legenda-box">
-                    <p>A ESTEIO não faz roupa para encher grade.</p>
-                    <p>Cada peça foi pensada para durar — no tecido e no significado.</p>
-                    <p>E-commerce em breve. @useesteio</p>
-                    <p>Vista sua raiz.</p>
-                </div>
-                <div class="assets-note">⚠ Quando as fotos chegarem: substituir por imagem de detalhe do produto (textura do tecido, costura, tag).</div>
-            </div>
-        </div>
-        <div class="metrica-footer">
-            <div class="metrica-item"><strong>Métrica:</strong> Toques no link + visitas ao perfil</div>
-        </div>
-    </div>
-
-    <!-- Post 7 -->
-    <div class="post-card">
-        <div class="post-header">
-            <div class="post-numero">07</div>
-            <div class="post-meta">
-                <div class="post-dia">Sábado</div>
-                <div class="post-nome">O sertão não é como o mundo imagina</div>
+                <div class="post-nome">Sertão — terceira foto</div>
             </div>
             <span class="pillar-badge badge-sertao">Sertão</span>
-            <div class="post-formato" style="margin-left:8px;">Carrossel · 3 slides</div>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
         </div>
         <div class="post-body">
             <div class="post-section">
-                <label>Slides</label>
-                <ul class="slides-list">
-                    <li><span class="slide-num">01</span> O sertão não é como o mundo imagina.</li>
-                    <li><span class="slide-num">02</span> Terra fértil que trabalha em silêncio.</li>
-                    <li><span class="slide-num">03</span> A ESTEIO nasceu desse lugar.</li>
-                </ul>
-                <label style="margin-top: 16px;">Visual</label>
-                <p class="visual-desc">Uma foto por slide. Paisagem aberta, luz quente. Texto sobreposto centralizado.</p>
-                <div class="assets-note">⚠ Necessita 3 fotos do sertão diferentes do Post 3.</div>
+                <label>Visual</label>
+                <p class="visual-desc">Terceira foto. Ângulo diferente dos Posts 2 e 4. Sugestão: pôr do sol, luz lateral dourada, sombra longa. Atmosfera quente. Sem texto, logo discreta.</p>
+                <div class="assets-note">⚠ Terceira foto do banco — variar ângulo e hora do dia.</div>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
                 <div class="legenda-box">
-                    <p>Não é sobre o lugar.</p>
-                    <p>É sobre o que o lugar forma.</p>
+                    <p>De onde vem a ESTEIO.</p>
+                    <p>De onde vem a força.</p>
                     <p>Vista sua raiz.</p>
                 </div>
             </div>
@@ -1057,66 +1005,24 @@
         </div>
     </div>
 
-    <!-- Post 8 -->
+    <!-- Post 6 -->
     <div class="post-card">
         <div class="post-header">
-            <div class="post-numero">08</div>
+            <div class="post-numero">06</div>
             <div class="post-meta">
-                <div class="post-dia">Domingo</div>
-                <div class="post-nome">Constância — valor da marca</div>
-            </div>
-            <span class="pillar-badge badge-conceito">Conceito</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
-        </div>
-        <div class="post-body">
-            <div class="post-section">
-                <label>Visual</label>
-                <p class="visual-desc">Fundo escuro (#1A1A1A). Palavra em destaque grande. Definição em tipografia menor abaixo.</p>
-                <br>
-                <label>Texto no visual</label>
-                <p style="font-size: 13px; font-style: italic;"><strong>CONSTÂNCIA</strong><br>"Não muda porque o vento mudou."</p>
-            </div>
-            <div class="post-section">
-                <label>Legenda</label>
-                <div class="legenda-box">
-                    <p>É o que define o homem Esteio.</p>
-                    <p>E o que define cada peça que a marca faz.</p>
-                    <p>Vista sua raiz.</p>
-                </div>
-            </div>
-        </div>
-        <div class="metrica-footer">
-            <div class="metrica-item"><strong>Métrica:</strong> Saves + compartilhamentos</div>
-        </div>
-    </div>
-</div>
-
-<!-- SEMANA 3 -->
-<div class="semana">
-    <div class="semana-header">
-        <div class="semana-numero">03</div>
-        <div class="semana-titulo">Produto + Personas</div>
-        <div class="semana-objetivo">Introduzir produto. Apresentar os três perfis de homem.</div>
-    </div>
-
-    <!-- Post 9 -->
-    <div class="post-card">
-        <div class="post-header">
-            <div class="post-numero">09</div>
-            <div class="post-meta">
-                <div class="post-dia">Terça-feira</div>
+                <div class="post-dia">Quinta-feira</div>
                 <div class="post-nome">Firme sem ser rígido</div>
             </div>
             <span class="pillar-badge badge-homem">Homem</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
+            <span class="formato-badge formato-tipografia" style="margin-left:8px;">Tipografia</span>
         </div>
         <div class="post-body">
             <div class="post-section">
                 <label>Visual</label>
-                <p class="visual-desc">Fundo preto (#000000). Frase centralizada. Tipografia grande, peso 300.</p>
+                <p class="visual-desc">Fundo escuro (#1A1A1A). Duas frases em linhas separadas. Barlow weight 300. Linha decorativa marrom à esquerda.</p>
                 <br>
                 <label>Texto no visual</label>
-                <p style="font-size: 13px; font-style: italic;">"Firme sem ser rígido.<br>Forte sem precisar provar."</p>
+                <p style="font-size: 15px; font-style: italic;">"Firme sem ser rígido.<br>Forte sem precisar provar."</p>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
@@ -1132,29 +1038,110 @@
         </div>
     </div>
 
-    <!-- Post 10 -->
+    <!-- Post 7 -->
     <div class="post-card">
         <div class="post-header">
-            <div class="post-numero">10</div>
+            <div class="post-numero">07</div>
             <div class="post-meta">
-                <div class="post-dia">Quinta-feira</div>
-                <div class="post-nome">Primeira peça — Camiseta Essencial</div>
+                <div class="post-dia">Sábado</div>
+                <div class="post-nome">Sertão — carrossel fotográfico</div>
+            </div>
+            <span class="pillar-badge badge-sertao">Sertão</span>
+            <span class="formato-badge formato-carrossel-foto" style="margin-left:8px;">Carrossel foto</span>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Slides — 3 fotos, sem texto sobreposto</label>
+                <ul class="slides-list">
+                    <li><span class="slide-num">01</span> Foto panorâmica — horizonte aberto, luz quente</li>
+                    <li><span class="slide-num">02</span> Foto detalhe — terra, raiz, pedra</li>
+                    <li><span class="slide-num">03</span> Foto atmosfera — pôr do sol ou sombra. Logo no canto.</li>
+                </ul>
+                <p style="font-size:12px;color:var(--texto-suave);margin-top:8px;font-style:italic;">Nenhum texto sobreposto em nenhum slide. A foto fala sozinha.</p>
+                <div class="assets-note">⚠ Necessita 3 fotos distintas — usar banco de fotos. Não repetir ângulos já usados nos Posts 2, 4 e 5.</div>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Três imagens de onde a ESTEIO nasceu.</p>
+                    <p>Não é sobre o lugar.<br>É sobre o que o lugar forma.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + visitas ao perfil</div>
+        </div>
+    </div>
+
+    <!-- Post 8 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">08</div>
+            <div class="post-meta">
+                <div class="post-dia">Domingo</div>
+                <div class="post-nome">Produto — primeiro toque</div>
             </div>
             <span class="pillar-badge badge-produto">Produto</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
+            <span class="formato-badge formato-tipografia" style="margin-left:8px;">Tipografia</span>
         </div>
         <div class="post-body">
             <div class="post-section">
                 <label>Visual</label>
-                <p class="visual-desc">Foto da Camiseta Essencial. Fundo neutro ou contexto natural. Homem que representa o perfil. Copy mínima sobreposta ou nenhuma.</p>
-                <div class="assets-note">⚠ Depende das fotos do fotógrafo. Substituir por post tipográfico se as fotos não chegarem a tempo.</div>
+                <p class="visual-desc">Fundo escuro (#1A1A1A). Frase de produto centralizada. Design limpo. Sem foto ainda — a promessa precede o produto.</p>
+                <br>
+                <label>Texto no visual</label>
+                <p style="font-size: 14px; font-style: italic;">"Cada peça tem razão de existir.<br>Igual ao homem que a veste."</p>
+                <div class="assets-note">⚠ Quando as fotos chegarem: substituir por detalhe do tecido ou costura. Mesmo texto, nova imagem.</div>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>A ESTEIO não faz roupa para encher grade.</p>
+                    <p>Cada peça foi pensada para durar — no tecido e no significado.</p>
+                    <p>E-commerce em breve — @useesteio</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Toques no link + saves</div>
+        </div>
+    </div>
+</div>
+
+<!-- SEMANA 3 -->
+<div class="semana">
+    <div class="semana-header">
+        <div class="semana-numero">03</div>
+        <div class="semana-titulo">Produto</div>
+        <div class="semana-objetivo">Produto entra com foto. Desejo começa aqui.</div>
+    </div>
+
+    <!-- Post 9 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">09</div>
+            <div class="post-meta">
+                <div class="post-dia">Terça-feira</div>
+                <div class="post-nome">Camiseta Essencial — primeira foto de produto</div>
+            </div>
+            <span class="pillar-badge badge-produto">Produto</span>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Foto da Camiseta Essencial. Homem do perfil (35-50, postura firme). Fundo neutro — parede, concreto, campo aberto. Sem logo visível na peça. Nenhum texto sobreposto.</p>
+                <div class="assets-note">⚠ Depende das fotos do fotógrafo. Se não chegarem: publicar Post 8 (texto) nesse dia e adiar post de produto.</div>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
                 <div class="legenda-box">
                     <p>Camiseta Essencial ESTEIO.</p>
-                    <p>Feita para durar. Sem logo visível. Sem precisar explicar.</p>
-                    <p>E-commerce em breve — link na bio.</p>
+                    <p>Sem logo visível. Sem precisar explicar.</p>
+                    <p>Feita para durar — no tecido e no significado.</p>
+                    <p>Disponível em useesteio.com.br</p>
                     <p>Vista sua raiz.</p>
                 </div>
             </div>
@@ -1164,23 +1151,23 @@
         </div>
     </div>
 
-    <!-- Post 11 -->
+    <!-- Post 10 -->
     <div class="post-card">
         <div class="post-header">
-            <div class="post-numero">11</div>
+            <div class="post-numero">10</div>
             <div class="post-meta">
-                <div class="post-dia">Sábado</div>
-                <div class="post-nome">Sertão + produto — dissonância produtiva</div>
+                <div class="post-dia">Quinta-feira</div>
+                <div class="post-nome">Sertão + produto — dissonância</div>
             </div>
             <span class="pillar-badge badge-sertao">Sertão</span>
             <span class="pillar-badge badge-produto" style="margin-left:4px;">Produto</span>
-            <div class="post-formato" style="margin-left:8px;">Single</div>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
         </div>
         <div class="post-body">
             <div class="post-section">
                 <label>Visual</label>
-                <p class="visual-desc">Dissonância produtiva: produto em contexto de sertão, ou elemento do sertão em contexto urbano. Um elemento fora do lugar — o cérebro para. Regra: um contraste, não dois.</p>
-                <div class="assets-note">⚠ Depende das fotos do fotógrafo. Ideal: peça ESTEIO com paisagem do sertão ao fundo.</div>
+                <p class="visual-desc">Dissonância produtiva: peça ESTEIO em contexto do sertão — ou elemento do sertão em contexto urbano. Um contraste só. O cérebro para quando algo não encaixa no padrão esperado.</p>
+                <div class="assets-note">⚠ Depende das fotos do fotógrafo. Discutir essa direção antes do shoot.</div>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
@@ -1196,27 +1183,27 @@
         </div>
     </div>
 
-    <!-- Post 12 -->
+    <!-- Post 11 -->
     <div class="post-card">
         <div class="post-header">
-            <div class="post-numero">12</div>
+            <div class="post-numero">11</div>
             <div class="post-meta">
-                <div class="post-dia">Domingo</div>
-                <div class="post-nome">Os três homens — Carrossel de personas</div>
+                <div class="post-dia">Sábado</div>
+                <div class="post-nome">Os três homens</div>
             </div>
             <span class="pillar-badge badge-homem">Homem</span>
-            <div class="post-formato" style="margin-left:8px;">Carrossel · 3 slides</div>
+            <span class="formato-badge formato-carrossel-foto" style="margin-left:8px;">Carrossel foto</span>
         </div>
         <div class="post-body">
             <div class="post-section">
-                <label>Slides</label>
+                <label>Slides — 3 fotos com frase sobreposta mínima</label>
                 <ul class="slides-list">
-                    <li><span class="slide-num">01</span> O Homem de Terra — "O silêncio também diz quem a gente é."</li>
-                    <li><span class="slide-num">02</span> O Homem de Caminho — "Estar inteiro vale mais do que estar em evidência."</li>
-                    <li><span class="slide-num">03</span> O Homem de Legado — "O tempo prova o que tem valor."</li>
+                    <li><span class="slide-num">01</span> Foto perfil Homem de Terra + frase: "O silêncio também diz quem a gente é."</li>
+                    <li><span class="slide-num">02</span> Foto perfil Homem de Caminho + frase: "Estar inteiro vale mais do que estar em evidência."</li>
+                    <li><span class="slide-num">03</span> Foto perfil Homem de Legado + frase: "O tempo prova o que tem valor."</li>
                 </ul>
-                <label style="margin-top: 16px;">Visual</label>
-                <p class="visual-desc">Fundo escuro uniforme. Título da persona + frase. Linha decorativa marrom separando slides.</p>
+                <p style="font-size:12px;color:var(--texto-suave);margin-top:8px;font-style:italic;">Se não houver fotos de pessoas: usar tipografia — fundo escuro, nome da persona + frase.</p>
+                <div class="assets-note">⚠ Versão ideal: fotos do fotógrafo. Versão provisória: tipografia.</div>
             </div>
             <div class="post-section">
                 <label>Legenda</label>
@@ -1232,6 +1219,37 @@
             <div class="metrica-item"><strong>Obs:</strong> Único post que incentiva comentário — pergunta aberta</div>
         </div>
     </div>
+
+    <!-- Post 12 -->
+    <div class="post-card">
+        <div class="post-header">
+            <div class="post-numero">12</div>
+            <div class="post-meta">
+                <div class="post-dia">Domingo</div>
+                <div class="post-nome">Produto — detalhe de craft</div>
+            </div>
+            <span class="pillar-badge badge-produto">Produto</span>
+            <span class="formato-badge formato-foto" style="margin-left:8px;">Foto</span>
+        </div>
+        <div class="post-body">
+            <div class="post-section">
+                <label>Visual</label>
+                <p class="visual-desc">Close extremo: textura do tecido, costura, etiqueta, detalhe de acabamento. A qualidade visível sem precisar explicar. Fundo desfocado ou neutro.</p>
+                <div class="assets-note">⚠ Depende das fotos do fotógrafo ou de fotos de produto de estúdio.</div>
+            </div>
+            <div class="post-section">
+                <label>Legenda</label>
+                <div class="legenda-box">
+                    <p>Quem fez isso sabe o que está fazendo.</p>
+                    <p>Quem usa isso sabe quem é.</p>
+                    <p>Vista sua raiz.</p>
+                </div>
+            </div>
+        </div>
+        <div class="metrica-footer">
+            <div class="metrica-item"><strong>Métrica:</strong> Saves + toques no link</div>
+        </div>
+    </div>
 </div>
 
 <!-- SEMANA 4 — DECISÃO -->
@@ -1240,31 +1258,31 @@
         <div class="semana-numero">04</div>
         <div class="semana-titulo">Decisão por dados</div>
     </div>
-    <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 24px; font-style: italic;">Antes de planejar a semana 4, checar saves e compartilhamentos de cada post das semanas anteriores por pilar.</p>
+    <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 24px; font-style: italic;">Antes de planejar a semana 4, checar saves e compartilhamentos por pilar e por formato.</p>
 
     <table class="decisao-table">
         <thead>
             <tr>
-                <th>Se o pilar com mais saves foi...</th>
+                <th>Se o pilar/formato com mais saves foi...</th>
                 <th>Semana 4 aposta em...</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Conceito (Posts 1 e 8)</td>
-                <td>Novo carrossel narrativo. Explorar outro valor da marca em profundidade.</td>
+                <td>Sertão — fotos (Posts 2, 4, 5, 7)</td>
+                <td>Mais foto de sertão. Explorar vídeo curto (Reel) com imagens do lugar + música instrumental.</td>
             </tr>
             <tr>
-                <td>Homem (Posts 2, 4, 5, 9, 12)</td>
-                <td>Aumentar frequência de frases de identificação. Testar formatos — frase longa vs. frase curta.</td>
+                <td>Homem — tipografia (Posts 3, 6)</td>
+                <td>Aumentar frequência. Testar frase longa vs. curta. Uma tipografia por post, 3x na semana.</td>
             </tr>
             <tr>
-                <td>Sertão (Posts 3 e 7)</td>
-                <td>Mais visual de lugar. Explorar vídeo curto do sertão se possível. Identidade geográfica como âncora.</td>
+                <td>Produto (Posts 8, 9, 12)</td>
+                <td>Antecipar mais produto. Sequência de peças com preço e link. Considerar Reel de produto.</td>
             </tr>
             <tr>
-                <td>Produto (Posts 6 e 10)</td>
-                <td>Antecipar abertura do e-commerce. Sequência de posts de produto com preço e link.</td>
+                <td>Conceito carrossel (Post 1)</td>
+                <td>Novo carrossel narrativo — máximo 1 por mês. Escolher outro ângulo do homem Esteio.</td>
             </tr>
         </tbody>
     </table>
@@ -1272,48 +1290,48 @@
     <!-- CHECKLIST -->
     <div class="checklist">
         <div class="checklist-header">
-            <h3>Checklist — antes de começar a semana 2</h3>
+            <h3>Checklist — antes de publicar o Post 2</h3>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
-                <p>Visuais tipográficos das semanas 1 e 2 criados no Photoshop</p>
-                <span>Paleta: marrom #8A3E05, preto #1A1A1A, creme #FAF8F5, branco. Dimensão: 1080×1350px.</span>
+                <p>Mínimo 6 fotos do sertão selecionadas do banco</p>
+                <span>Unsplash/Pexels: "caatinga", "sertão bahia", "cerrado brasil". Variar: panorâmica, detalhe, luz quente, detalhe.</span>
             </div>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
-                <p>Fotos do sertão selecionadas (mínimo 4)</p>
-                <span>Unsplash/Pexels: "caatinga", "sertão brasil", "cerrado bahia". Paisagem aberta, luz quente, horizonte largo.</span>
+                <p>Posts tipográficos (3, 6, 8) criados no Photoshop — 1080×1350px</p>
+                <span>Paleta: preto #000000, antracite #1A1A1A, marrom #8A3E05, branco. Fonte Barlow weight 300.</span>
             </div>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
                 <p>Posts 2 a 8 agendados no Meta Business Suite</p>
-                <span>Agendar tudo de uma vez antes de publicar o Post 1.</span>
+                <span>Agendar as duas semanas de uma vez. Ter/Qui/Sáb/Dom.</span>
             </div>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
                 <p>Planilha de métricas criada</p>
-                <span>Colunas: Post / Pilar / Alcance / Saves / Compartilhamentos / Visitas ao perfil / Novos seguidores.</span>
+                <span>Colunas: Post / Pilar / Formato / Alcance / Saves / Compartilhamentos / Visitas / Seguidores.</span>
             </div>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
-                <p>Fotos do fotógrafo — confirmar data de entrega</p>
-                <span>Posts 10 e 11 dependem das fotos. Se não chegarem, substituir por tipografia de produto.</span>
+                <p>Data de entrega das fotos do fotógrafo confirmada</p>
+                <span>Posts 9, 10, 11, 12 dependem das fotos. Planejar semana 3 com antecedência.</span>
             </div>
         </div>
         <div class="checklist-item">
             <div class="checkbox"></div>
             <div>
-                <p>E-commerce — definir data de lançamento</p>
-                <span>O Post 6 já anuncia "em breve". Não deixar esse prazo em aberto por mais de 2 semanas.</span>
+                <p>Data de lançamento do e-commerce definida</p>
+                <span>Post 8 anuncia "em breve". Post 9 já coloca o link. Não deixar em aberto.</span>
             </div>
         </div>
     </div>
