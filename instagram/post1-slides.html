@@ -63,12 +63,7 @@
         .slide {
             width: 100%;
             aspect-ratio: 4 / 5;
-            background: var(--antracite);
             display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 48px 28px;
             position: relative;
             overflow: hidden;
             opacity: 0;
@@ -76,47 +71,15 @@
         }
 
         .slide.active {
-            display: flex;
+            display: block;
             opacity: 1;
         }
 
-        /* SLIDE-TEXT base — tamanho uniforme em todos os slides */
-        .slide-text {
-            font-family: 'Barlow', sans-serif;
-            font-size: clamp(20px, 5.5vw, 32px);
-            font-weight: 300;
-            color: rgba(255,255,255,0.92);
-            text-align: center;
-            line-height: 1.85;
-            letter-spacing: 0.02em;
-        }
-
-        /* Vilão — opacidade reduzida */
-        .slide-02 .slide-text {
-            color: rgba(255,255,255,0.50);
-        }
-
-        /* Herói — branco puro */
-        .slide-03 .slide-text {
-            color: var(--branco);
-        }
-
-        /* Crise — quase sumindo */
-        .slide-05 .slide-text {
-            color: rgba(255,255,255,0.40);
-        }
-
-        /* Climax — único com tamanho maior (~20%) e peso reforçado */
-        .slide-06 .slide-text {
-            font-size: clamp(26px, 7vw, 40px);
-            font-weight: 500;
-            color: var(--branco);
-            line-height: 1.6;
-        }
-
-        /* ─── SLIDE 07 — Resolução: fundo preto, marca como revelação ─── */
-        .slide-07 {
-            background: var(--preto);
+        .slide img.slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .slide-07 .brand-divider {
@@ -252,102 +215,37 @@
 
     <!-- Slide 01 — Hook -->
     <div class="slide slide-01 active">
-        <p class="slide-text">Alguns homens não vão entender.</p>
-        <div class="slide-counter-dot">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-1.jpg" alt="Slide 1" class="slide-img">
     </div>
 
     <!-- Slide 02 — Vilão -->
     <div class="slide slide-02">
-        <p class="slide-text">O mundo virou palco para quem grita.<br>Para quem se exibe.<br>Para quem precisa de plateia.</p>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-2.jpg" alt="Slide 2" class="slide-img">
     </div>
 
     <!-- Slide 03 — Herói -->
     <div class="slide slide-03">
-        <p class="slide-text">Mas existe um homem que não precisa disso.</p>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-3.jpg" alt="Slide 3" class="slide-img">
     </div>
 
     <!-- Slide 04 — Ações -->
     <div class="slide slide-04">
-        <p class="slide-text">Acorda cedo.<br>Honra o que prometeu.<br>Nos dias bons e nos dias<br>em que falta o chão.</p>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-4.jpg" alt="Slide 4" class="slide-img">
     </div>
 
     <!-- Slide 05 — Crise -->
     <div class="slide slide-05">
-        <p class="slide-text">O mundo não vai<br>reconhecer isso.</p>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-5.jpg" alt="Slide 5" class="slide-img">
     </div>
 
     <!-- Slide 06 — Climax -->
     <div class="slide slide-06">
-        <p class="slide-text">Mesmo assim.<br>Você faz o que<br>precisa ser feito.</p>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-            <div class="dot"></div>
-        </div>
+        <img src="post1/slide-6.jpg" alt="Slide 6" class="slide-img">
     </div>
 
     <!-- Slide 07 — Resolução -->
     <div class="slide slide-07">
-        <img src="../assets/esteio-logo-escuro.png" alt="ESTEIO" style="width: 60%; max-width: 220px; margin-bottom: 28px;">
-        <div class="brand-divider"></div>
-        <div class="brand-tagline">Vista sua raiz.</div>
-        <div class="slide-counter-dot">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-        </div>
+        <img src="post1/slide-7.jpg" alt="Slide 7" class="slide-img">
     </div>
 
 </div>
