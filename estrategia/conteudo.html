@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTEIO — Direção de Conteúdo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300;400;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --marrom: #8A3E05;
+            --marrom-claro: #A54D08;
+            --preto: #000000;
+            --antracite: #1A1A1A;
+            --antracite-claro: #242424;
+            --branco: #FFFFFF;
+            --creme: #FAF8F5;
+            --bege: #F0EBE3;
+            --texto: #2A2A2A;
+            --texto-suave: #6B6460;
+            --verde: #2D6A4F;
+            --vermelho: #8B2020;
+            --amarelo: #7A5C00;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+        }
+
+        /* CAPA */
+        .capa {
+            background: var(--antracite);
+            color: var(--branco);
+            padding: 100px 80px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capa::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--marrom);
+        }
+
+        .capa-label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 20px;
+        }
+
+        .capa-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .capa-sub {
+            font-size: 15px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .capa-date {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            color: rgba(255,255,255,0.25);
+            text-transform: uppercase;
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        section {
+            padding: 72px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--marrom);
+        }
+
+        /* INTRO */
+        .intro-text {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--texto);
+            max-width: 760px;
+            margin-bottom: 32px;
+        }
+
+        .intro-destaque {
+            background: var(--antracite);
+            color: var(--branco);
+            padding: 28px 36px;
+            border-left: 4px solid var(--marrom);
+            margin: 40px 0;
+        }
+
+        .intro-destaque p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .intro-destaque strong {
+            color: var(--branco);
+            font-weight: 500;
+        }
+
+        /* CARDS DE MARCAS */
+        .marcas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .marca-card {
+            background: var(--branco);
+            border: 1px solid #E8E3DC;
+            padding: 28px;
+            position: relative;
+        }
+
+        .marca-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+
+        .marca-card.referencia::before { background: var(--verde); }
+        .marca-card.aprender::before { background: var(--amarelo); }
+        .marca-card.evitar::before { background: var(--vermelho); }
+        .marca-card.contexto::before { background: #999; }
+
+        .marca-status {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .marca-card.referencia .marca-status { background: #E8F5EE; color: var(--verde); }
+        .marca-card.aprender .marca-status { background: #FFF8E1; color: var(--amarelo); }
+        .marca-card.evitar .marca-status { background: #FDECEA; color: var(--vermelho); }
+        .marca-card.contexto .marca-status { background: #F5F5F5; color: #666; }
+
+        .marca-nome {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            margin-bottom: 6px;
+        }
+
+        .marca-descricao {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--texto-suave);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .marca-numeros {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--bege);
+        }
+
+        .numero-item { text-align: center; }
+
+        .numero-valor {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--antracite);
+            display: block;
+        }
+
+        .numero-label {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+        }
+
+        .marca-lista {
+            list-style: none;
+        }
+
+        .marca-lista li {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--texto);
+            line-height: 1.6;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .marca-lista li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--marrom);
+            font-size: 10px;
+        }
+
+        .marca-aprender {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--bege);
+        }
+
+        .marca-aprender-label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+
+        .marca-aprender p {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--texto-suave);
+            line-height: 1.6;
+        }
+
+        /* REFERÊNCIA PRINCIPAL */
+        .ref-principal {
+            background: var(--antracite);
+            padding: 56px;
+            margin: 0 -60px;
+            color: var(--branco);
+        }
+
+        .ref-principal .section-label { color: var(--marrom-claro); }
+        .ref-principal .section-title { color: var(--branco); border-color: var(--marrom); }
+
+        .ref-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 700px) {
+            .ref-grid { grid-template-columns: 1fr; }
+        }
+
+        .ref-item {
+            border-left: 2px solid rgba(138,62,5,0.4);
+            padding-left: 24px;
+        }
+
+        .ref-item-titulo {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 12px;
+        }
+
+        .ref-item p {
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.8;
+        }
+
+        .ref-stat {
+            display: inline-block;
+            background: rgba(138,62,5,0.2);
+            border: 1px solid rgba(138,62,5,0.4);
+            padding: 6px 16px;
+            margin-bottom: 16px;
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* FAZER / NÃO FAZER */
+        .fazer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .fazer-grid { grid-template-columns: 1fr; }
+        }
+
+        .fazer-col {
+            background: var(--branco);
+            border: 1px solid #E8E3DC;
+            padding: 36px;
+        }
+
+        .fazer-col.sim { border-top: 4px solid var(--verde); }
+        .fazer-col.nao { border-top: 4px solid var(--vermelho); }
+
+        .fazer-col-titulo {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .fazer-col.sim .fazer-col-titulo { color: var(--verde); }
+        .fazer-col.nao .fazer-col-titulo { color: var(--vermelho); }
+
+        .fazer-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--bege);
+        }
+
+        .fazer-item:last-child { border-bottom: none; }
+
+        .fazer-item-titulo {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--antracite);
+            margin-bottom: 4px;
+        }
+
+        .fazer-item-desc {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--texto-suave);
+            line-height: 1.6;
+        }
+
+        /* STATUS ATUAL */
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .status-grid { grid-template-columns: 1fr; }
+        }
+
+        .status-col-titulo {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #E8E3DC;
+        }
+
+        .status-item:last-child { border-bottom: none; }
+
+        .status-badge {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .status-badge.pronto { background: #E8F5EE; color: var(--verde); }
+        .status-badge.andamento { background: #FFF8E1; color: var(--amarelo); }
+        .status-badge.pendente { background: #F5F5F5; color: #888; }
+
+        .status-item-text {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* ROADMAP */
+        .roadmap {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--marrom), rgba(138,62,5,0.1));
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 0 0 40px 0;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--marrom);
+        }
+
+        .roadmap-item.futuro::before {
+            background: var(--creme);
+            border: 2px solid rgba(138,62,5,0.4);
+        }
+
+        .roadmap-fase {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 6px;
+        }
+
+        .roadmap-titulo {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            margin-bottom: 12px;
+        }
+
+        .roadmap-item.futuro .roadmap-titulo { color: var(--texto-suave); }
+
+        .roadmap-desc {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--texto-suave);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .roadmap-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .roadmap-tag {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border: 1px solid rgba(138,62,5,0.3);
+            color: var(--marrom);
+        }
+
+        /* INSIGHT FINAL */
+        .insight-final {
+            background: var(--preto);
+            color: var(--branco);
+            padding: 72px 80px;
+            text-align: center;
+        }
+
+        .insight-final .label {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 24px;
+        }
+
+        .insight-final blockquote {
+            font-family: 'Barlow', sans-serif;
+            font-size: clamp(20px, 3vw, 30px);
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+
+        .insight-final blockquote strong {
+            font-weight: 500;
+            color: var(--branco);
+        }
+
+        .brand-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--marrom);
+            margin: 0 auto 20px;
+        }
+
+        .tagline {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* SEPARADOR */
+        .sep {
+            height: 1px;
+            background: #E8E3DC;
+            margin: 0 60px;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: var(--bege);
+            padding: 60px;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .capa { padding: 60px 32px; }
+            section { padding: 48px 32px; }
+            .ref-principal { padding: 40px 32px; margin: 0 -32px; }
+            .insight-final { padding: 60px 32px; }
+            .sep { margin: 0 32px; }
+            .intro-section { padding: 48px 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="capa">
+    <div class="capa-date">Abril 2026</div>
+    <div class="capa-label">ESTEIO — Estratégia de Conteúdo</div>
+    <h1 class="capa-title">Inteligência de Mercado<br>Direção de Conteúdo</h1>
+    <p class="capa-sub">O que 9 marcas revelaram sobre o que fazer, o que evitar e para onde a ESTEIO está indo.</p>
+</div>
+
+<!-- CONTEXTO -->
+<div class="intro-section">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <div class="section-label">Ponto de partida</div>
+        <h2 class="section-title">O que aprendemos analisando o mercado</h2>
+        <p class="intro-text">Analisamos 9 marcas — brasileiras e internacionais — para entender o que diferencia as que crescem com identidade das que crescem e desaparecem, e das que sobrevivem sem digital. Esse documento é o mapa que orienta a produção de conteúdo da ESTEIO.</p>
+        <div class="intro-destaque">
+            <p><strong>O insight central:</strong> Tecido premium (pima, egípcio, modal) virou commodity. Qualquer marca pode usar. O que diferencia produto de verdade é modelagem, graduação e acabamento. O que diferencia marca de verdade é identidade — um motivo para o cliente comprar que não seja preço. A ESTEIO tem os dois. A maioria das marcas analisadas não tem nenhum.</p>
+        </div>
+    </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- MARCAS -->
+<section>
+    <div class="section-label">Referências analisadas</div>
+    <h2 class="section-title">O que cada marca revela</h2>
+
+    <div class="marcas-grid">
+
+        <!-- BUCK MASON -->
+        <div class="marca-card referencia">
+            <span class="marca-status">Referência principal</span>
+            <div class="marca-nome">Buck Mason</div>
+            <div class="marca-descricao">EUA · DTC · Digital-first</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">300k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">2–5k</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">~1,5%</span>
+                    <span class="numero-label">Engajamento</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Produto dentro de um mundo — nunca catálogo</li>
+                <li>O homem no centro, o sertão como cenário</li>
+                <li>Post de lifestyle puro gerou 13.200 curtidas — sem produto</li>
+                <li>Bio: "Modern American Classics" — 3 palavras, posição clara</li>
+                <li>Todo o feed atual é vídeo</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">Direção para a ESTEIO</div>
+                <p>O modelo exato que queremos seguir. Identidade forte, produto em contexto, mundo aspiracional construído com consistência. O maior engajamento deles não tem produto — tem sentimento.</p>
+            </div>
+        </div>
+
+        <!-- INSIDER -->
+        <div class="marca-card aprender">
+            <span class="marca-status">Aprender parcialmente</span>
+            <div class="marca-nome">Insider</div>
+            <div class="marca-descricao">Brasil · DTC · Smart wear</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">1,5mi</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">100–300</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Abriu o mercado de smart wear no Brasil</li>
+                <li>Criou plataformas com nome próprio: NEXTECH™, NAKEDFEEL™</li>
+                <li>Fundador visível na câmera — constrói confiança</li>
+                <li>Baixo engajamento, mas comunidade que compra</li>
+                <li>Sustentabilidade como crença, não como marketing</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">O que aprender</div>
+                <p>Nomear a tecnologia é nomear o produto. NAKEDFEEL™ para eles é o que Arrimo é para nós. O fundador na câmera é insubstituível para construir confiança.</p>
+            </div>
+        </div>
+
+        <!-- WESTFRAN -->
+        <div class="marca-card aprender">
+            <span class="marca-status">Aprender parcialmente</span>
+            <div class="marca-nome">Westfran</div>
+            <div class="marca-descricao">Brasil · DTC · Botas de couro</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">42k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Tem conceito além do produto: liberdade, estrada, aventura</li>
+                <li>Migrou completamente de foto para vídeo — algoritmo</li>
+                <li>A mensagem não mudou, só a mídia</li>
+                <li>Produto em contexto de uso, nunca isolado</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">O que aprender</div>
+                <p>A migração para vídeo não muda a estratégia de conteúdo — muda o formato. O conteúdo que construímos agora em foto é o roteiro do Reel futuro.</p>
+            </div>
+        </div>
+
+        <!-- RESERVA -->
+        <div class="marca-card evitar">
+            <span class="marca-status">Evitar o modelo</span>
+            <div class="marca-nome">Reserva</div>
+            <div class="marca-descricao">Brasil · Multichannel · Moda urbana</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">1,6mi</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">254</span>
+                    <span class="numero-label">Curtidas produto</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">5.934</span>
+                    <span class="numero-label">Curtidas influencer</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Seguidores do influenciador, não da marca</li>
+                <li>Dispersão: carnaval, Rolling Stones, futebol, livros, moda</li>
+                <li>Produto caiu em qualidade — perdeu diferencial</li>
+                <li>Post de produto: 254 curtidas para 1,6M seguidores</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">A armadilha</div>
+                <p>Tentar abraçar pop culture demais dilui a identidade. O homem Esteio não é o mesmo homem que curte meme de Faria Lima e carnaval na praia. Cada um tem o seu público.</p>
+            </div>
+        </div>
+
+        <!-- MINIMAL CLUB -->
+        <div class="marca-card evitar">
+            <span class="marca-status">Não seguir</span>
+            <div class="marca-nome">Minimal Club</div>
+            <div class="marca-descricao">Brasil · DTC · Performance marketing</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">517k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">20–41</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Modelo 100% dependente de tráfego pago e influencer</li>
+                <li>Bio é landing page, não identidade de marca</li>
+                <li>Citações de Buffett e Bezos em perfil de camiseta — incoerente</li>
+                <li>Produto virou commodity — mesmo tecido, mesma promessa</li>
+                <li>Relatos de dificuldade financeira por alto CAC</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">A armadilha</div>
+                <p>Quando todos vendem algodão egípcio premium com os mesmos atributos, o único diferencial que sobra é preço. Quem não tem identidade compete por centavo.</p>
+            </div>
+        </div>
+
+        <!-- URBÔ -->
+        <div class="marca-card evitar">
+            <span class="marca-status">Não seguir</span>
+            <div class="marca-nome">Urbô</div>
+            <div class="marca-descricao">Brasil · DTC + Multimarcas</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">78,8k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">7–47</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Fotografia boa, marca sem alma</li>
+                <li>Legendas genéricas que qualquer marca poderia assinar</li>
+                <li>"Uma peça. um legado." — não diz nada específico</li>
+                <li>Modelo genérico, nenhum homem específico sendo chamado</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">A armadilha</div>
+                <p>Produção tecnicamente correta sem identidade não engaja. A ESTEIO tem o brandbook exatamente para não virar Urbô — produto bom, marca invisível.</p>
+            </div>
+        </div>
+
+        <!-- ARAMIS -->
+        <div class="marca-card contexto">
+            <span class="marca-status">Contexto</span>
+            <div class="marca-nome">Aramis</div>
+            <div class="marca-descricao">Brasil · Multichannel · Maior volume de vendas</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">521k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">&lt;500</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Maior volume de vendas entre todas as marcas analisadas</li>
+                <li>Produto excelente — modelagem, graduação, acabamento</li>
+                <li>Instagram é vitrine institucional, não motor de venda</li>
+                <li>30+ anos de marca, presença física consolidada</li>
+                <li>Multichannel: loja, site, app, marketplace — cada um independente</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">O que revela</div>
+                <p>Instagram fraco não impede grandes vendas quando há produto excelente e distribuição consolidada. Para a ESTEIO, esse é o destino — não o caminho. Chegamos pelo digital.</p>
+            </div>
+        </div>
+
+        <!-- SKYLER -->
+        <div class="marca-card contexto">
+            <span class="marca-status">Contexto</span>
+            <div class="marca-nome">Skyler</div>
+            <div class="marca-descricao">Brasil · Franquias · 20+ anos</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">90,9k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">19–29</span>
+                    <span class="numero-label">Curtidas/post</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Sobreviveu 20 anos sem depender de digital</li>
+                <li>Produto bom, distribuição física consolidada</li>
+                <li>"Sempre presente" — território de permanência, mas vago</li>
+                <li>Tenta renovar para geração mais jovem sem perder a base</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">O que revela</div>
+                <p>Qualidade de produto + distribuição real sustenta um negócio mesmo com digital fraco. A ESTEIO terá vantagem: começa pelo digital com identidade clara, não precisa adaptar depois.</p>
+            </div>
+        </div>
+
+        <!-- FILSON -->
+        <div class="marca-card contexto">
+            <span class="marca-status">Contexto</span>
+            <div class="marca-nome">Filson</div>
+            <div class="marca-descricao">EUA · Heritage · Desde 1897</div>
+            <div class="marca-numeros">
+                <div class="numero-item">
+                    <span class="numero-valor">692k</span>
+                    <span class="numero-label">Seguidores</span>
+                </div>
+                <div class="numero-item">
+                    <span class="numero-valor">3.344</span>
+                    <span class="numero-label">Curtidas (landscape)</span>
+                </div>
+            </div>
+            <ul class="marca-lista">
+                <li>Constrói universo cultural — receitas, histórias reais, arquivo</li>
+                <li>Produto quase não aparece — o mundo é o conteúdo</li>
+                <li>Contrata produtoras para simular o mundo deles</li>
+                <li>Nós vivemos o nosso — sertão é autentico, não simulado</li>
+            </ul>
+            <div class="marca-aprender">
+                <div class="marca-aprender-label">Por que não é a direção</div>
+                <p>O universo cultural Filson é muito amplo — produto quase desaparece. Para marca nova que precisa vender, isso é longo demais. Buck Mason mantém o foco no homem e no produto.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- REFERÊNCIA PRINCIPAL -->
+<div class="ref-principal">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 0;">
+        <div class="section-label">A direção escolhida</div>
+        <h2 class="section-title">Por que Buck Mason é a referência</h2>
+
+        <div class="ref-grid">
+            <div class="ref-item">
+                <div class="ref-item-titulo">O modelo de conteúdo</div>
+                <p>Produto dentro de um mundo. O homem veste a peça no lugar certo, com a postura certa. O produto está presente mas não grita. O maior post deles — 13.200 curtidas — é um carro vintage numa praia. Sem produto. Sem modelo. Só o sentimento da marca.</p>
+            </div>
+            <div class="ref-item">
+                <div class="ref-item-titulo">Os números que importam</div>
+                <div class="ref-stat">300k seguidores · 2.000–5.000 curtidas por post</div>
+                <p>Taxa de engajamento de 1,5% em moda é rara. Insider tem 1,5M de seguidores e menos curtidas por post. Reserva tem 1,6M com 254 curtidas em produto. Qualidade de audiência supera quantidade.</p>
+            </div>
+            <div class="ref-item">
+                <div class="ref-item-titulo">O que a ESTEIO adapta</div>
+                <p>Buck Mason é "Modern American Classics". A ESTEIO é "Vista sua raiz." Ambas são 3 palavras que posicionam com precisão. O homem deles é americano clássico. O nosso é o homem que tem raiz — e vive no sertão que nenhuma marca visitou ainda.</p>
+            </div>
+            <div class="ref-item">
+                <div class="ref-item-titulo">A vantagem que eles não têm</div>
+                <p>Buck Mason contrata produtoras para criar o mundo deles. O fundador da ESTEIO acorda dentro do sertão. O Visual Hammer da marca não é cenário — é o lugar onde ele vive. Isso não tem preço de produção.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- FAZER / NÃO FAZER -->
+<section>
+    <div class="section-label">Direção de conteúdo</div>
+    <h2 class="section-title">Fazer e não fazer</h2>
+
+    <div class="fazer-grid">
+        <div class="fazer-col sim">
+            <div class="fazer-col-titulo">✓ Fazer</div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Vídeo primeiro</div>
+                <div class="fazer-item-desc">O algoritmo favorece Reels. Toda marca analisada migrou para vídeo. A mensagem não muda — muda o formato. O conteúdo construído em foto é o roteiro do Reel.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Produto dentro do mundo</div>
+                <div class="fazer-item-desc">O homem Esteio vestindo a peça, no lugar certo, com a postura certa. Nunca produto em fundo branco de catálogo. O sertão é o cenário — mas o homem é o protagonista.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Atributos sem vender</div>
+                <div class="fazer-item-desc">"Arrimo. Algodão Pima Peruano." Texto sobreposto na foto. Sem CTA. Sem "compre". O desejo nasce da identidade, não da oferta.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Mundo sem produto</div>
+                <div class="fazer-item-desc">Posts de puro sertão — a luz da manhã, o gado, a terra, o homem no campo. Sem roupa, sem logo. Cria alcance e constrói o universo da marca. Maior engajamento do Buck Mason é assim.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Voz consistente e única</div>
+                <div class="fazer-item-desc">Sobriedade, peso, silêncio. Sem exclamação. Sem barulho. O oposto da Westfran ("HOJE NINGUÉM ME SEGURA!") e da Minimal ("5 ERROS"). O homem Esteio não grita.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Fundador na câmera</div>
+                <div class="fazer-item-desc">O mais difícil, o mais impactante. Quando o momento chegar: o fundador fala diretamente. Não vende — apresenta. Constrói confiança que editorial não consegue.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">North Star: saves e compartilhamentos</div>
+                <div class="fazer-item-desc">Curtida é vaidade. Save é identificação profunda. Compartilhamento é "quero que outro homem veja isso". São as métricas que validam a narrativa.</div>
+            </div>
+        </div>
+
+        <div class="fazer-col nao">
+            <div class="fazer-col-titulo">✗ Não fazer</div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Performance sem identidade</div>
+                <div class="fazer-item-desc">O modelo Minimal Club — tráfego pago + influencer sem marca construída. Quando para de pagar, para de existir. CAC alto corrói a margem. Sem brand equity, compete por preço.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Legendas de catálogo</div>
+                <div class="fazer-item-desc">"O encontro perfeito entre tecnologia e elegância." "Milimetricamente pensado." Qualquer marca assina embaixo. A ESTEIO tem voz — as legendas devem soar como o manifesto, não como spec sheet.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Dispersão cultural</div>
+                <div class="fazer-item-desc">O erro da Reserva: Rolling Stones, carnaval, futebol, clube do livro. O homem Esteio não é esse homem. Cada post que sai do universo da marca dilui o que foi construído.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Seguidor como métrica</div>
+                <div class="fazer-item-desc">Insider tem 1,5M de seguidores e posts com 100 curtidas. Aramis tem 521k e vende mais que todos. Número de seguidores sem qualidade de audiência é vaidade — não negócio.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Produto em fundo branco</div>
+                <div class="fazer-item-desc">Catálogo é para e-commerce, não para feed. No feed, o produto precisa estar em contexto — no corpo do homem certo, no ambiente certo. Produto isolado não cria desejo.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Identidade genérica</div>
+                <div class="fazer-item-desc">"Elegância sem esforço." "Qualidade que você sente." "O básico sofisticado." Urbô, Skyler, dezenas de marcas dizem a mesma coisa. Nenhuma é memorável. ESTEIO tem um mundo específico — usar.</div>
+            </div>
+
+            <div class="fazer-item">
+                <div class="fazer-item-titulo">Alta energia e exclamação</div>
+                <div class="fazer-item-desc">Westfran funciona com "FALA BROTHER!" porque é o Explorador. O homem Esteio é o Provedor — firme, quieto, sólido. O registro é oposto. Mesma lógica de mundo, tom completamente diferente.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- STATUS ATUAL -->
+<section style="background: var(--bege); margin: 0; max-width: 100%; padding: 72px 60px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <div class="section-label">Diagnóstico</div>
+        <h2 class="section-title">Onde estamos agora</h2>
+
+        <div class="status-grid">
+            <div>
+                <div class="status-col-titulo">Marca e estratégia</div>
+
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Brandbook completo — identidade, posicionamento, personas, Tom de Voz</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Verbal Nail definido — "Raiz"</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Tagline — "Vista sua raiz."</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Sistema de nomenclatura de produto — Essencial, Trato, Arrimo</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Visual Hammer — sertão como assinatura de identidade</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">E-commerce pronto — aguardando fotos de produto</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge andamento">Em curso</span>
+                    <span class="status-item-text">Diretrizes fotográficas — Cap. 08 do brandbook</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="status-col-titulo">Conteúdo e canal</div>
+
+                <div class="status-item">
+                    <span class="status-badge pronto">Publicado</span>
+                    <span class="status-item-text">Post 1 — Manifesto (carrossel 7 slides, Story Grid)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pronto">Pronto</span>
+                    <span class="status-item-text">Plano de conteúdo — 3 semanas definidas</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge andamento">Em curso</span>
+                    <span class="status-item-text">Posts 2–4 — fotos de sertão (banco de fotos ou próprias)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pendente">Pendente</span>
+                    <span class="status-item-text">Fotos de produto — aguardando fotógrafo</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pendente">Pendente</span>
+                    <span class="status-item-text">Primeiro Reel — manifesto em vídeo (sem rosto, voz over + sertão)</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pendente">Pendente</span>
+                    <span class="status-item-text">Fundador na câmera — quando o momento chegar</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-badge pendente">Pendente</span>
+                    <span class="status-item-text">Lançamento e-commerce — após fotos do fotógrafo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ROADMAP -->
+<section>
+    <div class="section-label">Visão de futuro</div>
+    <h2 class="section-title">Para onde estamos indo</h2>
+
+    <div class="roadmap">
+
+        <div class="roadmap-item">
+            <div class="roadmap-fase">Fase atual — Abril 2026</div>
+            <div class="roadmap-titulo">Narrativa antes de produto</div>
+            <div class="roadmap-desc">Construir o mundo do homem Esteio antes de vender qualquer peça. Posts tipográficos + fotos do sertão (banco de fotos ou próprias — o fundador vive lá). O manifesto foi publicado. A identidade está estabelecida. Agora o feed precisa respirar o mesmo ar.</div>
+            <div class="roadmap-tags">
+                <span class="roadmap-tag">Carrossel manifesto</span>
+                <span class="roadmap-tag">Fotos sertão</span>
+                <span class="roadmap-tag">Tipografia</span>
+            </div>
+        </div>
+
+        <div class="roadmap-item">
+            <div class="roadmap-fase">Próxima fase — Produto entra</div>
+            <div class="roadmap-titulo">O homem vestindo a raiz</div>
+            <div class="roadmap-desc">Quando o fotógrafo entregar: o produto entra com o homem. Fotos editoriais com modelo do perfil (35–50, postura firme, ambiente com raiz). Atributos sobrepostos — "Arrimo. Algodão Pima Peruano." Lançamento do e-commerce. O produto chega depois que a narrativa já existe na mente.</div>
+            <div class="roadmap-tags">
+                <span class="roadmap-tag">Editorial produto</span>
+                <span class="roadmap-tag">E-commerce live</span>
+                <span class="roadmap-tag">Atributos visuais</span>
+            </div>
+        </div>
+
+        <div class="roadmap-item futuro">
+            <div class="roadmap-fase">Médio prazo — Vídeo</div>
+            <div class="roadmap-titulo">O sertão em movimento</div>
+            <div class="roadmap-desc">Primeiro Reel: manifesto narrado em voz over sobre B-roll do sertão. Sem rosto, sem produção cara. A câmera filma o que a foto já mostrou. Depois: produto em contexto, detalhe de tecido, homem em movimento. Quando o fundador estiver pronto: câmera direta, palavra viva.</div>
+            <div class="roadmap-tags">
+                <span class="roadmap-tag">Reel manifesto</span>
+                <span class="roadmap-tag">B-roll sertão</span>
+                <span class="roadmap-tag">Detalhe de produto</span>
+                <span class="roadmap-tag">Fundador na câmera</span>
+            </div>
+        </div>
+
+        <div class="roadmap-item futuro">
+            <div class="roadmap-fase">Longo prazo — Canal</div>
+            <div class="roadmap-titulo">Digital-first para omnichannel</div>
+            <div class="roadmap-desc">Digital constrói a marca e prova o modelo. Físico entra quando fizer sentido — não como varejo tradicional, mas como ponto de experiência estratégico. Omnichannel real: o cliente experimenta onde quiser, compra onde quiser, recebe onde quiser. A Aramis chegou pelo físico. A ESTEIO chega pelo digital.</div>
+            <div class="roadmap-tags">
+                <span class="roadmap-tag">Mídia paga</span>
+                <span class="roadmap-tag">Loja física estratégica</span>
+                <span class="roadmap-tag">Omnichannel</span>
+                <span class="roadmap-tag">Multimarcas seletivo</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- INSIGHT FINAL -->
+<div class="insight-final">
+    <div class="label">A síntese</div>
+    <blockquote>
+        "Todas as marcas têm produto.<br>
+        Poucas têm <strong>identidade</strong>.<br>
+        Nenhuma tem o <strong>sertão</strong>."
+    </blockquote>
+    <div class="brand-divider"></div>
+    <div class="tagline">Vista sua raiz.</div>
+</div>
+
+</body>
+</html>
