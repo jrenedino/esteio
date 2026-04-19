@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTEIO — Plano de Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --marrom:        #8A3E05;
+            --marrom-claro:  #A54D08;
+            --antracite:     #1A1A1A;
+            --creme:         #FAF8F5;
+            --bege:          #F0EBE3;
+            --bege-escuro:   #E0D6CA;
+            --oliva:         #6B7040;
+            --texto:         #2A2A2A;
+            --texto-suave:   #6B6460;
+            --nav-width:     280px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Barlow', system-ui, sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ── NAV ── */
+        nav {
+            width: var(--nav-width);
+            min-height: 100vh;
+            background: var(--antracite);
+            position: fixed;
+            top: 0; left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .nav-brand {
+            padding: 40px 28px 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .nav-brand h1 {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.15em;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .nav-brand p {
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .nav-section { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-section-title {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+            padding: 16px 28px 8px;
+        }
+        .nav-section a {
+            display: block;
+            padding: 9px 28px;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+        }
+        .nav-section a:hover {
+            color: var(--marrom-claro);
+            border-left-color: var(--marrom-claro);
+            background: rgba(255,255,255,0.03);
+        }
+        .nav-pending { opacity: 0.45; font-style: italic; }
+
+        .nav-footer {
+            margin-top: auto;
+            padding: 24px 28px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            line-height: 1.6;
+        }
+
+        /* ── MOBILE NAV ── */
+        .nav-toggle {
+            display: none;
+            position: fixed;
+            top: 16px; left: 16px;
+            z-index: 200;
+            background: var(--antracite);
+            border: none;
+            cursor: pointer;
+            width: 44px; height: 44px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px; height: 2px;
+            background: #fff;
+        }
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+
+        /* ── MAIN ── */
+        main { margin-left: var(--nav-width); flex: 1; min-width: 0; }
+
+        /* ── COVER ── */
+        .cover {
+            min-height: 100vh;
+            background: var(--antracite);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 80px 72px;
+        }
+        .cover-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            margin-bottom: 32px;
+        }
+        .cover-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .cover-sub {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 64px;
+            letter-spacing: 0.05em;
+        }
+        .cover-divider {
+            width: 48px; height: 2px;
+            background: var(--marrom);
+            margin-bottom: 32px;
+        }
+        .cover-version { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 80px 72px;
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+        section:nth-child(even) { background: var(--bege); }
+
+        .section-number {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            line-height: 1.05;
+            margin-bottom: 40px;
+        }
+        .section-divider {
+            width: 48px; height: 2px;
+            background: var(--marrom);
+            margin-bottom: 48px;
+        }
+
+        /* ── SUBSECTION ── */
+        .subsection { margin-bottom: 56px; }
+        .subsection-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--bege-escuro);
+        }
+
+        p { font-size: 16px; line-height: 1.75; color: var(--texto); }
+        p + p { margin-top: 14px; }
+
+        /* ── BLOCK LABEL ── */
+        .block-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 16px;
+        }
+
+        /* ── BADGE ── */
+        .badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 2px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        .badge-aprovado { background: rgba(107,112,64,0.15); color: var(--oliva); }
+        .badge-pendente { background: rgba(138,62,5,0.1); color: var(--marrom); }
+        .badge-parcial  { background: rgba(0,0,0,0.07); color: var(--texto-suave); }
+
+        /* ── PENDING SECTION ── */
+        .pending-section {
+            background: rgba(138,62,5,0.04);
+            border: 1px dashed rgba(138,62,5,0.25);
+            padding: 40px;
+            text-align: center;
+        }
+        .pending-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            opacity: 0.6;
+            margin-bottom: 12px;
+        }
+        .pending-title {
+            font-size: 16px;
+            color: var(--texto-suave);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* ── SECTION BLOCK ── */
+        .section-block { margin-bottom: 48px; }
+
+        /* ── GRID ── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid var(--bege-escuro);
+            padding: 28px;
+        }
+        .card-title {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            margin-bottom: 10px;
+        }
+        .card p { font-size: 14px; line-height: 1.65; color: var(--texto-suave); }
+
+        /* ── STAGE ROW ── */
+        .stage-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 0;
+            border-bottom: 1px solid var(--bege-escuro);
+            margin-bottom: 0;
+        }
+        .stage-row:first-child { border-top: 1px solid var(--bege-escuro); }
+        .stage-label {
+            background: var(--antracite);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .stage-label span {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--marrom-claro);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        .stage-content { padding: 24px 28px; background: #fff; }
+        .stage-content .stage-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--antracite);
+            margin-bottom: 8px;
+        }
+        .stage-content p { font-size: 14px; color: var(--texto-suave); }
+        .stage-content ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .stage-content ul li { font-size: 14px; color: var(--texto-suave); margin-bottom: 4px; }
+
+        /* ── METRIC ROW ── */
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            margin: 24px 0;
+        }
+        .metric-card {
+            background: #fff;
+            padding: 28px;
+            text-align: center;
+            border: 1px solid var(--bege-escuro);
+        }
+        .metric-value {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--marrom);
+            margin-bottom: 8px;
+        }
+        .metric-label { font-size: 12px; color: var(--texto-suave); letter-spacing: 0.1em; }
+
+        /* ── TABLE ── */
+        table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+        thead tr { border-bottom: 2px solid var(--marrom); }
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            font-family: 'Encode Sans Condensed', sans-serif;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 11px;
+            color: var(--antracite);
+        }
+        th:last-child { text-align: right; }
+        td { padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+        td:last-child { text-align: right; }
+        .td-name { font-weight: 600; color: var(--marrom); }
+
+        /* ── CANAL CARD ── */
+        .canal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin: 24px 0;
+        }
+        .canal-card { background: #fff; padding: 28px; border: 1px solid var(--bege-escuro); }
+        .canal-card.priority { border-top: 3px solid var(--marrom); }
+        .canal-priority {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--marrom);
+            margin-bottom: 12px;
+        }
+        .canal-name {
+            font-family: 'Encode Sans Condensed', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--antracite);
+            margin-bottom: 12px;
+        }
+        .canal-card p { font-size: 13px; line-height: 1.6; color: var(--texto-suave); }
+
+        /* ── HIGHLIGHT ── */
+        .highlight {
+            background: var(--antracite);
+            padding: 40px 48px;
+            margin: 32px 0;
+        }
+        .highlight .block-label { color: var(--marrom-claro); margin-bottom: 12px; }
+        .highlight p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.75; }
+        .highlight strong { color: #fff; }
+
+        code {
+            background: rgba(0,0,0,0.06);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            nav { transform: translateX(-100%); transition: transform 0.3s; }
+            nav.open { transform: translateX(0); }
+            main { margin-left: 0; }
+            .nav-toggle { display: flex; }
+            .nav-overlay.active { display: block; }
+            section { padding: 56px 24px; }
+            .cover { padding: 64px 24px; }
+            .grid-2, .grid-3, .canal-grid, .metric-row { grid-template-columns: 1fr; }
+            .stage-row { grid-template-columns: 1fr; }
+            .stage-label { padding: 16px 24px; }
+            .stage-label span { writing-mode: horizontal-tb; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+</button>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- NAV -->
+<nav id="nav">
+    <div class="nav-brand">
+        <h1>ESTEIO</h1>
+        <p>Plano de Marketing — v1.0</p>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Contexto</div>
+        <a href="#visao">01 — Visão Geral</a>
+        <a href="#mercado">02 — Mercado & Contexto</a>
+        <a href="#publico">03 — Público-Alvo</a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Operação</div>
+        <a href="#canais">04 — Canais de Aquisição</a>
+        <a href="#conteudo" class="nav-pending">05 — Estratégia de Conteúdo</a>
+        <a href="#produto">06 — Guia de Produto</a>
+        <a href="#jornada" class="nav-pending">07 — Jornada de Compra</a>
+        <a href="#funil" class="nav-pending">08 — Funil de Conversão</a>
+    </div>
+
+    <div class="nav-section">
+        <div class="nav-section-title">Resultados</div>
+        <a href="#metricas" class="nav-pending">09 — Métricas & KPIs</a>
+        <a href="#calendario" class="nav-pending">10 — Calendário Editorial</a>
+    </div>
+
+    <div class="nav-footer">
+        ESTEIO © 2025<br>Documento operacional — confidencial
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+    <!-- COVER -->
+    <div class="cover">
+        <p class="cover-label">Documento Operacional</p>
+        <h1 class="cover-title">Plano de<br>Marketing</h1>
+        <p class="cover-sub">ESTEIO — Moda Masculina</p>
+        <div class="cover-divider"></div>
+        <p class="cover-version">v1.0 — 2025</p>
+    </div>
+
+    <!-- VISÃO GERAL -->
+    <section id="visao">
+        <div class="section-number">01</div>
+        <div class="section-title">Visão<br>Geral</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">O que é este documento</div>
+            <p>O Plano de Marketing é o documento operacional da ESTEIO — define como a marca age no mercado, não quem ela é. A identidade, o posicionamento e os valores vivem no <strong>Brandbook</strong>. Aqui vivem os canais, o produto, a jornada do cliente, os KPIs e o calendário.</p>
+        </div>
+
+        <div class="highlight">
+            <p class="block-label">Estratégia-mãe</p>
+            <p><strong>Orgânico primeiro.</strong> A ESTEIO cresce por conteúdo, autoridade e comunidade antes de escalar com mídia paga. O custo de aquisição no ambiente digital disparou — a resposta não é gastar mais, é construir ativos que atraem.</p>
+        </div>
+
+        <div class="subsection" style="margin-top: 48px;">
+            <div class="subsection-title">Onde estamos agora</div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-title">Identidade</div>
+                    <p>Brandbook completo. Verbal Nail, Manifesto, Golden Circle, Posicionamento e Personas definidos e aprovados.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Produto</div>
+                    <p>Linha inicial definida. Nomenclatura fechada. Aguardando produção fotográfica para lançamento do e-commerce.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Canal</div>
+                    <p>Instagram ativo. E-commerce em construção. Estratégia orgânica em fase de estruturação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MERCADO & CONTEXTO -->
+    <section id="mercado">
+        <div class="section-number">02</div>
+        <div class="section-title">Mercado &<br>Contexto</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">O Ambiente DTC em 2025</div>
+            <p>O mercado DTC passou por uma crise estrutural de custo de aquisição. Os CPCs no Facebook subiram 49% entre 2018 e 2019. O iOS 14.5 adicionou 30–50% de incremento ao CAC de marcas dependentes de mídia paga. Marcas construídas sobre tráfego pago — Casper, Warby Parker, Allbirds — perderam valor drasticamente após o IPO.</p>
+            <p>O ciclo de "compra usuário a qualquer preço" chegou ao fim. As marcas que sobrevivem são as que têm <strong>comunidade real, narrativa clara e produto que retém</strong>.</p>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">Referências de Mercado</div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Buck Mason</div>
+                    <p>+$100M de receita. 50+ lojas. 60% de clientes recorrentes. Sem VC. Cresceu por produto sólido, identidade clara e varejo físico como canal de aquisição. Prova que moda masculina com posicionamento forte escala sem dependência de mídia paga.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Huckberry</div>
+                    <p>Editorial como aquisição. 625k seguidores construídos por conteúdo, não por anúncio. A loja é consequência da audiência, não o contrário.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">American Giant</div>
+                    <p>"The Greatest Hoodie Ever Made" — posicionamento por qualidade extrema em produto simples. Founder visible. Cresceu por PR orgânico e boca a boca, não por performance.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">O Que Evitar</div>
+                    <p>Marcas DTC que dependem de CAC via Facebook/Instagram sem produto de retenção ou identidade diferenciada. Ciclo de crescimento artificial que não sustenta unit economics.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">CAC — Referências de Mercado</div>
+            <div class="metric-row">
+                <div class="metric-card">
+                    <div class="metric-value">$40–80</div>
+                    <div class="metric-label">CAC médio DTC EUA (2024)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">R$60–150</div>
+                    <div class="metric-label">CAC moda BR e-commerce</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3:1</div>
+                    <div class="metric-label">LTV:CAC mínimo saudável</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">30%+</div>
+                    <div class="metric-label">Taxa de recompra necessária</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÚBLICO-ALVO -->
+    <section id="publico">
+        <div class="section-number">03</div>
+        <div class="section-title">Público-<br>Alvo</div>
+        <div class="section-divider"></div>
+
+        <p>As personas completas estão definidas no Brandbook (Cap. 05). Este capítulo trata do público sob a ótica operacional de marketing — onde encontrá-lo, como ativá-lo e como medir engajamento.</p>
+
+        <div class="grid-3" style="margin-top: 32px;">
+            <div class="card">
+                <div class="card-title">Homem de Terra</div>
+                <p><strong>35–45 anos.</strong> Agro, produtor rural, gestor do setor primário. Baixo consumo de redes, alto valor por produto. Canal: Instagram orgânico, WhatsApp, indicação.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Homem de Caminho</div>
+                <p><strong>25–38 anos.</strong> Liberal ou gestor em ascensão. Consome conteúdo de qualidade. Canal: Instagram, YouTube, editorial digital. Principal alvo de aquisição orgânica.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Homem de Legado</div>
+                <p><strong>45–60 anos.</strong> Empresário, consultor de longa trajetória. Compra por indicação e autoridade. Canal: boca a boca, presença física, PR.</p>
+            </div>
+        </div>
+
+        <div class="pending-section" style="margin-top: 40px;">
+            <div class="pending-label">A desenvolver</div>
+            <div class="pending-title">Segmentação de audiência por canal — Tamanho de mercado endereçável — ICP refinado por coorte de retenção</div>
+        </div>
+    </section>
+
+    <!-- CANAIS DE AQUISIÇÃO -->
+    <section id="canais">
+        <div class="section-number">04 <span class="badge badge-parcial">Parcial</span></div>
+        <div class="section-title">Canais de<br>Aquisição</div>
+        <div class="section-divider"></div>
+
+        <div class="subsection">
+            <div class="subsection-title">Estratégia — Orgânico Primeiro</div>
+            <p>A ESTEIO não vai escalar com mídia paga sem antes ter: produto fotografado, e-commerce ativo, conteúdo orgânico convertendo e taxa de retenção validada. Investir em tráfego pago antes disso é pagar para descobrir que a máquina tem furos.</p>
+        </div>
+
+        <div class="canal-grid">
+            <div class="canal-card priority">
+                <div class="canal-priority">Prioridade 1</div>
+                <div class="canal-name">Instagram Orgânico</div>
+                <p>Conteúdo founder-led. Enedino como face da marca. Editorial de produto no sertão. Reels com posicionamento. Meta: construir audiência qualificada antes de vender.</p>
+            </div>
+            <div class="canal-card priority">
+                <div class="canal-priority">Prioridade 1</div>
+                <div class="canal-name">E-commerce</div>
+                <p>Lançamento após produção fotográfica. Shopify ou plataforma similar. SEO desde o início — URL de coleção por material, URL de produto por nome.</p>
+            </div>
+            <div class="canal-card priority">
+                <div class="canal-priority">Prioridade 2</div>
+                <div class="canal-name">Wholesale Seletivo</div>
+                <p>Parcerias com multimarcas alinhadas ao posicionamento. Teste antes de escala. Não dilui a marca — seleciona pontos de distribuição com curadoria.</p>
+            </div>
+            <div class="canal-card">
+                <div class="canal-priority">Fase 2</div>
+                <div class="canal-name">Mídia Paga</div>
+                <p>Entra depois que o orgânico valida a mensagem e o e-commerce tem dados de conversão. Meta / Google Ads como amplificador, não como motor principal.</p>
+            </div>
+            <div class="canal-card">
+                <div class="canal-priority">Fase 2</div>
+                <div class="canal-name">Email Marketing</div>
+                <p>Lista própria = ativo da marca. Construir desde o lançamento. Sequência de boas-vindas, conteúdo editorial, campanhas de produto.</p>
+            </div>
+            <div class="canal-card">
+                <div class="canal-priority">A avaliar</div>
+                <div class="canal-name">Varejo Físico</div>
+                <p>Modelo Buck Mason: loja física como canal de aquisição, não só de venda. Avaliar após validação online e capital disponível.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTRATÉGIA DE CONTEÚDO -->
+    <section id="conteudo">
+        <div class="section-number">05 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Estratégia<br>de Conteúdo</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">A desenvolver</div>
+            <div class="pending-title">Pilares de conteúdo — Frequência — Formatos por canal — Calendário editorial — Tom por plataforma — Founder-led content: roteiro para Enedino</div>
+        </div>
+    </section>
+
+    <!-- GUIA DE PRODUTO -->
+    <section id="produto">
+        <div class="section-number">06 <span class="badge badge-parcial">Parcial</span></div>
+        <div class="section-title">Guia de<br>Produto</div>
+        <div class="section-divider"></div>
+
+        <div class="section-block">
+            <div class="subsection-title">Sistema de Nomenclatura — Fechado</div>
+            <p>Os nomes dos produtos são identidade, não descrição de material. O material aparece na descrição e na URL de coleção (SEO). Os nomes tornam-se nomes próprios na mente — como Havaianas, Denim, Couro.</p>
+
+            <table style="margin-top: 24px;">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Nome</th>
+                        <th>Material</th>
+                        <th style="text-align:right;">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Camiseta básica</td>
+                        <td class="td-name">Essencial</td>
+                        <td style="color:var(--texto-suave);">Algodão convencional</td>
+                        <td>R$90</td>
+                    </tr>
+                    <tr>
+                        <td>Camiseta egípcia</td>
+                        <td class="td-name">Trato</td>
+                        <td style="color:var(--texto-suave);">Algodão egípcio</td>
+                        <td>R$140</td>
+                    </tr>
+                    <tr>
+                        <td>Camiseta pima</td>
+                        <td class="td-name">Arrimo</td>
+                        <td style="color:var(--texto-suave);">Algodão pima peruano</td>
+                        <td>R$220</td>
+                    </tr>
+                    <tr>
+                        <td>Polo básica</td>
+                        <td class="td-name">Essencial</td>
+                        <td style="color:var(--texto-suave);">Algodão convencional</td>
+                        <td>R$180</td>
+                    </tr>
+                    <tr>
+                        <td>Polo pima</td>
+                        <td class="td-name">Arrimo</td>
+                        <td style="color:var(--texto-suave);">Algodão pima peruano</td>
+                        <td>R$300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-block">
+            <div class="subsection-title">Regra de Página de Produto</div>
+            <p style="font-size: 18px; font-style: italic; color: var(--antracite); line-height: 1.8;">"Arrimo — Algodão Pima Peruano."</p>
+            <p style="margin-top: 8px;">O nome carrega o peso. O material entrega a prova.</p>
+        </div>
+
+        <div class="section-block">
+            <div class="subsection-title">Estratégia SEO</div>
+            <p>URL de coleção <code>/colecao/algodao-pima</code> captura busca por material. URL de produto <code>/arrimo</code> carrega a identidade da marca. O cliente chega pelo material — fica pelo nome.</p>
+        </div>
+
+        <div class="pending-section" style="margin-top: 40px;">
+            <div class="pending-label">Ainda pendente</div>
+            <div class="pending-title">Posicionamento por SKU — Comunicação específica por produto — Hierarquia de lançamento — Fotografia de produto (desbloqueio do e-commerce)</div>
+        </div>
+    </section>
+
+    <!-- JORNADA DE COMPRA -->
+    <section id="jornada">
+        <div class="section-number">07 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Jornada<br>de Compra</div>
+        <div class="section-divider"></div>
+
+        <p>Mapa do caminho que o cliente percorre desde o primeiro contato com a marca até se tornar recorrente e indicador.</p>
+
+        <div style="margin-top: 40px;">
+            <div class="stage-row">
+                <div class="stage-label"><span>Descoberta</span></div>
+                <div class="stage-content">
+                    <div class="stage-title">Primeiro contato com a marca</div>
+                    <p>Como o cliente encontra a ESTEIO pela primeira vez.</p>
+                    <ul>
+                        <li>Conteúdo orgânico no Instagram</li>
+                        <li>Indicação de um cliente existente</li>
+                        <li>Busca por produto específico (SEO)</li>
+                        <li>Wholesale — ver o produto numa multimarca</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stage-row">
+                <div class="stage-label"><span>Consideração</span></div>
+                <div class="stage-content">
+                    <div class="stage-title">Avaliação — "Isso é pra mim?"</div>
+                    <p>O cliente explora a marca para decidir se ela representa quem ele é.</p>
+                    <ul>
+                        <li>Visita ao perfil do Instagram — consistência do feed</li>
+                        <li>Acessa o site — passa no grunt test?</li>
+                        <li>Lê sobre os materiais e a proposta</li>
+                        <li>Identidade da marca ressoa com a identidade dele</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stage-row">
+                <div class="stage-label"><span>Conversão</span></div>
+                <div class="stage-content">
+                    <div class="stage-title">Primeira compra</div>
+                    <p>O momento da decisão e da transação.</p>
+                    <ul>
+                        <li>Experiência de compra no e-commerce</li>
+                        <li>Clareza de produto, tamanho, entrega</li>
+                        <li>Confiança no checkout</li>
+                        <li>Primeira impressão ao receber o produto</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stage-row">
+                <div class="stage-label"><span>Experiência</span></div>
+                <div class="stage-content">
+                    <div class="stage-title">Pós-compra — construindo o vínculo</div>
+                    <p>O que acontece depois que o produto chega.</p>
+                    <ul>
+                        <li>Unboxing — embalagem e apresentação</li>
+                        <li>Qualidade do produto corresponde à promessa</li>
+                        <li>Comunicação pós-venda</li>
+                        <li>Sentimento de pertencimento à marca</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stage-row">
+                <div class="stage-label"><span>Fidelização</span></div>
+                <div class="stage-content">
+                    <div class="stage-title">Recompra e indicação</div>
+                    <p>O cliente que volta e traz outros.</p>
+                    <ul>
+                        <li>Segunda compra — qual produto, qual prazo</li>
+                        <li>Indica para o círculo próximo</li>
+                        <li>Engajamento orgânico com o conteúdo</li>
+                        <li>Defensor espontâneo da marca</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="pending-section" style="margin-top: 40px;">
+            <div class="pending-label">A completar</div>
+            <div class="pending-title">Métricas por etapa — Pontos de atrito identificados — Ações de ativação por estágio — Email flows por etapa</div>
+        </div>
+    </section>
+
+    <!-- FUNIL DE CONVERSÃO -->
+    <section id="funil">
+        <div class="section-number">08 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Funil de<br>Conversão</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">A desenvolver</div>
+            <div class="pending-title">Topo (tráfego e alcance) — Meio (engajamento e lead) — Fundo (conversão e retenção) — Taxas de conversão por etapa — Ações de recuperação</div>
+        </div>
+    </section>
+
+    <!-- MÉTRICAS & KPIs -->
+    <section id="metricas">
+        <div class="section-number">09 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Métricas<br>& KPIs</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">A desenvolver</div>
+            <div class="pending-title">North Star Metric — KPIs por canal — CAC real vs benchmark — LTV por coorte — Taxa de recompra — NPS — Metas mensais e trimestrais</div>
+        </div>
+    </section>
+
+    <!-- CALENDÁRIO EDITORIAL -->
+    <section id="calendario">
+        <div class="section-number">10 <span class="badge badge-pendente">Em Construção</span></div>
+        <div class="section-title">Calendário<br>Editorial</div>
+        <div class="section-divider"></div>
+        <div class="pending-section">
+            <div class="pending-label">A desenvolver</div>
+            <div class="pending-title">Frequência por canal — Temas mensais — Datas sazonais relevantes — Lançamentos de produto — Campanhas planejadas</div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('navOverlay');
+
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click', () => {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+    });
+</script>
+
+</body>
+</html>
