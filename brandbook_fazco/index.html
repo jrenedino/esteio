@@ -9,12 +9,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:       #003366;
-      --navy-light: #D6E4F0;
-      --gold:       #C9952A;
-      --gold-light: #E8D5A3;
-      --cream:      #F5F0E8;
-      --charcoal:   #4A4A4A;
+      --navy:        #003366;
+      --navy-light:  #D6E4F0;
+      --gold:        #C9952A;
+      --gold-light:  #E8D5A3;
+      --cream:       #F5F0E8;
+      --charcoal:    #4A4A4A;
+      --nav-width:   280px;
     }
 
     html { scroll-behavior: smooth; }
@@ -24,48 +25,122 @@
       background: var(--cream);
       color: var(--charcoal);
       line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
     }
 
-    /* ── NAV ── */
+    /* ── SIDE NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      width: var(--nav-width);
+      min-height: 100vh;
       background: var(--navy);
-      padding: 0 48px;
-      height: 56px;
+      position: fixed;
+      top: 0; left: 0;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      z-index: 100;
+      overflow-y: auto;
     }
-    .nav-brand {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
 
-    /* ── SECTIONS ── */
-    section { padding: 96px 0; }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 48px; }
-    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .nav-brand {
+      padding: 40px 28px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 26px;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .nav-brand-sub {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+    .nav-brand-doc {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-section {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-section-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 16px 28px 8px;
+    }
+    .nav-section a {
+      display: block;
+      padding: 9px 28px;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+    }
+    .nav-section a:hover {
+      color: var(--gold);
+      border-left-color: var(--gold);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .nav-tagline {
+      margin-top: auto;
+      padding: 24px 28px;
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── MOBILE NAV ── */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 200;
+      background: var(--navy);
+      border: none;
+      color: #fff;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      font-size: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 99;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      margin-left: var(--nav-width);
+      flex: 1;
+      min-width: 0;
+    }
+
+    section { padding: 96px 64px; }
+    section:nth-child(even) { background: #fff; }
+
+    .container { max-width: 800px; }
+    .container-wide { max-width: 1000px; }
 
     /* ── COVER ── */
     #cover {
@@ -73,73 +148,51 @@
       background: var(--navy);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 48px 80px;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 96px 64px;
     }
-    .cover-label {
+    .cover-eyebrow {
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--gold);
+      margin-bottom: 32px;
+    }
+    .cover-logo {
+      max-width: 380px;
+      width: 100%;
       margin-bottom: 48px;
-    }
-    .cover-wordmark {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 48px;
-    }
-    .cover-wordmark .fazco {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(72px, 12vw, 120px);
-      font-weight: 700;
-      font-style: italic;
-      color: #fff;
-      letter-spacing: 0.04em;
-      line-height: 1;
-    }
-    .cover-wordmark .pl-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 300;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 12px;
     }
     .cover-positioning {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(18px, 3vw, 24px);
+      font-size: clamp(20px, 2.5vw, 28px);
       font-style: italic;
-      color: rgba(255,255,255,0.75);
-      max-width: 560px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
       margin-bottom: 64px;
+      line-height: 1.45;
     }
-    .cover-divider {
-      width: 1px;
-      height: 64px;
-      background: var(--gold);
-      opacity: 0.4;
+    .cover-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.15em;
     }
 
     /* ── CHAPTER HEADER ── */
-    .chapter-header {
-      margin-bottom: 64px;
-    }
+    .chapter-header { margin-bottom: 56px; }
     .chapter-number {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 16px;
     }
     .chapter-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 5vw, 52px);
+      font-size: clamp(32px, 4vw, 48px);
       font-weight: 600;
       color: var(--navy);
       line-height: 1.15;
@@ -149,15 +202,18 @@
       font-weight: 300;
       color: var(--charcoal);
       margin-top: 16px;
-      max-width: 600px;
+      max-width: 580px;
       opacity: 0.8;
     }
 
-    /* ── SECTION DIVIDER ── */
-    .section-rule {
-      border: none;
-      border-top: 1px solid var(--navy-light);
-      margin: 64px 0;
+    /* ── BLOCK LABEL — BIGGER ── */
+    .block-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
     }
 
     /* ── HIGHLIGHT BOX ── */
@@ -166,21 +222,14 @@
       padding: 48px 56px;
       margin: 48px 0;
     }
-    .highlight-box .label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
+    .highlight-box .block-label { color: var(--gold); }
     .highlight-box .text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 3.5vw, 32px);
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 400;
       font-style: italic;
       color: #fff;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     /* ── GOLD BOX ── */
@@ -190,58 +239,52 @@
       background: var(--gold-light);
       margin: 32px 0;
     }
-    .gold-box p {
-      font-size: 16px;
-      color: var(--charcoal);
+    .gold-box p { font-size: 15px; color: var(--charcoal); }
+
+    /* ── RULE ── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--navy-light);
+      margin: 56px 0;
     }
 
-    /* ── STRATEGY GRID ── */
-    .strategy-grid {
+    /* ── TWO COLS ── */
+    .two-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
-      margin: 48px 0;
+      margin: 40px 0;
     }
-    .strategy-cell {
-      background: #fff;
+    .cell {
+      background: var(--cream);
       padding: 40px;
     }
-    .strategy-cell.dark {
-      background: var(--navy);
-    }
-    .strategy-cell .s-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .strategy-cell .s-title {
+    .cell.dark { background: var(--navy); }
+    .cell.white { background: #fff; }
+    .cell .block-label { margin-bottom: 12px; }
+    .cell .cell-title {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
       font-weight: 600;
       color: var(--navy);
       margin-bottom: 12px;
+      line-height: 1.25;
     }
-    .strategy-cell.dark .s-title {
-      color: #fff;
-    }
-    .strategy-cell .s-body {
+    .cell.dark .cell-title { color: #fff; }
+    .cell .cell-body {
       font-size: 15px;
       color: var(--charcoal);
       line-height: 1.65;
     }
-    .strategy-cell.dark .s-body {
-      color: rgba(255,255,255,0.75);
-    }
+    .cell.dark .cell-body { color: rgba(255,255,255,0.72); }
+    .cell.dark .block-label { color: var(--gold); }
 
     /* ── THREE COLS ── */
     .three-cols {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
-      margin: 48px 0;
+      margin: 40px 0;
     }
     .col-card {
       background: #fff;
@@ -249,20 +292,13 @@
     }
     .col-card .c-num {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
+      font-size: 52px;
       font-weight: 700;
       color: var(--gold-light);
       line-height: 1;
       margin-bottom: 16px;
     }
-    .col-card .c-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
+    .col-card .block-label { margin-bottom: 10px; }
     .col-card .c-title {
       font-family: 'Playfair Display', serif;
       font-size: 20px;
@@ -273,88 +309,223 @@
     .col-card .c-body {
       font-size: 14px;
       color: var(--charcoal);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* ── COLOR PALETTE ── */
+    /* ── MANIFESTO ── */
+    #manifesto {
+      background: var(--navy) !important;
+      padding: 96px 64px;
+    }
+    .manifesto-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+    }
+    .manifesto-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.7;
+      max-width: 720px;
+    }
+    .manifesto-text em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .manifesto-sign {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── GOLDEN CIRCLE ── */
+    .golden-circle {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin: 40px 0;
+    }
+    .gc-card {
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+    .gc-card:nth-child(1) { background: var(--navy); }
+    .gc-card:nth-child(2) { background: var(--charcoal); }
+    .gc-card:nth-child(3) { background: var(--navy-light); }
+    .gc-level {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .gc-card:nth-child(3) .gc-level { color: var(--navy); opacity: 0.7; }
+    .gc-question {
+      font-size: 13px;
+      margin-bottom: 24px;
+      opacity: 0.5;
+    }
+    .gc-card:nth-child(1) .gc-question,
+    .gc-card:nth-child(2) .gc-question { color: #fff; }
+    .gc-card:nth-child(3) .gc-question { color: var(--navy); }
+    .gc-answer {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-top: auto;
+    }
+    .gc-card:nth-child(1) .gc-answer,
+    .gc-card:nth-child(2) .gc-answer { color: #fff; }
+    .gc-card:nth-child(3) .gc-answer { color: var(--navy); }
+
+    /* ── POSITIONING ── */
+    .pos-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin: 40px 0;
+    }
+    .pos-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      background: #fff;
+      min-height: 80px;
+    }
+    .pos-label-col {
+      background: var(--navy);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+    }
+    .pos-label-col span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pos-content {
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+    }
+    .pos-content p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .pos-content .pos-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* ── WORDMARK SHOWCASE ── */
+    .mark-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin: 40px 0;
+    }
+    .mark-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      gap: 24px;
+    }
+    .mark-card img { max-width: 200px; width: 100%; }
+    .mark-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .mark-bg-navy { background: var(--navy); }
+    .mark-bg-navy .mark-card-label { color: rgba(255,255,255,0.35); }
+    .mark-bg-black { background: #111; }
+    .mark-bg-black .mark-card-label { color: rgba(255,255,255,0.35); }
+    .mark-bg-cream { background: var(--cream); }
+    .mark-bg-cream .mark-card-label { color: rgba(0,0,0,0.3); }
+
+    /* ── PALETTE ── */
     .palette-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 2px;
-      margin: 48px 0;
+      margin: 40px 0;
     }
-    .swatch {
-      display: flex;
-      flex-direction: column;
-    }
-    .swatch-color {
-      height: 120px;
-    }
-    .swatch-info {
-      background: #fff;
-      padding: 16px;
-    }
+    .swatch { display: flex; flex-direction: column; }
+    .swatch-color { height: 100px; }
+    .swatch-info { background: #fff; padding: 16px; }
     .swatch-name {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--navy);
       margin-bottom: 4px;
     }
     .swatch-hex {
-      font-size: 11px;
+      font-size: 12px;
+      font-family: monospace;
       color: var(--charcoal);
       opacity: 0.7;
-      font-family: monospace;
     }
     .swatch-role {
       font-size: 11px;
       color: var(--charcoal);
-      opacity: 0.6;
+      opacity: 0.55;
       margin-top: 4px;
     }
 
-    /* ── TYPOGRAPHY SPECIMENS ── */
+    /* ── TYPE SPECIMEN ── */
     .type-specimen {
       background: #fff;
       padding: 48px;
       margin: 24px 0;
     }
-    .type-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
     .specimen-display {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(36px, 4.5vw, 52px);
       font-weight: 600;
       color: var(--navy);
       line-height: 1.15;
-      margin-bottom: 16px;
+      margin: 20px 0 16px;
     }
     .specimen-body {
       font-family: 'DM Sans', sans-serif;
       font-size: 16px;
-      font-weight: 400;
       color: var(--charcoal);
       line-height: 1.7;
-      max-width: 600px;
+      max-width: 580px;
     }
     .type-meta {
       display: flex;
+      flex-wrap: wrap;
       gap: 32px;
       margin-top: 24px;
       padding-top: 24px;
       border-top: 1px solid var(--navy-light);
     }
-    .type-meta-item {
-      font-size: 12px;
-      color: var(--charcoal);
-      opacity: 0.7;
-    }
+    .type-meta-item { font-size: 13px; color: var(--charcoal); opacity: 0.7; }
     .type-meta-item strong {
       display: block;
       font-size: 13px;
@@ -364,369 +535,434 @@
       margin-bottom: 2px;
     }
 
-    /* ── WORDMARK SHOWCASE ── */
-    .mark-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px;
-      margin: 48px 0;
-    }
-    .mark-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 32px;
-      min-height: 200px;
-    }
-    .mark-card .mark-wordmark {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-style: italic;
-      font-size: 36px;
-      letter-spacing: 0.04em;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .mark-card .mark-sub {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-    }
-    .mark-card-label {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-top: 24px;
-      font-weight: 500;
-    }
-    .mark-bg-navy { background: var(--navy); }
-    .mark-bg-navy .mark-wordmark { color: #fff; }
-    .mark-bg-navy .mark-sub { color: var(--gold); }
-    .mark-bg-navy .mark-card-label { color: rgba(255,255,255,0.4); }
-
-    .mark-bg-black { background: #000; }
-    .mark-bg-black .mark-wordmark { color: #fff; }
-    .mark-bg-black .mark-sub { color: var(--gold); }
-    .mark-bg-black .mark-card-label { color: rgba(255,255,255,0.4); }
-
-    .mark-bg-white { background: #fff; }
-    .mark-bg-white .mark-wordmark { color: var(--navy); }
-    .mark-bg-white .mark-sub { color: var(--gold); }
-    .mark-bg-white .mark-card-label { color: rgba(0,0,0,0.35); }
-
-    /* ── IMAGERY GUIDE ── */
+    /* ── IMAGERY ── */
     .imagery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
-      margin: 48px 0;
+      margin: 40px 0;
     }
-    .imagery-card {
-      background: #fff;
-      padding: 40px;
-    }
-    .imagery-card .i-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .imagery-card.do .i-label { color: var(--gold); }
-    .imagery-card.dont .i-label { color: #C0392B; }
-    .imagery-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .imagery-card { background: #fff; padding: 40px; }
+    .imagery-card ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
     .imagery-card ul li {
       font-size: 15px;
       color: var(--charcoal);
-      padding-left: 20px;
+      padding-left: 24px;
       position: relative;
+      line-height: 1.5;
     }
-    .imagery-card.do ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
-    .imagery-card.dont ul li::before {
-      content: '×';
-      position: absolute;
-      left: 0;
-      color: #C0392B;
-    }
+    .imagery-card.do ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
+    .imagery-card.dont ul li::before { content: '×'; position: absolute; left: 0; color: #C0392B; font-weight: 600; }
+    .do-label { font-size: 13px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .dont-label { font-size: 13px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #C0392B; }
 
     /* ── BRANDSCRIPT ── */
-    .bs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin: 48px 0;
-    }
-    .bs-card {
-      background: #fff;
-      padding: 40px;
-    }
-    .bs-card.full { grid-column: 1 / -1; }
-    .bs-card.navy-bg {
+    .bs-full {
       background: var(--navy);
+      padding: 48px;
+      margin: 40px 0;
     }
-    .bs-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    .bs-title {
+    .bs-full .block-label { color: var(--gold); margin-bottom: 16px; }
+    .bs-full .bs-title {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: clamp(20px, 2.5vw, 26px);
       font-weight: 600;
-      color: var(--navy);
+      color: #fff;
       margin-bottom: 12px;
     }
-    .bs-card.navy-bg .bs-title { color: #fff; }
-    .bs-body {
-      font-size: 15px;
-      color: var(--charcoal);
-      line-height: 1.65;
-    }
-    .bs-card.navy-bg .bs-body { color: rgba(255,255,255,0.75); }
-    .bs-body strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-    .bs-card.navy-bg .bs-body strong { color: var(--gold); }
+    .bs-full .bs-body { font-size: 16px; color: rgba(255,255,255,0.72); line-height: 1.65; }
 
-    /* ── ONE-LINER ── */
-    .oneliner-section {
+    /* ── ONE-LINER BAND ── */
+    .oneliner-band {
       background: var(--gold);
-      padding: 72px 48px;
-      text-align: center;
-      margin: 0;
+      padding: 72px 64px;
     }
-    .oneliner-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 24px;
-      opacity: 0.7;
-    }
-    .oneliner-text {
+    .oneliner-band .block-label { color: var(--navy); opacity: 0.65; margin-bottom: 20px; }
+    .oneliner-band .text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(20px, 3vw, 28px);
+      font-size: clamp(20px, 2.5vw, 28px);
       font-weight: 600;
       font-style: italic;
       color: var(--navy);
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 760px;
       line-height: 1.45;
     }
 
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
-      padding: 48px;
-      text-align: center;
+      padding: 48px 64px;
+      margin-left: 0;
     }
-    footer .f-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    footer .f-sub {
-      font-size: 11px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 32px;
-    }
-    footer .f-note {
-      font-size: 12px;
-      color: rgba(255,255,255,0.35);
-    }
-
-    /* ── UTILITIES ── */
-    .text-gold { color: var(--gold); }
-    .text-navy { color: var(--navy); }
-    .mt-8 { margin-top: 8px; }
-    .mt-16 { margin-top: 16px; }
-    .mt-32 { margin-top: 32px; }
-    .mb-32 { margin-bottom: 32px; }
+    .footer-logo { max-width: 200px; margin-bottom: 24px; }
+    .footer-tagline { font-size: 13px; font-style: italic; color: rgba(255,255,255,0.35); }
 
     p + p { margin-top: 16px; }
 
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .container, .container-wide { padding: 0 24px; }
-      section { padding: 64px 0; }
-      .strategy-grid, .three-cols, .bs-grid, .imagery-grid, .mark-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      nav { transform: translateX(-100%); transition: transform 0.3s; }
+      nav.open { transform: translateX(0); }
+      main { margin-left: 0; }
+      .nav-toggle { display: flex; }
+      .nav-overlay.active { display: block; }
+      section { padding: 64px 24px; }
+      .two-cols, .three-cols, .golden-circle, .mark-grid, .imagery-grid { grid-template-columns: 1fr; }
       .palette-grid { grid-template-columns: repeat(3, 1fr); }
-      .highlight-box { padding: 32px; }
-      .oneliner-section { padding: 48px 24px; }
+      .pos-row { grid-template-columns: 1fr; }
+      .pos-label-col { padding: 16px 24px; }
+      .oneliner-band { padding: 48px 24px; }
+      #manifesto { padding: 64px 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-brand">FAZCO — Brandbook</span>
-  <ul class="nav-links">
-    <li><a href="#estrategia">Estratégia</a></li>
-    <li><a href="#wordmark">Wordmark</a></li>
-    <li><a href="#cores">Cores</a></li>
-    <li><a href="#tipografia">Tipografia</a></li>
-    <li><a href="#imagem">Imagem</a></li>
-    <li><a href="#mensagem">Mensagem</a></li>
-  </ul>
+<button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- SIDE NAV -->
+<nav id="nav">
+  <div class="nav-brand">
+    <p class="nav-brand-name">FAZCO</p>
+    <p class="nav-brand-sub">Private Label</p>
+    <p class="nav-brand-doc">Brandbook v1.0</p>
+  </div>
+
+  <div class="nav-section">
+    <p class="nav-section-title">Estratégia</p>
+    <a href="#essencia">Essência</a>
+    <a href="#manifesto">Manifesto</a>
+    <a href="#golden-circle">Golden Circle</a>
+    <a href="#posicionamento">Posicionamento</a>
+    <a href="#cliente">Cliente Ideal</a>
+    <a href="#mensagem">Mensagem</a>
+  </div>
+
+  <div class="nav-section">
+    <p class="nav-section-title">Identidade Visual</p>
+    <a href="#wordmark">Wordmark</a>
+    <a href="#cores">Cores</a>
+    <a href="#tipografia">Tipografia</a>
+    <a href="#fotografia">Fotografia</a>
+  </div>
+
+  <p class="nav-tagline">Fazer junto é o que nos move.</p>
 </nav>
 
-<!-- COVER -->
-<section id="cover">
-  <p class="cover-label">Brandbook — Documento de Identidade</p>
-  <div class="cover-wordmark">
-    <span class="fazco">FAZCO</span>
-    <span class="pl-label">Private Label</span>
-  </div>
-  <p class="cover-positioning">O PL que faz junto — do desenvolvimento à produção.</p>
-  <div class="cover-divider"></div>
-</section>
+<!-- MAIN -->
+<main>
 
-<!-- ESTRATÉGIA -->
-<section id="estrategia" style="background: var(--cream);">
-  <div class="container">
-    <div class="chapter-header">
-      <p class="chapter-number">01 — Estratégia</p>
-      <h2 class="chapter-title">A marca que faz junto.</h2>
-      <p class="chapter-subtitle">Vinte anos de expertise. Um posicionamento claro. Uma palavra que define tudo.</p>
-    </div>
+  <!-- COVER -->
+  <section id="cover">
+    <p class="cover-eyebrow">Brandbook — Documento de Identidade</p>
+    <img src="assets/logo-navy.png" alt="FAZCO Private Label" class="cover-logo" />
+    <p class="cover-positioning">O PL que faz junto —<br>do desenvolvimento à produção.</p>
+    <p class="cover-meta">Documento interno · 2025</p>
+  </section>
 
-    <div class="highlight-box">
-      <p class="label">Verbal Nail</p>
-      <p class="text">A palavra que a Fazco possui na mente do mercado: Parceria.</p>
-    </div>
-
-    <p>O nome FAZCO não é acidente. <strong style="color:var(--navy)">FAZ</strong> — ação, fazer, construir. <strong style="color:var(--navy)">CO</strong> — colaborar, cooperar, junto. A etimologia da marca já comunica o posicionamento antes de qualquer argumento.</p>
-
-    <p class="mt-16">Num mercado onde fornecedores prometem e somem, a Fazco opera por um princípio diferente: o cliente não contrata um executor — encontra um parceiro que entra no desenvolvimento, pensa junto, e entrega o que combinou.</p>
-
-    <hr class="section-rule" />
-
-    <div class="strategy-grid">
-      <div class="strategy-cell">
-        <p class="s-label">Verbal Nail</p>
-        <p class="s-title">Parceria</p>
-        <p class="s-body">A palavra que a Fazco possui no mercado. Parceria subentende confiança e vai além — implica interesse genuíno no sucesso do outro. Você não faz negócio com quem não confia.</p>
+  <!-- ESSÊNCIA -->
+  <section id="essencia">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">01 — Essência</p>
+        <h2 class="chapter-title">FAZ + CO.<br>A marca que faz junto.</h2>
+        <p class="chapter-subtitle">O nome não é acidente. É o posicionamento inteiro em quatro letras.</p>
       </div>
-      <div class="strategy-cell dark">
-        <p class="s-label">Positioning Line</p>
-        <p class="s-title">O PL que faz junto.</p>
-        <p class="s-body">Do desenvolvimento à produção. "Faz junto" está dentro do nome. Ninguém no mercado reivindica isso com entrega real.</p>
+
+      <p><strong style="color:var(--navy)">FAZ</strong> — ação, fazer, construir, entregar. <strong style="color:var(--navy)">CO</strong> — colaborar, cooperar, junto. A etimologia da marca já comunica o posicionamento antes de qualquer argumento.</p>
+
+      <p class="mt-16">Num mercado onde fornecedores prometem e somem, a Fazco opera por um princípio diferente: o cliente não contrata um executor — encontra um parceiro que entra no desenvolvimento, pensa junto, e entrega o que combinou. Vinte anos de prova disso.</p>
+
+      <div class="highlight-box">
+        <p class="block-label">A Palavra da Fazco</p>
+        <p class="text">A palavra que a Fazco possui na mente do mercado: <em style="color:var(--gold)">Parceria.</em></p>
       </div>
-      <div class="strategy-cell dark">
-        <p class="s-label">Tagline</p>
-        <p class="s-title">"Fazer junto é o que nos move."</p>
-        <p class="s-body">Já vive no Instagram. Não é uma frase de marketing — é uma declaração de método. As três camadas se reforçam: Verbal Nail → Positioning Line → Tagline.</p>
-      </div>
-      <div class="strategy-cell">
-        <p class="s-label">Onlyness</p>
-        <p class="s-title">O PL que faz junto — do desenvolvimento à produção.</p>
-        <p class="s-body">A Fazco não entra quando o cliente já sabe o que quer. Entra antes. Co-cria o produto. Isso não é processo — é posição.</p>
+
+      <div class="two-cols">
+        <div class="cell white">
+          <p class="block-label">O Que é</p>
+          <p class="cell-title">20 anos de expertise em Private Label</p>
+          <p class="cell-body">Dois décadas no ramo da confecção, dez delas dedicadas exclusivamente ao PL. Um legado construído por indicação — porque quem trabalhou com a Fazco indica a Fazco.</p>
+        </div>
+        <div class="cell dark">
+          <p class="block-label">O Que Não É</p>
+          <p class="cell-title">Não é fornecedor. É parceiro.</p>
+          <p class="cell-body">Fornecedor recebe spec e executa. Parceiro entra antes — no desenvolvimento, na escolha do produto, na construção do que vai existir. Essa distinção é tudo.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <hr class="section-rule" />
+  <!-- MANIFESTO -->
+  <section id="manifesto">
+    <div class="container">
+      <p class="manifesto-label">Manifesto</p>
+      <div class="manifesto-text">
+        <p>O mercado de PL está cheio de gente que promete.<br>
+        Fornecedores que somem no meio do processo.<br>
+        Prazos que não existem. Qualidade que envergonha.<br>
+        Marcas que investiram meses num produto<br>
+        e receberam uma coleção que não podem vender.</p>
 
-    <div class="chapter-header" style="margin-bottom: 32px;">
-      <p class="chapter-number">Cliente Ideal</p>
-      <h3 class="chapter-title" style="font-size: clamp(24px, 3vw, 36px);">Para quem a Fazco trabalha.</h3>
+        <p style="margin-top:32px;">A Fazco está no mercado há vinte anos<br>
+        porque trabalha de um jeito diferente.</p>
+
+        <p style="margin-top:32px;"><em>Entramos antes.</em><br>
+        Antes do produto existir.<br>
+        Antes da ficha técnica estar pronta.<br>
+        Antes da decisão ser tomada.</p>
+
+        <p style="margin-top:32px;">Porque o nosso trabalho não é executar — é fazer junto.<br>
+        <em>Do desenvolvimento à produção.</em><br>
+        Do primeiro contato à última peça entregue.</p>
+
+        <p style="margin-top:32px;">O combinado é cumprido.<br>
+        Não porque é fácil.<br>
+        <em>Porque é o que fazemos.</em></p>
+      </div>
+      <p class="manifesto-sign">— FAZCO Private Label</p>
+    </div>
+  </section>
+
+  <!-- GOLDEN CIRCLE -->
+  <section id="golden-circle">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">02 — Golden Circle</p>
+        <h2 class="chapter-title">Por quê. Como. O quê.</h2>
+        <p class="chapter-subtitle">O propósito vem antes do produto. Simon Sinek.</p>
+      </div>
     </div>
 
-    <div class="three-cols">
+    <div class="golden-circle" style="max-width: 1000px;">
+      <div class="gc-card">
+        <p class="gc-level">Por Quê — Propósito</p>
+        <p class="gc-question">Por que a Fazco existe?</p>
+        <p class="gc-answer">Acreditamos que marcas sérias merecem parceiros sérios. Existimos para que quem construiu uma marca com cuidado nunca precise arriscar tudo numa produção errada.</p>
+      </div>
+      <div class="gc-card">
+        <p class="gc-level">Como — Método</p>
+        <p class="gc-question">Como a Fazco entrega isso?</p>
+        <p class="gc-answer">Entramos no desenvolvimento, co-criamos o produto certo, e entregamos o que combinamos. Sempre. Fazemos junto do início ao fim.</p>
+      </div>
+      <div class="gc-card">
+        <p class="gc-level">O Quê — Produto</p>
+        <p class="gc-question">O que a Fazco faz?</p>
+        <p class="gc-answer">Fabricação de Private Label para marcas de moda validadas — do desenvolvimento à produção, com mínimo de 30 peças por pedido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSICIONAMENTO -->
+  <section id="posicionamento">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">03 — Posicionamento</p>
+        <h2 class="chapter-title">O que a Fazco diz ao mundo.</h2>
+        <p class="chapter-subtitle">Quatro camadas de mensagem — da palavra ao argumento completo.</p>
+      </div>
+    </div>
+
+    <div class="pos-stack" style="max-width: 900px;">
+      <div class="pos-row">
+        <div class="pos-label-col"><span>Verbal Nail</span></div>
+        <div class="pos-content">
+          <div>
+            <p>Parceria</p>
+            <span class="pos-note">A palavra que a Fazco possui. Implica confiança e vai além dela.</span>
+          </div>
+        </div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-label-col"><span>Positioning Line</span></div>
+        <div class="pos-content">
+          <div>
+            <p>O PL que faz junto — do desenvolvimento à produção.</p>
+            <span class="pos-note">"Faz junto" está dentro do nome. Ninguém reivindica isso com entrega real.</span>
+          </div>
+        </div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-label-col"><span>Tagline</span></div>
+        <div class="pos-content">
+          <div>
+            <p>Fazer junto é o que nos move.</p>
+            <span class="pos-note">Declaração de método, não de marketing.</span>
+          </div>
+        </div>
+      </div>
+      <div class="pos-row">
+        <div class="pos-label-col"><span>One-Liner</span></div>
+        <div class="pos-content" style="padding: 32px 36px;">
+          <div>
+            <p style="font-size: clamp(14px, 1.6vw, 17px);">A Fazco é o parceiro de PL para marcas que já provaram que funcionam e querem crescer sem abrir mão da qualidade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTE IDEAL -->
+  <section id="cliente">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">04 — Cliente Ideal</p>
+        <h2 class="chapter-title">Para quem a Fazco trabalha.</h2>
+        <p class="chapter-subtitle">O mínimo de 30 peças não é uma limitação. É o critério de entrada da parceria.</p>
+      </div>
+    </div>
+
+    <div class="three-cols" style="max-width: 1000px;">
       <div class="col-card">
-        <p class="c-label">Perfil</p>
+        <p class="block-label">Perfil</p>
         <p class="c-title">Marca validada</p>
-        <p class="c-body">Mínimo 2 anos operando. Já vende, já tem identidade, já provou que funciona. Não é iniciante — é uma marca em crescimento.</p>
+        <p class="c-body">Mínimo 2 anos operando. Já vende, já tem identidade, já provou que funciona. Não é iniciante — é uma marca em crescimento que precisa de escala.</p>
       </div>
       <div class="col-card">
-        <p class="c-label">Ticket</p>
+        <p class="block-label">Ticket</p>
         <p class="c-title">R$10–20k recorrente</p>
-        <p class="c-body">Pedidos de médio porte com continuidade. O mínimo de 30 peças não é limitação — é o critério de entrada da parceria.</p>
+        <p class="c-body">Pedidos de médio porte com continuidade. O cliente ideal volta. A relação cresce com o tempo — começa com um produto, expande para a coleção.</p>
       </div>
       <div class="col-card">
-        <p class="c-label">Fora do escopo</p>
-        <p class="c-title">O que a Fazco não é</p>
-        <p class="c-body">Não atende iniciantes sem validação. Não compete com grandes varejistas que exigem preços impossíveis. Foco total no parceiro certo.</p>
+        <p class="block-label">Fora do Escopo</p>
+        <p class="c-title">O que a Fazco não atende</p>
+        <p class="c-body">Iniciantes sem validação de mercado. Grandes varejistas que exigem preços impossíveis. A Fazco é seletiva porque parceria exige parceiro certo.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ONE-LINER -->
-<div class="oneliner-section">
-  <p class="oneliner-label">One-Liner</p>
-  <p class="oneliner-text">"A Fazco é o parceiro de PL para marcas que já provaram que funcionam e querem crescer sem abrir mão da qualidade."</p>
-</div>
+  <!-- MENSAGEM / BRANDSCRIPT -->
+  <section id="mensagem">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">05 — Mensagem</p>
+        <h2 class="chapter-title">O cliente é o herói.<br>A Fazco é o guia.</h2>
+        <p class="chapter-subtitle">StoryBrand SB7 — a estrutura de comunicação que orienta todos os canais.</p>
+      </div>
 
-<!-- WORDMARK -->
-<section id="wordmark" style="background: var(--cream);">
-  <div class="container">
-    <div class="chapter-header">
-      <p class="chapter-number">02 — Wordmark</p>
-      <h2 class="chapter-title">O ponto de entrada da marca.</h2>
-      <p class="chapter-subtitle">Registrado no INPI. Bold italic — ação e movimento. Três versões para qualquer aplicação.</p>
+      <div class="bs-full">
+        <p class="block-label">O Herói</p>
+        <p class="bs-title">Dono de marca de moda validada</p>
+        <p class="bs-body">Já vende. Já tem identidade. Quer escalar a produção sem colocar em risco o que construiu. Seu maior medo: depender de um PL que vai destruir o que levou anos para construir.</p>
+      </div>
+
+      <div class="two-cols">
+        <div class="cell white">
+          <p class="block-label">Problema Externo</p>
+          <p class="cell-title">Não existe PL confiável</p>
+          <p class="cell-body">O mercado promete desenvolvimento e entrega só execução. Promete prazo e atrasa. Promete qualidade e manda produto que envergonha a marca.</p>
+        </div>
+        <div class="cell dark">
+          <p class="block-label">Problema Interno</p>
+          <p class="cell-title">Medo de ser queimado</p>
+          <p class="cell-body">O problema real não é logístico — é emocional. É o medo de colocar sua marca nas mãos de alguém e perder dinheiro, coleção e reputação numa tacada.</p>
+        </div>
+      </div>
+
+      <div class="gold-box">
+        <p><strong>Problema Filosófico:</strong> Marcas sérias merecem parceiros sérios. Não é justo que quem construiu com cuidado precise se submeter a um mercado desorganizado.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <div class="two-cols">
+        <div class="cell white">
+          <p class="block-label">Empatia</p>
+          <p class="cell-title">A Fazco entende</p>
+          <p class="cell-body">"Sabemos o que é investir numa coleção inteira e depender de alguém que some no meio do processo." Não é discurso — é 20 anos de mercado vendo isso acontecer.</p>
+        </div>
+        <div class="cell dark">
+          <p class="block-label">Autoridade</p>
+          <p class="cell-title">20 anos. 10 em PL.</p>
+          <p class="cell-body">Clientes que voltam. Combinado cumprido. Um histórico construído por indicação — porque quem trabalhou com a Fazco indica a Fazco.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="mark-grid">
+    <div class="three-cols" style="max-width: 1000px; margin-top: 2px;">
+      <div class="col-card">
+        <p class="c-num">01</p>
+        <p class="block-label">Plano</p>
+        <p class="c-title">Conversa</p>
+        <p class="c-body">Entender sua marca, seu momento, o que você precisa. Não começamos pelo pedido — começamos pelo contexto.</p>
+      </div>
+      <div class="col-card">
+        <p class="c-num">02</p>
+        <p class="block-label">Plano</p>
+        <p class="c-title">Desenvolvimento</p>
+        <p class="c-body">Criar junto o produto certo para sua coleção. Sugerimos. Questionamos. Co-criamos. Não apenas executamos.</p>
+      </div>
+      <div class="col-card">
+        <p class="c-num">03</p>
+        <p class="block-label">Plano</p>
+        <p class="c-title">Entrega</p>
+        <p class="c-body">Produção no prazo. Qualidade que protege sua marca. O combinado é cumprido. Sempre.</p>
+      </div>
+    </div>
+
+    <div class="two-cols" style="max-width: 1000px; margin-top: 2px;">
+      <div class="cell" style="background:#FDECEA;">
+        <p class="block-label" style="color:#C0392B;">Se Não Agir</p>
+        <p class="cell-title" style="color:#C0392B;">Consequências</p>
+        <p class="cell-body">Coleção atrasada — temporada perdida. Qualidade ruim — reputação em risco. Fornecedor sumido — dinheiro e tempo perdidos.</p>
+      </div>
+      <div class="cell dark">
+        <p class="block-label">Sucesso</p>
+        <p class="cell-title">O resultado da parceria</p>
+        <p class="cell-body">Sua marca cresce. Você foca em criar e vender. A Fazco garante que o produto entrega o que sua marca promete.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONE-LINER BAND -->
+  <div class="oneliner-band">
+    <p class="block-label">One-Liner</p>
+    <p class="text">"A Fazco é o parceiro de PL para marcas que já provaram que funcionam e querem crescer sem abrir mão da qualidade."</p>
+  </div>
+
+  <!-- WORDMARK -->
+  <section id="wordmark">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">06 — Wordmark</p>
+        <h2 class="chapter-title">O ponto de entrada da marca.</h2>
+        <p class="chapter-subtitle">Registrado no INPI. Bold italic — ação e movimento em quatro letras. Três versões para qualquer aplicação.</p>
+      </div>
+    </div>
+
+    <div class="mark-grid" style="max-width: 1000px;">
       <div class="mark-card mark-bg-navy">
-        <span class="mark-wordmark">FAZCO</span>
-        <span class="mark-sub">Private Label</span>
+        <img src="assets/logo-navy.png" alt="FAZCO logo versão navy" />
         <span class="mark-card-label">Versão Principal</span>
       </div>
       <div class="mark-card mark-bg-black">
-        <span class="mark-wordmark">FAZCO</span>
-        <span class="mark-sub">Private Label</span>
+        <img src="assets/logo-black.png" alt="FAZCO logo versão preta" />
         <span class="mark-card-label">Versão Preta</span>
       </div>
-      <div class="mark-card mark-bg-white">
-        <span class="mark-wordmark">FAZCO</span>
-        <span class="mark-sub">Private Label</span>
+      <div class="mark-card mark-bg-cream">
+        <img src="assets/logo-white.png" alt="FAZCO logo versão clara" />
         <span class="mark-card-label">Versão Clara</span>
       </div>
     </div>
 
-    <div class="gold-box">
-      <p><strong>Regra de uso:</strong> O wordmark é sempre acompanhado do descriptor "PRIVATE LABEL". Nunca use a palavra FAZCO isolada em tipografia comum — ela existe apenas como wordmark registrado. O italic é parte da identidade e não deve ser substituído por versão regular.</p>
+    <div class="container" style="margin-top: 32px;">
+      <div class="gold-box">
+        <p><strong>Regra de uso:</strong> O wordmark é sempre acompanhado do descriptor "PRIVATE LABEL". Nunca use a palavra FAZCO isolada em tipografia comum — ela existe apenas como wordmark registrado. O italic é parte da identidade e não deve ser substituído por versão regular.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CORES -->
-<section id="cores" style="background: var(--navy-light);">
-  <div class="container-wide">
-    <div class="container" style="padding-left: 0; padding-right: 0;">
+  <!-- CORES -->
+  <section id="cores">
+    <div class="container">
       <div class="chapter-header">
-        <p class="chapter-number">03 — Paleta de Cores</p>
+        <p class="chapter-number">07 — Paleta de Cores</p>
         <h2 class="chapter-title">Seis cores. Nada genérico.</h2>
-        <p class="chapter-subtitle">Cada cor tem função. Preto e branco puros foram excluídos do sistema — chumbo e creme assumem esses papéis com personalidade.</p>
+        <p class="chapter-subtitle">Cada cor tem função. Preto e branco puros foram excluídos — chumbo e creme assumem esses papéis com personalidade.</p>
       </div>
     </div>
 
-    <div class="palette-grid">
+    <div class="palette-grid" style="max-width: 1000px;">
       <div class="swatch">
         <div class="swatch-color" style="background:#003366;"></div>
         <div class="swatch-info">
@@ -777,67 +1013,59 @@
       </div>
     </div>
 
-    <div class="container" style="padding-left: 0; padding-right: 0;">
+    <div class="container" style="margin-top: 16px;">
       <div class="gold-box">
         <p><strong>Lógica do sistema:</strong> Navy e Azul claro formam a família fria — institucional e técnica. Ouro e Ouro claro formam a família quente — humana e de destaque. Creme e Chumbo são os neutros da marca. Nada nessa paleta é genérico.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TIPOGRAFIA -->
-<section id="tipografia" style="background: var(--cream);">
-  <div class="container">
-    <div class="chapter-header">
-      <p class="chapter-number">04 — Tipografia</p>
-      <h2 class="chapter-title">Duas vozes. Uma hierarquia.</h2>
-      <p class="chapter-subtitle">Playfair Display para impacto e autoridade. DM Sans para clareza e leitura. Ambas disponíveis gratuitamente no Google Fonts.</p>
+  <!-- TIPOGRAFIA -->
+  <section id="tipografia">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">08 — Tipografia</p>
+        <h2 class="chapter-title">Duas vozes. Uma hierarquia.</h2>
+        <p class="chapter-subtitle">Playfair Display para impacto e autoridade. DM Sans para clareza e leitura.</p>
+      </div>
+
+      <div class="type-specimen">
+        <p class="block-label">Display — Playfair Display</p>
+        <p class="specimen-display">Parceria do<br>desenvolvimento<br>à produção.</p>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Família</strong>Playfair Display</div>
+          <div class="type-meta-item"><strong>Uso</strong>Títulos, headlines, frases de impacto</div>
+          <div class="type-meta-item"><strong>Pesos</strong>400, 600, 700</div>
+          <div class="type-meta-item"><strong>Google Fonts</strong>Gratuita</div>
+        </div>
+      </div>
+
+      <div class="type-specimen">
+        <p class="block-label">Corpo — DM Sans</p>
+        <p class="specimen-body">A Fazco entra no desenvolvimento junto com a marca. Não recebe apenas uma ficha técnica — entende o produto, sugere melhorias, co-cria o que vai existir. O combinado é cumprido. Sempre.</p>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Família</strong>DM Sans</div>
+          <div class="type-meta-item"><strong>Uso</strong>Textos, legendas, interfaces, documentos</div>
+          <div class="type-meta-item"><strong>Pesos</strong>300, 400, 500, 600</div>
+          <div class="type-meta-item"><strong>Google Fonts</strong>Gratuita</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="type-specimen">
-      <p class="type-label">Display — Playfair Display</p>
-      <p class="specimen-display">Parceria do<br>desenvolvimento<br>à produção.</p>
-      <div class="type-meta">
-        <div class="type-meta-item"><strong>Família</strong>Playfair Display</div>
-        <div class="type-meta-item"><strong>Uso</strong>Títulos, headlines, frases de impacto</div>
-        <div class="type-meta-item"><strong>Pesos</strong>400, 600, 700</div>
-        <div class="type-meta-item"><strong>Estilo</strong>Regular e Itálico</div>
+  <!-- FOTOGRAFIA -->
+  <section id="fotografia">
+    <div class="container">
+      <div class="chapter-header">
+        <p class="chapter-number">09 — Fotografia</p>
+        <h2 class="chapter-title">O que parece "fazer junto".</h2>
+        <p class="chapter-subtitle">A câmera vai para onde as decisões acontecem. Processo, mãos, materiais, presença real.</p>
       </div>
     </div>
 
-    <div class="type-specimen">
-      <p class="type-label">Corpo — DM Sans</p>
-      <p class="specimen-body">A Fazco entra no desenvolvimento junto com a marca. Não recebe apenas uma ficha técnica — entende o produto, sugere melhorias, co-cria o que vai existir. O combinado é cumprido. Sempre.</p>
-      <div class="type-meta">
-        <div class="type-meta-item"><strong>Família</strong>DM Sans</div>
-        <div class="type-meta-item"><strong>Uso</strong>Textos, legendas, interfaces, documentos</div>
-        <div class="type-meta-item"><strong>Pesos</strong>300, 400, 500, 600</div>
-        <div class="type-meta-item"><strong>Caractere</strong>Humanista — próximo do wordmark</div>
-      </div>
-    </div>
-
-    <div class="highlight-box">
-      <p class="label">Hierarquia em uso</p>
-      <p class="text" style="font-size:18px; line-height:1.8;">
-        <span style="font-size:32px; display:block; margin-bottom:8px;">Fazer junto é o que nos move.</span>
-        <span style="font-family:'DM Sans',sans-serif; font-size:15px; font-style:normal; color:rgba(255,255,255,0.7); font-weight:300;">Somos o PL que entra no desenvolvimento da sua marca, pensa junto, e entrega o que combinou. Do primeiro contato à última peça — fazer junto não é slogan. É método.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- IMAGEM -->
-<section id="imagem" style="background: var(--navy-light);">
-  <div class="container">
-    <div class="chapter-header">
-      <p class="chapter-number">05 — Estilo de Imagem</p>
-      <h2 class="chapter-title">O que parece "fazer junto".</h2>
-      <p class="chapter-subtitle">A câmera vai para onde as decisões acontecem. Processo, mãos, materiais, presença real.</p>
-    </div>
-
-    <div class="imagery-grid">
+    <div class="imagery-grid" style="max-width: 1000px;">
       <div class="imagery-card do">
-        <p class="i-label">Mostrar</p>
+        <p class="do-label">Mostrar</p>
         <ul>
           <li>Mãos trabalhando — em tecido, em ficha técnica, em ajuste de peça</li>
           <li>O processo de desenvolvimento — esboços, amostras, escolha de material</li>
@@ -847,10 +1075,10 @@
         </ul>
       </div>
       <div class="imagery-card dont">
-        <p class="i-label">Evitar</p>
+        <p class="dont-label">Evitar</p>
         <ul>
           <li>Fotos de banco de imagem — qualquer pessoa reconhece</li>
-          <li>Editorial de moda — esse é o território do cliente, não da Fazco</li>
+          <li>Editorial de moda — esse é o território do cliente</li>
           <li>Fábrica industrial fria e genérica</li>
           <li>Poses corporativas — aperto de mão, reunião encenada</li>
           <li>Filtros saturados ou tratamento Instagram excessivo</li>
@@ -858,118 +1086,41 @@
       </div>
     </div>
 
-    <div class="strategy-grid">
-      <div class="strategy-cell">
-        <p class="s-label">Luz</p>
-        <p class="s-title">Natural e quente</p>
-        <p class="s-body">Sem flash artificial. Tonalidade quente, coerente com o creme e ouro da paleta. A imagem deve respirar — não ser controlada demais.</p>
+    <div class="two-cols" style="max-width: 1000px; margin-top: 2px;">
+      <div class="cell white">
+        <p class="block-label">Luz e Tom</p>
+        <p class="cell-title">Natural e quente</p>
+        <p class="cell-body">Sem flash artificial. Tonalidade quente, coerente com o creme e ouro da paleta. A imagem deve respirar.</p>
       </div>
-      <div class="strategy-cell dark">
-        <p class="s-label">Composição</p>
-        <p class="s-title">Closes intencionais</p>
-        <p class="s-body">Não panorâmicas genéricas. A câmera close no detalhe que só quem faz vê — a costura, o ponto, a textura do tecido. Isso é a prova da expertise.</p>
-      </div>
-      <div class="strategy-cell dark">
-        <p class="s-label">Mood</p>
-        <p class="s-title">Profissional com calor</p>
-        <p class="s-body">Não é fria nem informal. A Fazco é parceira séria com presença humana. A imagem precisa ser as duas coisas ao mesmo tempo.</p>
-      </div>
-      <div class="strategy-cell">
-        <p class="s-label">Subjects</p>
-        <p class="s-title">Mãos, processo, material</p>
-        <p class="s-body">Mãos são a prova visual do "fazer". Nenhum concorrente que some depois do pedido consegue fotografar mãos com autenticidade.</p>
+      <div class="cell dark">
+        <p class="block-label">Composição</p>
+        <p class="cell-title">Closes intencionais</p>
+        <p class="cell-body">A câmera close no detalhe que só quem faz vê — a costura, o ponto, a textura. Isso é a prova da expertise.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MENSAGEM / BRANDSCRIPT -->
-<section id="mensagem" style="background: var(--cream);">
-  <div class="container">
-    <div class="chapter-header">
-      <p class="chapter-number">06 — Mensagem</p>
-      <h2 class="chapter-title">A história que a Fazco conta.</h2>
-      <p class="chapter-subtitle">StoryBrand SB7 — o cliente é o herói. A Fazco é o guia.</p>
-    </div>
+  <!-- FOOTER -->
+  <footer>
+    <img src="assets/logo-navy.png" alt="FAZCO" class="footer-logo" />
+    <p class="footer-tagline">Fazer junto é o que nos move. — Brandbook v1.0 · 2025</p>
+  </footer>
 
-    <div class="bs-grid">
-      <div class="bs-card full" style="background: var(--navy);">
-        <p class="bs-label">O Herói</p>
-        <p class="bs-title">Dono de marca de moda validada</p>
-        <p class="bs-body">Já vende. Já tem identidade. Quer escalar a produção sem colocar em risco o que construiu. Seu maior medo: depender de um fornecedor que vai destruir o que levou anos para construir.</p>
-      </div>
+</main>
 
-      <div class="bs-card">
-        <p class="bs-label">Problema Externo</p>
-        <p class="bs-title">Não existe PL confiável</p>
-        <p class="bs-body">O mercado promete desenvolvimento e entrega só execução. Promete prazo e atrasa. Promete qualidade e manda produto que envergonha a marca.</p>
-      </div>
-      <div class="bs-card">
-        <p class="bs-label">Problema Interno</p>
-        <p class="bs-title">Medo de ser queimado</p>
-        <p class="bs-body">O problema real não é logístico — é emocional. É o medo de colocar sua marca nas mãos de alguém e perder dinheiro, coleção e reputação de uma vez.</p>
-      </div>
-
-      <div class="bs-card full">
-        <p class="bs-label">Problema Filosófico</p>
-        <p class="bs-title">"Marcas sérias merecem parceiros sérios."</p>
-        <p class="bs-body">Não é justo que quem construiu uma marca com cuidado precise se submeter a um mercado desorganizado e sem compromisso. O problema não é seu — é do mercado.</p>
-      </div>
-
-      <div class="bs-card navy-bg">
-        <p class="bs-label">Empatia</p>
-        <p class="bs-title">A Fazco entende</p>
-        <p class="bs-body"><strong>"Sabemos o que é investir numa coleção inteira e depender de alguém que some no meio do processo."</strong> Não é discurso — é 20 anos de mercado vendo isso acontecer com marcas que chegaram até nós depois de serem queimadas.</p>
-      </div>
-      <div class="bs-card">
-        <p class="bs-label">Autoridade</p>
-        <p class="bs-title">20 anos. 10 em PL.</p>
-        <p class="bs-body">Clientes que voltam. Combinado cumprido. Um histórico construído por indicação — porque quem trabalhou com a Fazco indica a Fazco. Esse é o único marketing que não mente.</p>
-      </div>
-    </div>
-
-    <div class="three-cols">
-      <div class="col-card">
-        <p class="c-num">01</p>
-        <p class="c-label">Plano — Passo 1</p>
-        <p class="c-title">Conversa</p>
-        <p class="c-body">Entender sua marca, seu momento, o que você precisa. Não começamos pelo pedido — começamos pelo contexto.</p>
-      </div>
-      <div class="col-card">
-        <p class="c-num">02</p>
-        <p class="c-label">Plano — Passo 2</p>
-        <p class="c-title">Desenvolvimento</p>
-        <p class="c-body">Criar junto o produto certo para a sua coleção. Sugerimos. Questionamos. Co-criamos. Não só executamos.</p>
-      </div>
-      <div class="col-card">
-        <p class="c-num">03</p>
-        <p class="c-label">Plano — Passo 3</p>
-        <p class="c-title">Entrega</p>
-        <p class="c-body">Produção no prazo. Qualidade que protege a sua marca. O combinado é cumprido. Sempre.</p>
-      </div>
-    </div>
-
-    <div class="strategy-grid" style="margin-top: 2px;">
-      <div class="strategy-cell" style="background: #FDECEA;">
-        <p class="s-label" style="color: #C0392B;">Se não agir</p>
-        <p class="s-title" style="color: #C0392B;">As consequências</p>
-        <p class="s-body">Coleção atrasada — temporada perdida. Qualidade ruim — reputação da marca em risco. Fornecedor sumido — dinheiro e tempo perdidos.</p>
-      </div>
-      <div class="strategy-cell dark">
-        <p class="s-label">Sucesso</p>
-        <p class="s-title">O que a parceria entrega</p>
-        <p class="s-body">Sua marca cresce. Você foca em criar e vender. A Fazco garante que o produto entrega o que a sua marca promete. Isso é fazer junto.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p class="f-brand">FAZCO</p>
-  <p class="f-sub">Private Label</p>
-  <p class="f-note">Fazer junto é o que nos move. — Brandbook v1.0</p>
-</footer>
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  const overlay = document.getElementById('navOverlay');
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+  overlay.addEventListener('click', () => {
+    nav.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>
